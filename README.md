@@ -1,9 +1,9 @@
-# ns8-kickstart
+# ns8-ejabberd
 
 This is a template module for [NethServer 8](https://github.com/NethServer/ns8-core).
 To start a new module from it:
 
-1. Click on [Use this template](https://github.com/NethServer/ns8-kickstart/generate).
+1. Click on [Use this template](https://github.com/NethServer/ns8-ejabberd/generate).
    Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`). 
    Do not end your module name with a number, like ~~`ns8-baaad2`~~!
 
@@ -21,16 +21,16 @@ To start a new module from it:
 
 Instantiate the module with:
 
-    add-module ghcr.io/nethserver/kickstart:latest 1
+    add-module ghcr.io/nethserver/ejabberd:latest 1
 
 The output of the command will return the instance name.
 Output example:
 
-    {"module_id": "kickstart1", "image_name": "kickstart", "image_url": "ghcr.io/nethserver/kickstart:latest"}
+    {"module_id": "ejabberd1", "image_name": "ejabberd", "image_url": "ghcr.io/nethserver/ejabberd:latest"}
 
 ## Configure
 
-Let's assume that the kickstart instance is named `kickstart1`.
+Let's assume that the ejabberd instance is named `ejabberd1`.
 
 Launch `configure-module`, by setting the following parameters:
 - `<MODULE_PARAM1_NAME>`: <MODULE_PARAM1_DESCRIPTION>
@@ -39,16 +39,16 @@ Launch `configure-module`, by setting the following parameters:
 
 Example:
 
-    api-cli run module/kickstart1/configure-module --data '{}'
+    api-cli run module/ejabberd1/configure-module --data '{}'
 
 The above command will:
-- start and configure the kickstart instance
+- start and configure the ejabberd instance
 - (describe configuration process)
 - ...
 
-Send a test HTTP request to the kickstart backend service:
+Send a test HTTP request to the ejabberd backend service:
 
-    curl http://127.0.0.1/kickstart/
+    curl http://127.0.0.1/ejabberd/
 
 ## Smarthost setting discovery
 
@@ -57,14 +57,14 @@ Some configuration settings, like the smarthost setup, are not part of the
 Redis keys.  To ensure the module is always up-to-date with the
 centralized [smarthost
 setup](https://nethserver.github.io/ns8-core/core/smarthost/) every time
-kickstart starts, the command `bin/discover-smarthost` runs and refreshes
+ejabberd starts, the command `bin/discover-smarthost` runs and refreshes
 the `state/smarthost.env` file with fresh values from Redis.
 
-Furthermore if smarthost setup is changed when kickstart is already
+Furthermore if smarthost setup is changed when ejabberd is already
 running, the event handler `events/smarthost-changed/10reload_services`
 restarts the main module service.
 
-See also the `systemd/user/kickstart.service` file.
+See also the `systemd/user/ejabberd.service` file.
 
 This setting discovery is just an example to understand how the module is
 expected to work: it can be rewritten or discarded completely.
@@ -73,13 +73,13 @@ expected to work: it can be rewritten or discarded completely.
 
 To uninstall the instance:
 
-    remove-module --no-preserve kickstart1
+    remove-module --no-preserve ejabberd1
 
 ## Testing
 
 Test the module using the `test-module.sh` script:
 
 
-    ./test-module.sh <NODE_ADDR> ghcr.io/nethserver/kickstart:latest
+    ./test-module.sh <NODE_ADDR> ghcr.io/nethserver/ejabberd:latest
 
 The tests are made using [Robot Framework](https://robotframework.org/)
