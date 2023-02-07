@@ -1,21 +1,14 @@
 # ns8-ejabberd
 
-This is a template module for [NethServer 8](https://github.com/NethServer/ns8-core).
-To start a new module from it:
+The chat function is implemented using ejabberd XMPP server. Enabled features are:
 
-1. Click on [Use this template](https://github.com/NethServer/ns8-ejabberd/generate).
-   Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`). 
-   Do not end your module name with a number, like ~~`ns8-baaad2`~~!
+LDAP based roster
+SSL/TLS
+Admin group
 
-1. An automated initialization workflow starts: wait for its completion.
-   You can follow the run inside the "Actions" tab, the workflow is named "Initial commit"
+If you want to give admin permissions to an existing user, just add the user to the adminsList property (comma separated), the admins page is available at https://domain.com:5280/admin/
 
-1. You can now clone the repository
-
-1. Edit this `README.md` file, by replacing this section with your module
-   description
-
-1. Commit and push your local changes
+The users will authenticate after LDAP, the LDAP is found by the property `ldap_domain`. The users must login with a domain name (user@domain.com), this domain comes from the hostname_certificate value, the user's domain must match this value. The LDAP of Nethserver does not use the domain to authenticate users, the hostname_certificate and the ldap_domain might have different values.
 
 ## Install
 
@@ -33,41 +26,41 @@ Output example:
 Let's assume that the ejabberd instance is named `ejabberd1`.
 
 Launch `configure-module`, by setting the following parameters:
-- `<MODULE_PARAM1_NAME>`: <MODULE_PARAM1_DESCRIPTION>
-- `<MODULE_PARAM2_NAME>`: <MODULE_PARAM2_DESCRIPTION>
-- ...
+- `hostname_certificate`: a fully qualified domain name for the Common Name of the TLS certificate, it will used as ejabberd virtualhost `user@foo.domain.com`
+- `ldap_domain`: a Ldap domain where to autthenticate the users, it could be different than hostname_certificate
+- `adminsList`: Set the list (comma separated user1,user2,...) of admin users able to use the web admin page of ejabberd (https://foo.domain.com:5280/admin/)
+- `http_upload`: Allow users to upload files. (true/false)
+- `mod_http_upload_quota_status`: Allow ejabberd to remove uploaded file (true/false default retention is 31 days)
+- `s2s`: Enable the server-to-server (S2S) for XMPP federation (Port number: 5269). (true/false)
+- `mod_mam_status`: The XEP-0313: Message Archive Management (mod_mam). (true/false)
+- `shaper_normal`: Download speed limit in bytes/second for users, default is 500000
+- `shaper_fast`:  Download speed limit in bytes/second for admin users, default is 1000000
 
 Example:
 
-    api-cli run module/ejabberd1/configure-module --data '{}'
+    api-cli run configure-module --agent module/ejabberd1 --data - <<EOF
+{
+"hostname_certificate": "rocky9-pve.org",
+"ldap_domain": "rocky9-pve.org",
+"adminsList" : "admin@ad.rocky9-pve.org,administrator@rocky9-pve.org",
+"http_upload": true,
+ "s2s" : true,
+ "shaper_normal": 500000,
+ "shaper_fast": 1000000,
+ "mod_http_upload_quota_status": true,
+ "mod_mam_status":true
+}
+EOF
 
 The above command will:
 - start and configure the ejabberd instance
-- (describe configuration process)
-- ...
 
-Send a test HTTP request to the ejabberd backend service:
+## Get the configuration
+You can retrieve the configuration with
 
-    curl http://127.0.0.1/ejabberd/
-
-## Smarthost setting discovery
-
-Some configuration settings, like the smarthost setup, are not part of the
-`configure-module` action input: they are discovered by looking at some
-Redis keys.  To ensure the module is always up-to-date with the
-centralized [smarthost
-setup](https://nethserver.github.io/ns8-core/core/smarthost/) every time
-ejabberd starts, the command `bin/discover-smarthost` runs and refreshes
-the `state/smarthost.env` file with fresh values from Redis.
-
-Furthermore if smarthost setup is changed when ejabberd is already
-running, the event handler `events/smarthost-changed/10reload_services`
-restarts the main module service.
-
-See also the `systemd/user/ejabberd.service` file.
-
-This setting discovery is just an example to understand how the module is
-expected to work: it can be rewritten or discarded completely.
+```
+api-cli run get-configuration --agent module/ejabberd1 --data null | jq
+```
 
 ## Uninstall
 
