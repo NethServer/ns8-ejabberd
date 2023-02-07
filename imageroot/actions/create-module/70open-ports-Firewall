@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+#
+# Copyright (C) 2022 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+import agent
+import os
+
+agent.add_public_service(os.environ['MODULE_ID'], [
+    "5222/tcp", # Standard port for Jabber/XMPP client connections, plain or STARTTLS.
+    "5223/tcp", # Standard port for Jabber client connections using the old SSL method.
+    "5269/tcp", # For XMPP federation. Only needed if you want to communicate with users on other servers.
+    "5280/tcp", # For admin interface.
+    "5443/tcp"  # With encryption, used for admin interface, API, CAPTCHA, OAuth, Websockets and XMPP BOSH.
+])
+
+# Ignore exit code
