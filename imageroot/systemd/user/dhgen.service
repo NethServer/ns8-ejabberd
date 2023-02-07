@@ -1,0 +1,9 @@
+[Unit]
+Description=Diffie-Hellman group generator
+
+[Service]
+Type=oneshot
+ExecStart=runagent generate-dhpem
+#ExecStartPost=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
+WorkingDirectory=%S/state
+SyslogIdentifier=%u/%N
