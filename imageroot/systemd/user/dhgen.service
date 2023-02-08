@@ -4,7 +4,6 @@ Description=Diffie-Hellman group generator
 [Service]
 Type=oneshot
 ExecStart=runagent generate-dhpem
-ExecStartPre=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
 ExecStartPost=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
 WorkingDirectory=%S/state
 SyslogIdentifier=%u/%N
