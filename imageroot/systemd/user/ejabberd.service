@@ -26,6 +26,7 @@ ExecStartPost=/usr/bin/podman  cp certificates/ejabberd.pem ejabberd:conf/ejabbe
 ExecStartPost=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
 ExecStart=/usr/bin/podman run \
     --detach \
+    --hostname=localhost \
     --conmon-pidfile=%t/ejabberd.pid \
     --cidfile=%t/ejabberd.ctr-id \
     --cgroups=no-conmon \
