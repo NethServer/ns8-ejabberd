@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2022 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+set -e    # exit immediately if an error occurs
+exec 1>&2 # ensure any output is sent to stderr
+
+if [[ ${EJABBERD_PURGE_MNESIA} == "True" ]]; then
+    systemctl --user enable --now purge-mnesia-database.timer
+    systemctl --user enable purge-mnesia-database.service
+else
+    systemctl --user disable --now purge-mnesia-database.timer
+    systemctl --user disable purge-mnesia-database.service
+fi
