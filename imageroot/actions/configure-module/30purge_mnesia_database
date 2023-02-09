@@ -10,8 +10,6 @@ exec 1>&2 # ensure any output is sent to stderr
 
 if [[ ${EJABBERD_PURGE_MNESIA} == "True" ]]; then
     systemctl --user enable --now purge-mnesia-database.timer
-    systemctl --user enable purge-mnesia-database.service
 else
     systemctl --user disable --now purge-mnesia-database.timer
-    systemctl --user disable purge-mnesia-database.service
 fi
