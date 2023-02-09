@@ -1,6 +1,7 @@
 [Unit]
 Description=Purge the Mnesia database of old messages of mod_mam
 After=ejabberd.service
+Requisite=ejabberd.service
 
 [Service]
 Type=oneshot

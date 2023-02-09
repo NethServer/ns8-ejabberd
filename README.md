@@ -2,13 +2,23 @@
 
 The chat function is implemented using ejabberd XMPP server. Enabled features are:
 
-LDAP based roster
-SSL/TLS
-Admin group
+- LDAP based roster
+- TLS
+- Admin group
 
 If you want to give admin permissions to an existing user, just add the user to the `adminsList` property (comma separated), the admins page is available at https://domain.com:5280/admin/
 
 The users will authenticate after LDAP, the LDAP is found by the property `ldap_domain`. The users must login with a domain name (user@domain.com), this domain comes from the hostname_certificate value, the user's domain must match this value. The LDAP of Nethserver does not use the domain to authenticate users, the hostname_certificate and the ldap_domain might be different
+
+## Public TCP ports
+
+Services are available from the following port numbers:
+
+- `5222` Standard port for Jabber/XMPP client connections, plain or STARTTLS.
+- `5223` Standard port for Jabber client connections using the old SSL method.
+- `5269` For XMPP federation. Only needed if you want to communicate with users on other servers.
+- `5280` For admin interface.
+- `5443` With encryption, used for admin interface, API, CAPTCHA, OAuth, Websockets and XMPP BOSH.
 
 ## Install
 
