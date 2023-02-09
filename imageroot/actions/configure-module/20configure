@@ -20,7 +20,7 @@ ldap_domain = data.get("ldap_domain", "")
 adminsList = data.get("adminsList", [])
 s2s= data.get("s2s", False)
 upload= data.get("http_upload", False)
-host = data.get("hostname_certificate", "")
+host = data.get("hostname", "")
 mod_mam_status = data.get("mod_mam_status",False)
 shaper_normal = data.get("shaper_normal",500000)
 shaper_fast = data.get("shaper_fast",1000000)
@@ -30,7 +30,7 @@ mnesia_purge = data.get("purge_mnesia_database",False)
 
 # Talk with agent using file descriptor.
 # Setup configuration from user input.
-agent.set_env("EJABBERD_HOST_CERTIFICATE", host)
+agent.set_env("EJABBERD_HOSTNAME", host)
 agent.set_env("EJABBERD_LDAP_DOMAIN", ldap_domain)
 agent.set_env("EJABBERD_ADMIN_LIST", adminsList)
 agent.set_env("EJABBERD_S2S", s2s)

@@ -34,9 +34,9 @@ for user in admins:
     adminsList.append(adminEjabberd)
 
 
-#ejabberd needs to know a virtualhost to login user with user@EJABBERD_HOST_CERTIFICATE
+#ejabberd needs to know a virtualhost to login user with user@EJABBERD_HOSTNAME
 properties = {
-    "hostname" :  os.environ['EJABBERD_HOST_CERTIFICATE'],
+    "hostname" :  os.environ['EJABBERD_HOSTNAME'],
     "ldap_schema" : os.environ['EJABBERD_LDAP_SCHEMA'],
     "ldap_port" : int(os.environ['EJABBERD_LDAP_PORT']),
     "ldap_user" : os.environ['EJABBERD_LDAP_USER'],

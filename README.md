@@ -8,7 +8,7 @@ The chat function is implemented using ejabberd XMPP server. Enabled features ar
 
 If you want to give admin permissions to an existing user, just add the user to the `adminsList` property (comma separated), the admins page is available at https://domain.com:5280/admin/
 
-The users will authenticate after LDAP, the LDAP is found by the property `ldap_domain`. The users must login with a domain name (user@domain.com), this domain comes from the hostname_certificate value, the user's domain must match this value. The LDAP of Nethserver does not use the domain to authenticate users, the hostname_certificate and the ldap_domain might be different
+The users will authenticate after LDAP, the LDAP is found by the property `ldap_domain`. The users must login with a domain name (user@domain.com), this domain comes from the hostname value, the user's domain must match this value. The LDAP of Nethserver does not use the domain to authenticate users, the hostname and the ldap_domain might be different
 
 ## Public TCP ports
 
@@ -36,8 +36,8 @@ Output example:
 Let's assume that the ejabberd instance is named `ejabberd1`.
 
 Launch `configure-module`, by setting the following parameters:
-- `hostname_certificate`: a fully qualified domain name for the Common Name of the TLS certificate, it will used as ejabberd virtualhost `user@domain.com`
-- `ldap_domain`: a Ldap domain where to authenticate the users, it could be different than hostname_certificate. The ldap_domain is used to find an existing LDAP through LDAP proxy
+- `hostname`: a fully qualified domain name for the Common Name of the TLS certificate, it will used as ejabberd virtualhost `user@domain.com`
+- `ldap_domain`: a Ldap domain where to authenticate the users, it could be different than hostname. The ldap_domain is used to find an existing LDAP through LDAP proxy
 - `adminsList`: Set the list (comma separated user1,user2,...) of admin users able to use the web admin page of ejabberd (https://domain.com:5280/admin/)
 - `http_upload`: Allow users to upload files. (true/false)
 - `mod_http_upload_quota_status`: Allow ejabberd to remove uploaded file (true/false default retention is 31 days)
@@ -50,7 +50,7 @@ Example:
 
     api-cli run configure-module --agent module/ejabberd1 --data - <<EOF
     {
-    "hostname_certificate": "domain.com",
+    "hostname": "domain.com",
     "ldap_domain": "foo.com",
     "adminsList" : "admin@domain.com,administrator@domain.com",
     "http_upload": true,

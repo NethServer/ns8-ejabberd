@@ -15,8 +15,8 @@ import os
 # If parsing fails, output everything to stderr
 data = json.load(sys.stdin)
 
-host = data.get("hostname_certificate")
+host = data.get("hostname")
 
 # if the hostname is new we generate the selfsigned certificate, else do nothing
-if host != os.environ.get('EJABBERD_HOST_CERTIFICATE',''):
+if host != os.environ.get('EJABBERD_HOSTNAME',''):
     agent.run_helper('generate-certificate',host).check_returncode()

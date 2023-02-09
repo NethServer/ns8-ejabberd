@@ -23,7 +23,7 @@ domains = lp.get_domains_list()
 config = {}
 
 # Read current configuration from the environment file
-config["hostname_certificate"] = os.getenv("EJABBERD_HOST_CERTIFICATE","")
+config["hostname"] = os.getenv("EJABBERD_HOSTNAME","")
 config["ldap_domain"] = os.getenv("EJABBERD_LDAP_DOMAIN",'')
 config["adminsList"] = os.getenv("EJABBERD_ADMIN_LIST",'')
 config["s2s"] = os.getenv("EJABBERD_S2S",'') == "True"
