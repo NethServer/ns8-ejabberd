@@ -1,5 +1,6 @@
 [Unit]
 Description=Diffie-Hellman group generator
+Requisite=ejabberd.service
 
 [Service]
 Type=oneshot
