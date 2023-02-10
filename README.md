@@ -45,6 +45,9 @@ Launch `configure-module`, by setting the following parameters:
 - `mod_mam_status`: The XEP-0313: Message Archive Management (mod_mam). (true/false)
 - `shaper_normal`: Download speed limit in bytes/second for users, default is 500000
 - `shaper_fast`:  Download speed limit in bytes/second for admin users, default is 1000000
+- `purge_mnesia_database`: Enable the timer to purge the Mnesia database of old messages. (true/false)
+- `purge_mnesia_interval`: Remove old messages from Mnesia older than x days
+- `lets_encrypt`: Require a Let'sEncrypt valid certificate to Traefik. (true/false)
 
 Example:
 
@@ -58,7 +61,10 @@ Example:
     "shaper_normal": 500000,
     "shaper_fast": 1000000,
     "mod_http_upload_quota_status": true,
-    "mod_mam_status":true
+    "mod_mam_status":true,
+    "purge_mnesia_database": false,
+    "purge_mnesia_interval": "30"
+    "lets_encrypt": false,
     }
     EOF
 
