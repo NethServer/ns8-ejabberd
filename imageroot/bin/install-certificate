@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2022 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+set -e
+
+if [[ -z "${EJABBERD_HOSTNAME}" ]]; then
+    exit 3 # Module is not fully configured, abort execution.
+fi
+
+mkdir -vp ${AGENT_STATE_DIR}/certificates/
+
+tmpdir=$(mktemp -d)
+trap 'rm -rf ${tmpdir}' EXIT
+
+cd "${tmpdir}"
+umask 077
+
+# Override redis-exec "privileged=True"
+export REDIS_USER=default
+
+mtraefik=$(redis-exec GET "node/${NODE_ID}/default_instance/traefik")
+
+redis-exec HGET "module/${mtraefik}/certificate/${EJABBERD_HOSTNAME}" key | base64 -d > server.key
+redis-exec HGET "module/${mtraefik}/certificate/${EJABBERD_HOSTNAME}" cert | base64 -d > server.pem
+
+if [[ $(head -c 5 server.key) != '-----' || $(head -c 5 server.pem) != '-----' ]]; then
+    echo "[WARNING] ${service_image} certificate for ${EJABBERD_HOSTNAME} not found" 1>&2
+    exit 2
+fi
+
+# we want only one pem file all included
+cat server.key server.pem > ${AGENT_STATE_DIR}/certificates/ejabberd.pem
+
+# Important! preserve import-certificate exit code
