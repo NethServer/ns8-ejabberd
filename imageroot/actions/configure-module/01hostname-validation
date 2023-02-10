@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+#
+# Copyright (C) 2022 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+import os
+import sys
+import json
+import agent
+import urllib.request
+import urllib.error
+import ssl
+
+agent.set_weight(os.path.basename(__file__), 0) # Validation step, no task progress at all
+
+# retrieve json data
+data = json.load(sys.stdin)
+
+# Setup default values
+hostname = data.get("hostname")
+# do not test if it is the same host
+oldHost = os.environ.get('EJABBERD_HOSTNAME','')
+
+if hostname != oldHost and agent.http_route_in_use(domain=hostname):
+    agent.set_status('validation-failed')
+    json.dump([{'field':'hostname','parameter':'hostname','value':hostname,'error':'domain_already_used_in_traefik'}],fp=sys.stdout)
+    sys.exit(2)
