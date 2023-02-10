@@ -1,8 +1,102 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "get-configuration output",
-    "$id": "http://schema.nethserver.org/ejabberd/get-configuration-output.json",
-    "description": "Get ejabberd configuration",
-    "examples": [],
-    "type": "object"
+    "title": "Configure ejabberd",
+    "$id": "http://nethserver.org/json-schema/task/input/ejabberd/get-configuration",
+    "description": "Get ejabberd settings ",
+    "examples": [
+        {
+            "hostname": "ejabberd.org",
+            "ldap_domain": "nethserver.org",
+            "adminsList": "user1@ejabberd.org,user2@ejabberd.org",
+            "http_upload": true,
+            "s2s": true,
+            "shaper_normal": 500000,
+            "shaper_fast": 1000000,
+            "mod_http_upload_quota_status": true,
+            "mod_mam_status": true,
+            "purge_mnesia_database": false,
+            "purge_mnesia_interval": 30,
+            "lets_encrypt": true
+        }
+    ],
+    "type": "object",
+    "required": [
+        "hostname",
+        "ldap_domain",
+        "adminsList",
+        "http_upload",
+        "s2s",
+        "shaper_normal",
+        "shaper_fast",
+        "mod_http_upload_quota_status",
+        "mod_mam_status",
+        "purge_mnesia_database",
+        "purge_mnesia_interval",
+        "lets_encrypt"
+    ],
+    "properties": {
+        "hostname": {
+            "type": "string",
+            "description": "Host name for the application, like 'ejabberd.org'",
+            "format": "idn-hostname"
+        },
+        "lets_encrypt": {
+            "type": "boolean",
+            "title": "Let's Encrypt certificate",
+            "description": "Request a valid Let's Encrypt certificate."
+        },
+        "http_upload": {
+            "type": "boolean",
+            "title": "lets_encrypt",
+            "description": "Allow to upload files with ejabberd"
+        },
+        "s2s": {
+            "type": "boolean",
+            "title": "S2S",
+            "description": "Allow S2S with ejabberd"
+        },
+        "mod_mam_status": {
+            "type": "boolean",
+            "title": "mod_mam_status",
+            "description": "Allow mod_mam database"
+        },
+        "purge_mnesia_database": {
+            "type": "boolean",
+            "title": "purge_mnesia_database",
+            "description": "Enable to purge the mnesia database"
+        },
+        "mod_http_upload_quota_status": {
+            "type": "boolean",
+            "title": "mod_http_upload_quota_status",
+            "description": "Enable to purge the uploaded files"
+        },
+        "ldap_domain": {
+            "type": "string",
+            "title": "ldap_domain",
+            "description": "List of administrator to the web admin page of ejabberd"
+        },
+        "adminsList": {
+            "type": "string",
+            "title": "adminsList",
+            "description": "List of administrator to the web admin page of ejabberd"
+        },
+        "purge_mnesia_interval": {
+            "type": "integer",
+            "title": "purge_mnesia_interval",
+            "minimum": 1,
+            "description": "Interval to purge the Mnesia database (days)"
+        },
+        "shaper_normal": {
+            "type": "integer",
+            "title": "shaper_normal",
+            "minimum": 1,
+            "description": "Maximum allowed size for shaper_normal (bytes)"
+        },
+        "shaper_fast": {
+            "type": "integer",
+            "title": "shaper_fast",
+            "minimum": 1,
+            "description": "Maximum allowed size for shaper_fast (bytes)"
+        }
+    }
 }
