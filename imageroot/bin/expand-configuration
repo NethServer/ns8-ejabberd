@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+
+#
+# Copyright (C) 2022 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+import os
+import json
+import agent
+import agent.tasks
+import socket
+
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+files =["config/ejabberd.yml"]
+for f in files:
+    try:
+        os.remove(f)
+    except FileNotFoundError:
+        pass
+
+jenv = Environment(
+    loader=FileSystemLoader(os.getenv("AGENT_INSTALL_DIR")+"/templates"),
+    autoescape=select_autoescape(),
+    keep_trailing_newline=True,
+)
+
+admins=os.environ['EJABBERD_ADMIN_LIST'].split(',')
+adminsList = []
+for user in admins:
+    user = user.replace("@", "\": \"")
+    adminEjabberd = '"' +user+'"'
+    adminsList.append(adminEjabberd)
+
+
+#ejabberd needs to know a virtualhost to login user with user@EJABBERD_HOSTNAME
+properties = {
+    "hostname" :  os.environ['EJABBERD_HOSTNAME'],
+    "ldap_schema" : os.environ['EJABBERD_LDAP_SCHEMA'],
+    "ldap_port" : int(os.environ['EJABBERD_LDAP_PORT']),
+    "ldap_user" : os.environ['EJABBERD_LDAP_USER'],
+    "ldap_host" : os.environ['EJABBERD_LDAP_HOST'],
+    "ldap_password" : os.environ['EJABBERD_LDAP_PASS'],
+    "ldap_base" : os.environ['EJABBERD_LDAP_BASE'],
+    "adminsList": adminsList,
+    "s2s": True if os.environ["EJABBERD_S2S"] == "True" else False,
+    "http_upload": True if os.environ["EJABBERD_HTTP_UPLOAD"] == "True" else False,
+    "mod_http_upload_quota_status": True if os.environ["EJABBERD_MOD_HTTP_UPLOAD_QUOTA_STATUS"] == "True" else False,
+    "mod_mam_status": True if os.environ["EJABBERD_MOD_MAM_STATUS"] == "True" else False,
+    "shaper_normal": int(os.environ['EJABBERD_SHAPER_NORMAL']),
+    "shaper_fast": int(os.environ['EJABBERD_SHAPER_FAST'])
+}
+
+template = jenv.get_template('ejabberd.yml')
+output = template.render(properties)
+with open("config/ejabberd.yml","w") as f:
+    f.write(output)

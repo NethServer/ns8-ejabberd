@@ -1,0 +1,9 @@
+[Unit]
+Description=Timer of purge mnesia database
+
+[Timer]
+OnActiveSec=15 minutes
+OnUnitInactiveSec=1 days
+
+[Install]
+WantedBy=timers.target

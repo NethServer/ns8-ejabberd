@@ -13,23 +13,37 @@ Description=ejabberd server
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
 EnvironmentFile=%S/state/environment
-EnvironmentFile=-%S/state/smarthost.env
+EnvironmentFile=-%S/state/discovery.env
 WorkingDirectory=%S/state
 Restart=always
 ExecStartPre=/bin/rm -f %t/ejabberd.pid %t/ejabberd.ctr-id
-ExecStartPre=-runagent discover-smarthost
+ExecStartPre=-runagent discover-ldap
+ExecStartPre=mkdir -vp config
+ExecStartPre=-runagent expand-configuration
+ExecStartPre=bash -c "while [ ! -f certificates/ejabberd.pem ]; do sleep 1; done"
+ExecStartPre=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
+ExecStartPost=/usr/bin/podman  cp certificates/ejabberd.pem ejabberd:conf/ejabberd.pem
+ExecStartPost=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
 ExecStart=/usr/bin/podman run \
     --detach \
+    --hostname=localhost \
     --conmon-pidfile=%t/ejabberd.pid \
     --cidfile=%t/ejabberd.ctr-id \
     --cgroups=no-conmon \
     --replace --name=%N \
-    --publish=127.0.0.1:${TCP_PORT}:8080 \
-    ${ECHO_SERVER_IMAGE}
+    --network=host \
+    --env=ejabberd_* \
+    --volume=database:/home/ejabberd/database:Z \
+    --volume=./config/ejabberd.yml:/home/ejabberd/conf/ejabberd.yml:Z \
+    --volume=upload:/home/ejabberd/upload:Z \
+    --init \
+    ${ECS_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/ejabberd.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/ejabberd.ctr-id
 PIDFile=%t/ejabberd.pid
 Type=forking
+SyslogIdentifier=%u
 
 [Install]
 WantedBy=default.target
+

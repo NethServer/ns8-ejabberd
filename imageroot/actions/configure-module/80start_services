@@ -7,4 +7,5 @@
 
 # If the control reaches this step, the service can be enabled and started
 
-systemctl --user enable --now ejabberd.service
+systemctl --user enable ejabberd.service
+systemctl --user restart ejabberd.service
