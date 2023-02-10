@@ -19,3 +19,7 @@ if str(event['node']) != os.environ['NODE_ID']:
 if event['domain']['main'] != os.environ['EJABBERD_HOSTNAME']:
     print(agent.SD_DEBUG + "Event ignored: the certificate does not match our hostname")
     sys.exit(3)
+
+if os.environ['TRAEFIK_LETS_ENCRYPT'] != 'True':
+    print(agent.SD_DEBUG + "Event ignored: We do not require a LE certificate")
+    sys.exit(4)
