@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+import sys
+import json
+import agent
+import os
+
+request = json.load(sys.stdin)
+renv = request['environment']
+
+configure_retval = agent.tasks.run(agent_id=os.environ['AGENT_ID'], action='configure-module', data={
+    "ldap_domain": renv["EJABBERD_LDAP_DOMAIN"],
+    "adminsList": renv["EJABBERD_ADMIN_LIST"],
+    "s2s": renv["EJABBERD_S2S"],
+    "http_upload": renv["EJABBERD_HTTP_UPLOAD"],
+    "hostname": renv["EJABBERD_HOSTNAME"],
+    "mod_mam_status": renv["EJABBERD_MOD_MAM_STATUS"],
+    "shaper_normal": renv["EJABBERD_SHAPER_NORMAL"],
+    "shaper_fast": renv["EJABBERD_SHAPER_FAST"],
+    "mod_http_upload_quota_status": renv["EJABBERD_MOD_HTTP_UPLOAD_QUOTA_STATUS"],
+    "purge_mnesia_database": renv["EJABBERD_PURGE_MNESIA"],
+    "purge_mnesia_interval": renv["EJABBERD_PURGE_MNESIA_INTERVAL"],
+    "lets_encrypt": renv["TRAEFIK_LETS_ENCRYPT"]
+})
+agent.assert_exp(configure_retval['exit_code'] == 0, "The configure-module subtask failed!")
