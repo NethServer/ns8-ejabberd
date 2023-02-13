@@ -25,7 +25,7 @@ mod_mam_status = data.get("mod_mam_status",False)
 shaper_normal = data.get("shaper_normal",500000)
 shaper_fast = data.get("shaper_fast",1000000)
 mod_http_upload_quota_status = data.get("mod_http_upload_quota_status", False)
-mnesia_purge_interval = data.get("purge_mnesia_interval","30")
+mnesia_purge_interval = data.get("purge_mnesia_interval",30)
 mnesia_purge = data.get("purge_mnesia_database",False)
 le = data.get("lets_encrypt", False)
 
