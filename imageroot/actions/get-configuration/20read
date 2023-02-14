@@ -35,7 +35,7 @@ config["shaper_fast"] = int(os.getenv("EJABBERD_SHAPER_FAST",1000000))
 config['domains_list'] = domains
 config["purge_mnesia_database"] = os.getenv("EJABBERD_PURGE_MNESIA_DATABASE",'') == "True"
 config["purge_mnesia_database"] = os.getenv("EJABBERD_PURGE_MNESIA_DATABASE",'') == "True"
-config["lets_encrypt"] = os.getenv("TRAEFIK_LETS_ENCRYPT",'') =="True"
+config["lets_encrypt"] = os.getenv("TRAEFIK_LETS_ENCRYPT",'') == "True"
 config["purge_mnesia_interval"] = int(os.getenv("EJABBERD_PURGE_MNESIA_INTERVAL",30))
 
 
