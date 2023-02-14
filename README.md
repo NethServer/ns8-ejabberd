@@ -63,8 +63,8 @@ Example:
     "mod_http_upload_quota_status": true,
     "mod_mam_status":true,
     "purge_mnesia_database": false,
-    "purge_mnesia_interval": 30
-    "lets_encrypt": false,
+    "purge_mnesia_interval": 30,
+    "lets_encrypt": false
     }
     EOF
 
