@@ -37,6 +37,7 @@ ExecStart=/usr/bin/podman run \
     --volume=./config/ejabberd.yml:/home/ejabberd/conf/ejabberd.yml:Z \
     --volume=upload:/home/ejabberd/upload:Z \
     --init \
+    --image-volume=ignore \
     ${ECS_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/ejabberd.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/ejabberd.ctr-id
