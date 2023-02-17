@@ -17,7 +17,13 @@ from agent.ldapproxy import Ldapproxy
 
 # retrieve LDAP domains list
 lp = Ldapproxy()
-domains = lp.get_domains_list()
+domains = []
+for key in lp.get_domains_list():
+    domains.append({
+        "name": key,
+        "label": key,
+        "value": key,
+    })
 
 # Prepare return variable
 config = {}
@@ -33,11 +39,11 @@ config["mod_http_upload_quota_status"] = os.getenv("EJABBERD_MOD_HTTP_UPLOAD_QUO
 config["shaper_normal"] = int(os.getenv("EJABBERD_SHAPER_NORMAL",500000))
 config["shaper_fast"] = int(os.getenv("EJABBERD_SHAPER_FAST",1000000))
 config['domains_list'] = domains
-config["purge_mnesia_database"] = os.getenv("EJABBERD_PURGE_MNESIA_DATABASE",'') == "True"
-config["purge_mnesia_database"] = os.getenv("EJABBERD_PURGE_MNESIA_DATABASE",'') == "True"
+config["purge_mnesia_database"] = os.getenv("EJABBERD_PURGE_MNESIA",'') == "True"
 config["lets_encrypt"] = os.getenv("TRAEFIK_LETS_ENCRYPT",'') == "True"
 config["purge_mnesia_interval"] = int(os.getenv("EJABBERD_PURGE_MNESIA_INTERVAL",30))
-
+config["purge_httpd_upload_interval"] = int(os.getenv("EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL",30))
+config["webadmin"] = os.getenv("EJABBERD_WEBADMIN",'') == "True"
 
 # Dump the configuration to stdout
 json.dump(config, fp=sys.stdout)
