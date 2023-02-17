@@ -58,7 +58,9 @@ listen:
       "/websocket": ejabberd_http_ws
       "/api": mod_http_api
       "/bosh": mod_bosh
+{%if webadmin %}
       "/admin": ejabberd_web_admin
+{% endif %}
     captcha: false
     protocol_options: 'TLSOPTS'
     ciphers: 'CIPHERS'
@@ -266,7 +268,7 @@ modules:
 {% endif %}
 {%if mod_http_upload_quota_status %}
   mod_http_upload_quota: 
-    max_days: 31
+    max_days: {{purge_httpd_upload_interval}}
 {% endif %}
 
 {% if ldap_schema == 'rfc2307' %}
