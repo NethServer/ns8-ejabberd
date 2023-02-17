@@ -64,7 +64,8 @@ Example:
     "mod_mam_status":true,
     "purge_mnesia_database": false,
     "purge_mnesia_interval": 30,
-    "lets_encrypt": false
+    "lets_encrypt": false,
+    "webadmin": false
     }
     EOF
 

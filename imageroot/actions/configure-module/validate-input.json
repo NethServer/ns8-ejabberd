@@ -16,7 +16,9 @@
             "mod_mam_status": true,
             "purge_mnesia_database": false,
             "purge_mnesia_interval": 30,
-            "lets_encrypt": true
+            "lets_encrypt": true,
+            "purge_httpd_upload_interval": 31,
+            "webadmin": false
         }
     ],
     "type": "object",
@@ -32,7 +34,9 @@
         "mod_mam_status",
         "purge_mnesia_database",
         "purge_mnesia_interval",
-        "lets_encrypt"
+        "lets_encrypt",
+        "purge_httpd_upload_interval",
+        "webadmin"
     ],
     "properties": {
         "hostname": {
@@ -97,6 +101,17 @@
             "title": "shaper_fast",
             "minimum": 1,
             "description": "Maximum allowed size for shaper_fast (bytes)"
+        },
+        "purge_httpd_upload_interval": {
+            "type": "integer",
+            "title": "purge_httpd_upload_interval",
+            "minimum": 1,
+            "description": "Interval to purge the uploaded files(days)"
+        },
+        "webadmin": {
+            "type": "boolean",
+            "title": "webadmin",
+            "description": "Enable the webadmin page"
         }
     }
 }

@@ -28,7 +28,8 @@ mod_http_upload_quota_status = data.get("mod_http_upload_quota_status", False)
 mnesia_purge_interval = data.get("purge_mnesia_interval",30)
 mnesia_purge = data.get("purge_mnesia_database",False)
 le = data.get("lets_encrypt", False)
-
+purge_httpd_upload_interval = data.get("purge_httpd_upload_interval",31)
+webadmin = data.get("webadmin",False)
 # Talk with agent using file descriptor.
 # Setup configuration from user input.
 agent.set_env("EJABBERD_HOSTNAME", host)
@@ -43,3 +44,5 @@ agent.set_env("EJABBERD_MOD_HTTP_UPLOAD_QUOTA_STATUS", mod_http_upload_quota_sta
 agent.set_env("EJABBERD_PURGE_MNESIA", mnesia_purge)
 agent.set_env("EJABBERD_PURGE_MNESIA_INTERVAL", mnesia_purge_interval)
 agent.set_env("TRAEFIK_LETS_ENCRYPT", le)
+agent.set_env("EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL",purge_httpd_upload_interval)
+agent.set_env("EJABBERD_WEBADMIN",webadmin)
