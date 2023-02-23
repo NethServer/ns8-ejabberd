@@ -7,8 +7,8 @@
     "error": {
         "403": "",
         "404": "Risorsa non trovata",
-        "cannot_retrieve_module_info": "",
-        "cannot_retrieve_installed_modules": "",
+        "cannot_retrieve_module_info": "Impossibile recuperare info modulo",
+        "cannot_retrieve_installed_modules": "Impossibile elencare moduli installati",
         "network_timeout": "",
         "error": "Errore",
         "401": "",
@@ -18,7 +18,7 @@
     },
     "status": {
         "services": "Servizio | Servizi",
-        "app_volumes": "",
+        "app_volumes": "Volume app|Volumi app",
         "mount": "",
         "no_images": "Nessuna immagine",
         "no_services": "Nessun servizio",
@@ -29,8 +29,8 @@
         "title": "Stato",
         "name": "Nome",
         "installation_node": "",
-        "app_images": "",
-        "app_instance": ""
+        "app_images": "Immagine app|Immagini app",
+        "app_instance": "Istanza app"
     },
     "action": {
         "get-module-info": "",
@@ -43,7 +43,7 @@
         "get-configuration": ""
     },
     "about": {
-        "title": ""
+        "title": "Informazioni"
     },
     "settings": {
         "title": "Impostazioni",
@@ -52,6 +52,6 @@
         "save": "Salva"
     },
     "task": {
-        "cannot_create_task": ""
+        "cannot_create_task": "Impossibile eseguire task [action]"
     }
 }
