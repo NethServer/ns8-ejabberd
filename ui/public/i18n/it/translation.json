@@ -2,32 +2,32 @@
     "common": {
         "work_in_progress": "",
         "processing": "",
-        "required": ""
+        "required": "Obbligatorio"
     },
     "error": {
         "403": "",
-        "404": "",
+        "404": "Risorsa non trovata",
         "cannot_retrieve_module_info": "",
         "cannot_retrieve_installed_modules": "",
         "network_timeout": "",
-        "error": "",
+        "error": "Errore",
         "401": "",
         "generic_error": "",
-        "validation_error": "",
-        "network_error": ""
+        "validation_error": "Errore di validazione",
+        "network_error": "Errore di rete"
     },
     "status": {
-        "services": "",
+        "services": "Servizio | Servizi",
         "app_volumes": "",
         "mount": "",
-        "no_images": "",
-        "no_services": "",
-        "node": "",
-        "size": "",
-        "created": "",
-        "no_volumes": "",
-        "title": "",
-        "name": "",
+        "no_images": "Nessuna immagine",
+        "no_services": "Nessun servizio",
+        "node": "Nodo",
+        "size": "Dimensione",
+        "created": "Creato",
+        "no_volumes": "Nessun volume",
+        "title": "Stato",
+        "name": "Nome",
         "installation_node": "",
         "app_images": "",
         "app_instance": ""
@@ -35,7 +35,7 @@
     "action": {
         "get-module-info": "",
         "get-name": "",
-        "configure-module": "",
+        "configure-module": "Configura modulo",
         "list-installed-modules": "",
         "list-backup-repositories": "",
         "get-status": "",
@@ -46,10 +46,10 @@
         "title": ""
     },
     "settings": {
-        "title": "",
-        "configure_instance": "",
+        "title": "Impostazioni",
+        "configure_instance": "Configura {instance}",
         "test_field": "",
-        "save": ""
+        "save": "Salva"
     },
     "task": {
         "cannot_create_task": ""
