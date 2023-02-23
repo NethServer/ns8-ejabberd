@@ -1,7 +1,7 @@
 {
     "common": {
-        "work_in_progress": "",
-        "processing": "",
+        "work_in_progress": "In lavorazione",
+        "processing": "Elaborazione in corso...",
         "required": "Obbligatorio"
     },
     "error": {
@@ -19,7 +19,7 @@
     "status": {
         "services": "Servizio | Servizi",
         "app_volumes": "Volume app|Volumi app",
-        "mount": "",
+        "mount": "Percorso di mount",
         "no_images": "Nessuna immagine",
         "no_services": "Nessun servizio",
         "node": "Nodo",
@@ -28,19 +28,19 @@
         "no_volumes": "Nessun volume",
         "title": "Stato",
         "name": "Nome",
-        "installation_node": "",
+        "installation_node": "Nodo",
         "app_images": "Immagine app|Immagini app",
         "app_instance": "Istanza app"
     },
     "action": {
-        "get-module-info": "",
-        "get-name": "",
+        "get-module-info": "Visualizza info modulo",
+        "get-name": "Visualizza nome",
         "configure-module": "Configura modulo",
-        "list-installed-modules": "",
-        "list-backup-repositories": "",
-        "get-status": "",
-        "list-backups": "",
-        "get-configuration": ""
+        "list-installed-modules": "Elenca moduli installati",
+        "list-backup-repositories": "Elenca repository di backup",
+        "get-status": "Visualizza stato",
+        "list-backups": "Elenca backup",
+        "get-configuration": "Visualizza configurazione"
     },
     "about": {
         "title": "Informazioni"
@@ -48,7 +48,7 @@
     "settings": {
         "title": "Impostazioni",
         "configure_instance": "Configura {instance}",
-        "test_field": "",
+        "test_field": "Campo di test",
         "save": "Salva"
     },
     "task": {
