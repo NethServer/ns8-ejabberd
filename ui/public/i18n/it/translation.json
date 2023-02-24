@@ -5,14 +5,14 @@
         "required": "Obbligatorio"
     },
     "error": {
-        "403": "",
+        "403": "Operazione non autorizzata",
         "404": "Risorsa non trovata",
         "cannot_retrieve_module_info": "Impossibile recuperare info modulo",
         "cannot_retrieve_installed_modules": "Impossibile elencare moduli installati",
-        "network_timeout": "",
+        "network_timeout": "Timeout di rete",
         "error": "Errore",
-        "401": "",
-        "generic_error": "",
+        "401": "Autenticazione non valida",
+        "generic_error": "Qualcosa è andato storto",
         "validation_error": "Errore di validazione",
         "network_error": "Errore di rete"
     },
@@ -52,6 +52,6 @@
         "save": "Salva"
     },
     "task": {
-        "cannot_create_task": "Impossibile eseguire task [action]"
+        "cannot_create_task": "Impossibile eseguire task {action}"
     }
 }
