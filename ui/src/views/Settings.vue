@@ -89,53 +89,46 @@
               <cv-accordion-item :open="toggleAccordion[0]">
                 <template slot="title">{{ $t("settings.advanced") }}</template>
                 <template slot="content">
-                  <cv-toggle
-                    value="webadmin"
+                  <NsToggle
                     :label="$t('settings.webadmin_status')"
+                    value="webadmin"
+                    :form-item="true"
                     v-model="webadmin"
                     :disabled="
                       loading.getConfiguration || loading.configureModule
                     "
-                    class="mg-bottom"
+                    ref="webadmin"
                   >
+                    <template slot="tooltip">
+                      <span v-html="$t('settings.admin_login_tips')"></span>
+                    </template>
                     <template slot="text-left">{{
                       $t("settings.disabled")
                     }}</template>
                     <template slot="text-right">{{
                       $t("settings.enabled")
                     }}</template>
-                  </cv-toggle>
+                  </NsToggle>
                   <template v-if="webadmin">
-                    <template v-if="hostname">
-                      <span>
-                        {{ $t("settings.webadmin_url") }}
-                        <cv-tooltip
-                          alignment="start"
-                          direction="bottom"
-                          :tip="$t('settings.admin_login_tips')"
-                          class="info mg-bottom"
-                        >
-                        </cv-tooltip>
-                      </span>
-                      <span>:</span>
-                      <cv-link
-                        class="mg-bottom mg-left"
-                        :href="'https://' + hostname + ':5280/admin/'"
-                        target="_blank"
-                        :inline="false"
-                      >
-                        {{ $t("settings.webadmin_link") }}
-                      </cv-link>
-                    </template>
+                    <template v-if="hostname"> </template>
+                    <NsButton
+                      kind="ghost"
+                      class="mg-left"
+                      :icon="Launch20"
+                      :disabled="loading.getConfiguration"
+                      @click="goToEjabberdWebAdmin"
+                    >
+                      {{ $t("settings.open_ejabberd_webapp") }}
+                    </NsButton>
                     <cv-text-area
                       :label="$t('settings.adminList')"
                       v-model.trim="adminsList"
                       :invalid-message="error.adminsList"
                       :helper-text="$t('settings.Write_administrator_list')"
                       :value="adminsList"
-                      class="maxwidth textarea"
+                      class="maxwidth textarea mg-left"
                       ref="adminsList"
-                      :placeholder="$t('virtualhosts.write_one_user_per_line')"
+                      :placeholder="$t('settings.Write_administrator_list')"
                       :disabled="
                         loading.getConfiguration || loading.configureModule
                       "
@@ -407,6 +400,9 @@ export default {
     this.getConfiguration();
   },
   methods: {
+    goToEjabberdWebAdmin() {
+      window.open(`https://${this.hostname}` + ":5280/admin/", "_blank");
+    },
     async getConfiguration() {
       this.loading.getConfiguration = true;
       this.error.getConfiguration = "";
@@ -495,7 +491,7 @@ export default {
           isValidationOk = false;
         }
       }
-      //Validate an email login form 
+      //Validate an email login form
       function validateEmail(email) {
         var re = /\S+@\S+\.\S+/;
         return re.test(email);
