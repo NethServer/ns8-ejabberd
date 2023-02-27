@@ -610,7 +610,7 @@ export default {
 <style scoped lang="scss">
 @import "../styles/carbon-utils";
 .mg-left {
-  margin-left: 2em;
+  margin-left: 2rem;
 }
 .maxwidth {
   max-width: 38rem;
