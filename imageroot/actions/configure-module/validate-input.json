@@ -12,7 +12,7 @@
             "s2s": true,
             "shaper_normal": 500000,
             "shaper_fast": 1000000,
-            "mod_http_upload_quota_status": true,
+            "mod_http_upload_unlimited": true,
             "mod_mam_status": true,
             "purge_mnesia_database": false,
             "purge_mnesia_interval": 30,
@@ -30,7 +30,7 @@
         "s2s",
         "shaper_normal",
         "shaper_fast",
-        "mod_http_upload_quota_status",
+        "mod_http_upload_unlimited",
         "mod_mam_status",
         "purge_mnesia_database",
         "purge_mnesia_interval",
@@ -69,9 +69,9 @@
             "title": "purge_mnesia_database",
             "description": "Enable to purge the mnesia database"
         },
-        "mod_http_upload_quota_status": {
+        "mod_http_upload_unlimited": {
             "type": "boolean",
-            "title": "mod_http_upload_quota_status",
+            "title": "mod_http_upload_unlimited",
             "description": "Enable to purge the uploaded files"
         },
         "ldap_domain": {

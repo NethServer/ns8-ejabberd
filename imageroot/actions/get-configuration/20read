@@ -35,7 +35,7 @@ config["adminsList"] = os.getenv("EJABBERD_ADMIN_LIST",'')
 config["s2s"] = os.getenv("EJABBERD_S2S",'') == "True"
 config["http_upload"] = os.getenv("EJABBERD_HTTP_UPLOAD",'') == "True"
 config["mod_mam_status"] = os.getenv("EJABBERD_MOD_MAM_STATUS",'') == "True"
-config["mod_http_upload_quota_status"] = os.getenv("EJABBERD_MOD_HTTP_UPLOAD_QUOTA_STATUS",'') == "True"
+config["mod_http_upload_unlimited"] = os.getenv("EJABBERD_MOD_HTTP_UPLOAD_UNLIMITED",'') == "True"
 config["shaper_normal"] = int(os.getenv("EJABBERD_SHAPER_NORMAL",500000))
 config["shaper_fast"] = int(os.getenv("EJABBERD_SHAPER_FAST",1000000))
 config['domains_list'] = domains

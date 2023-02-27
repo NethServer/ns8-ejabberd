@@ -22,7 +22,7 @@ configure_retval = agent.tasks.run(agent_id=os.environ['AGENT_ID'], action='conf
     "mod_mam_status": renv["EJABBERD_MOD_MAM_STATUS"],
     "shaper_normal": renv["EJABBERD_SHAPER_NORMAL"],
     "shaper_fast": renv["EJABBERD_SHAPER_FAST"],
-    "mod_http_upload_quota_status": renv["EJABBERD_MOD_HTTP_UPLOAD_QUOTA_STATUS"],
+    "mod_http_upload_unlimited": renv["EJABBERD_MOD_HTTP_UPLOAD_UNLIMITED"],
     "purge_httpd_upload_interval": renv["EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL"],
     "purge_mnesia_database": renv["EJABBERD_PURGE_MNESIA"],
     "purge_mnesia_interval": renv["EJABBERD_PURGE_MNESIA_INTERVAL"],
