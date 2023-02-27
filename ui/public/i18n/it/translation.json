@@ -1,0 +1,57 @@
+{
+    "common": {
+        "work_in_progress": "In lavorazione",
+        "processing": "Elaborazione in corso...",
+        "required": "Obbligatorio"
+    },
+    "error": {
+        "403": "Operazione non autorizzata",
+        "404": "Risorsa non trovata",
+        "cannot_retrieve_module_info": "Impossibile recuperare info modulo",
+        "cannot_retrieve_installed_modules": "Impossibile elencare moduli installati",
+        "network_timeout": "Timeout di rete",
+        "error": "Errore",
+        "401": "Autenticazione non valida",
+        "generic_error": "Qualcosa è andato storto",
+        "validation_error": "Errore di validazione",
+        "network_error": "Errore di rete"
+    },
+    "status": {
+        "services": "Servizio | Servizi",
+        "app_volumes": "Volume app|Volumi app",
+        "mount": "Percorso di mount",
+        "no_images": "Nessuna immagine",
+        "no_services": "Nessun servizio",
+        "node": "Nodo",
+        "size": "Dimensione",
+        "created": "Creato",
+        "no_volumes": "Nessun volume",
+        "title": "Stato",
+        "name": "Nome",
+        "installation_node": "Nodo",
+        "app_images": "Immagine app|Immagini app",
+        "app_instance": "Istanza app"
+    },
+    "action": {
+        "get-module-info": "Visualizza info modulo",
+        "get-name": "Visualizza nome",
+        "configure-module": "Configura modulo",
+        "list-installed-modules": "Elenca moduli installati",
+        "list-backup-repositories": "Elenca repository di backup",
+        "get-status": "Visualizza stato",
+        "list-backups": "Elenca backup",
+        "get-configuration": "Visualizza configurazione"
+    },
+    "about": {
+        "title": "Informazioni"
+    },
+    "settings": {
+        "title": "Impostazioni",
+        "configure_instance": "Configura {instance}",
+        "test_field": "Campo di test",
+        "save": "Salva"
+    },
+    "task": {
+        "cannot_create_task": "Impossibile eseguire task {action}"
+    }
+}
