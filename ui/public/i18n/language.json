@@ -47,10 +47,13 @@
     "purge_mnesia_database_interval": "Clean messages older than (days)",
     "Enable_purge_mnesia_database": "Purge message of Mnesia database",
     "Enable_mod_http_upload_quota": "Enable file upload (mod_http_upload)",
-    "purge_httpd_upload_interval": "Clean files older than (days)",
+    "purge_httpd_upload_interval": "Clean files older than",
     "shaper_normal_kbytes/s": "Normal file transfer bandwidth (KB/s)",
     "shaper_fast_kbytes/s": "Fast file transfer bandwidth (KB/s)",
-    "save": "Save"
+    "save": "Save",
+    "specify_duration": "Specify duration",
+    "days": "Days",
+    "never": "Never"
   },
   "about": {
     "title": "About"

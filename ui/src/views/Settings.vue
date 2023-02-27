@@ -221,39 +221,27 @@
                     }}</template>
                   </cv-toggle>
                   <template v-if="isHttpUploadEnabled">
-                    <cv-toggle
-                      value="mod_http_upload_quota_status"
-                      :label="$t('settings.Enable_mod_http_upload_quota')"
-                      v-model="isModHttpUploadQuotaStatus"
+                    <NsSlider
                       :disabled="
                         loading.getConfiguration || loading.configureModule
                       "
-                      class="mg-bottom mg-left"
-                    >
-                      <template slot="text-left">{{
-                        $t("settings.disabled")
-                      }}</template>
-                      <template slot="text-right">{{
-                        $t("settings.enabled")
-                      }}</template>
-                    </cv-toggle>
-                    <template v-if="isModHttpUploadQuotaStatus">
-                      <NsSlider
-                        class="mg-left"
-                        v-model="purge_httpd_upload_interval"
-                        :label="$t('settings.purge_httpd_upload_interval')"
-                        min="1"
-                        max="365"
-                        step="1"
-                        stepMultiplier="1"
-                        minLabel=""
-                        maxLabel=""
-                        :invalidMessage="error.purge_httpd_upload_interval"
-                        :disabled="
-                          loading.getConfiguration || loading.configureModule
-                        "
-                      />
-                    </template>
+                      :label="$t('settings.purge_httpd_upload_interval')"
+                      class="mg-left"
+                      v-model="purge_httpd_upload_interval"
+                      min="1"
+                      max="365"
+                      step="1"
+                      stepMultiplier="10"
+                      minLabel=""
+                      maxLabel=""
+                      showUnlimited
+                      :isUnlimited="isModHttpUploadUnlimited"
+                      :unlimitedLabel="$t('settings.never')"
+                      :limitedLabel="$t('settings.specify_duration')"
+                      :invalidMessage="error.purge_httpd_upload_interval"
+                      :unitLabel="$t('settings.days')"
+                      @unlimited="isModHttpUploadUnlimited = $event"
+                    />
                   </template>
                   <NsByteSlider
                     v-model="shaper_normal"
@@ -351,7 +339,7 @@ export default {
       isS2sEnabled: false,
       isHttpUploadEnabled: false,
       isModMamStatus: false,
-      isModHttpUploadQuotaStatus: false,
+      isModHttpUploadUnlimited: true,
       shaper_normal: "50000",
       shaper_fast: "100000",
       domains_list: [],
@@ -373,7 +361,7 @@ export default {
         s2s: "",
         http_upload: "",
         mod_mam_status: "",
-        mod_http_upload_quota_status: "",
+        mod_http_upload_unlimited: "",
         shaper_normal: "",
         shaper_fast: "",
         purge_mnesia_database: "",
@@ -453,7 +441,7 @@ export default {
       this.isS2sEnabled = config.s2s;
       this.isHttpUploadEnabled = config.http_upload;
       this.isModMamStatus = config.mod_mam_status;
-      this.isModHttpUploadQuotaStatus = config.mod_http_upload_quota_status;
+      this.isModHttpUploadUnlimited = config.mod_http_upload_unlimited;
       this.shaper_normal = String(config.shaper_normal / 1024);
       this.shaper_fast = String(config.shaper_fast / 1024);
       this.domains_list = config.domains_list;
@@ -559,7 +547,7 @@ export default {
             s2s: this.isS2sEnabled,
             http_upload: this.isHttpUploadEnabled,
             mod_mam_status: this.isModMamStatus,
-            mod_http_upload_quota_status: this.isModHttpUploadQuotaStatus,
+            mod_http_upload_unlimited: this.isModHttpUploadUnlimited,
             shaper_normal: parseInt(this.shaper_normal) * 1024,
             shaper_fast: parseInt(this.shaper_fast) * 1024,
             purge_mnesia_database: this.isPurgeMnesiaDatabase,
