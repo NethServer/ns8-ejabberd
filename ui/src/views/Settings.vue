@@ -170,39 +170,27 @@
                     }}</template>
                   </cv-toggle>
                   <template v-if="isModMamStatus">
-                    <cv-toggle
-                      value="purge_mnesia_database"
-                      :label="$t('settings.Enable_purge_mnesia_database')"
-                      v-model="isPurgeMnesiaDatabase"
+                    <NsSlider
                       :disabled="
                         loading.getConfiguration || loading.configureModule
                       "
-                      class="mg-bottom mg-left"
-                    >
-                      <template slot="text-left">{{
-                        $t("settings.disabled")
-                      }}</template>
-                      <template slot="text-right">{{
-                        $t("settings.enabled")
-                      }}</template>
-                    </cv-toggle>
-                    <template v-if="isPurgeMnesiaDatabase">
-                      <NsSlider
-                        class="mg-left"
-                        v-model="purge_mnesia_interval"
-                        :label="$t('settings.purge_mnesia_database_interval')"
-                        min="1"
-                        max="365"
-                        step="1"
-                        stepMultiplier="1"
-                        minLabel=""
-                        maxLabel=""
-                        :invalidMessage="error.purge_mnesia_interval"
-                        :disabled="
-                          loading.getConfiguration || loading.configureModule
-                        "
-                      />
-                    </template>
+                      :label="$t('settings.purge_mnesia_database_interval')"
+                      class="mg-left"
+                      v-model="purge_mnesia_interval"
+                      min="1"
+                      max="365"
+                      step="1"
+                      stepMultiplier="10"
+                      minLabel=""
+                      maxLabel=""
+                      showUnlimited
+                      :isUnlimited="isPurgeMnesiaUnlimited"
+                      :unlimitedLabel="$t('settings.never')"
+                      :limitedLabel="$t('settings.specify_duration')"
+                      :invalidMessage="error.purge_mnesia_interval"
+                      :unitLabel="$t('settings.days')"
+                      @unlimited="isPurgeMnesiaUnlimited = $event"
+                    />
                   </template>
                   <cv-toggle
                     value="http_upload"
@@ -344,7 +332,7 @@ export default {
       shaper_fast: "100000",
       domains_list: [],
       ldap_domain: "",
-      isPurgeMnesiaDatabase: false,
+      isPurgeMnesiaUnlimited: false,
       purge_mnesia_interval: "30",
       purge_httpd_upload_interval: "31",
       webadmin: false,
@@ -364,7 +352,7 @@ export default {
         mod_http_upload_unlimited: "",
         shaper_normal: "",
         shaper_fast: "",
-        purge_mnesia_database: "",
+        purge_mnesia_unlimited: "",
         lets_encrypt: "",
         purge_mnesia_interval: "",
         purge_httpd_upload_interval: "",
@@ -445,7 +433,7 @@ export default {
       this.shaper_normal = String(config.shaper_normal / 1024);
       this.shaper_fast = String(config.shaper_fast / 1024);
       this.domains_list = config.domains_list;
-      this.isPurgeMnesiaDatabase = config.purge_mnesia_database;
+      this.isPurgeMnesiaUnlimited = config.purge_mnesia_unlimited;
       this.purge_mnesia_interval = String(config.purge_mnesia_interval);
       this.purge_httpd_upload_interval = String(
         config.purge_httpd_upload_interval
@@ -550,7 +538,7 @@ export default {
             mod_http_upload_unlimited: this.isModHttpUploadUnlimited,
             shaper_normal: parseInt(this.shaper_normal) * 1024,
             shaper_fast: parseInt(this.shaper_fast) * 1024,
-            purge_mnesia_database: this.isPurgeMnesiaDatabase,
+            purge_mnesia_unlimited: this.isPurgeMnesiaUnlimited,
             lets_encrypt: this.isLetsEncryptEnabled,
             purge_mnesia_interval: parseInt(this.purge_mnesia_interval),
             purge_httpd_upload_interval: parseInt(

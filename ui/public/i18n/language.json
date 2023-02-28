@@ -44,7 +44,7 @@
     "Enable_federation_s2s": "Enable federation (S2S)",
     "Enable_message_archive_management_mod_mam": "Enable Message Archive Management (mod_mam)",
     "Enable_file_upload_mod_http_upload": "Enable file upload (mod_http_upload)",
-    "purge_mnesia_database_interval": "Clean messages older than (days)",
+    "purge_mnesia_database_interval": "Clean messages older than",
     "Enable_purge_mnesia_database": "Purge message of Mnesia database",
     "Enable_mod_http_upload_quota": "Enable file upload (mod_http_upload)",
     "purge_httpd_upload_interval": "Clean files older than",
