@@ -81,6 +81,7 @@
     "403": "Operation not authorized",
     "404": "Resource not found",
     "cannot_retrieve_module_info": "Cannot retrieve module info",
-    "cannot_retrieve_installed_modules": "Cannot retrieve installed modules"
+    "cannot_retrieve_installed_modules": "Cannot retrieve installed modules",
+    "shaper_normal_must_be_inferior_to_shaper_fast": "The normal shaper must be inferior to fast shaper"
   }
 }

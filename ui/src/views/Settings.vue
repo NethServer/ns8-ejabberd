@@ -485,6 +485,15 @@ export default {
           }
         });
       }
+      //validate normal speed < fast speed
+      if (parseInt(this.shaper_normal) > parseInt(this.shaper_fast)) {
+        this.error.shaper_normal = "error.shaper_normal_must_be_inferior_to_shaper_fast";
+        this.shaper_normal = this.shaper_fast;
+        if (isValidationOk) {
+          this.focusElement("shaper_normal");
+        }
+        isValidationOk = false;
+      }
       return isValidationOk;
     },
     configureModuleValidationFailed(validationErrors) {
