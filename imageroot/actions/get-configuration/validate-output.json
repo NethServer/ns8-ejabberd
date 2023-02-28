@@ -14,7 +14,7 @@
             "shaper_fast": 1000000,
             "mod_http_upload_unlimited": true,
             "mod_mam_status": true,
-            "purge_mnesia_database": false,
+            "purge_mnesia_unlimited": false,
             "purge_mnesia_interval": 30,
             "lets_encrypt": true,
             "purge_httpd_upload_interval": 31,
@@ -32,7 +32,7 @@
         "shaper_fast",
         "mod_http_upload_unlimited",
         "mod_mam_status",
-        "purge_mnesia_database",
+        "purge_mnesia_unlimited",
         "purge_mnesia_interval",
         "lets_encrypt",
         "purge_httpd_upload_interval",
@@ -64,9 +64,9 @@
             "title": "mod_mam_status",
             "description": "Allow mod_mam database"
         },
-        "purge_mnesia_database": {
+        "purge_mnesia_unlimited": {
             "type": "boolean",
-            "title": "purge_mnesia_database",
+            "title": "purge_mnesia_unlimited",
             "description": "Enable to purge the mnesia database"
         },
         "mod_http_upload_unlimited": {
