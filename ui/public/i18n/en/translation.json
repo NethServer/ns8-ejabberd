@@ -23,8 +23,37 @@
   "settings": {
     "title": "Settings",
     "configure_instance": "Configure {instance}",
+    "hostname": "Ejabberd virtual host (FQDN)",
+    "hostname_placeholder": "Enter Ejabberd virtual host",
+    "hostname_must_be_relevant_for_user_authentication": "This is the virtual host used for user authentication, i.e. user@virtualhost",
+    "ldap_domain" : "LDAP user domain",
+    "choose_the_ldap_domain_to_use": "Choose the LDAP domain used for user authentication",
+    "choose_ldap_domain": "Choose LDAP domain",
+    "request_https_certificate": "Request a Let's Encrypt certificate",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "advanced": "Advanced",
+    "webadmin_status": "Web Admin",
+    "open_ejabberd_webapp": "Open web admin",
+    "adminList": "Web Admin administrators",
+    "Write_administrator_list": "Enter one administrator per line",
+    "bad_email_address": "Please enter user@domain. Invalid administrator:",
+    "processing": "Processing...",
+    "required": "Required",
+    "admin_login_tips": "If enabled, Web Admin page is available on port 5280. Remember to open this port on your firewall",
+    "Enable_federation_s2s": "Enable federation (S2S)",
+    "Enable_message_archive_management_mod_mam": "Enable Message Archive Management (mod_mam)",
+    "Enable_file_upload_mod_http_upload": "Enable file upload (mod_http_upload)",
+    "purge_mnesia_database_interval": "Clean messages older than",
+    "Enable_purge_mnesia_database": "Purge message of Mnesia database",
+    "Enable_mod_http_upload_quota": "Enable file upload (mod_http_upload)",
+    "purge_httpd_upload_interval": "Clean files older than",
+    "shaper_normal_kbytes/s": "Normal file transfer bandwidth (KB/s)",
+    "shaper_fast_kbytes/s": "Fast file transfer bandwidth (KB/s)",
     "save": "Save",
-    "test_field": "Test field"
+    "specify_duration": "Specify duration",
+    "days": "Days",
+    "never": "Never clean"
   },
   "about": {
     "title": "About"
@@ -52,6 +81,7 @@
     "403": "Operation not authorized",
     "404": "Resource not found",
     "cannot_retrieve_module_info": "Cannot retrieve module info",
-    "cannot_retrieve_installed_modules": "Cannot retrieve installed modules"
+    "cannot_retrieve_installed_modules": "Cannot retrieve installed modules",
+    "shaper_normal_must_be_inferior_to_shaper_fast": "The normal shaper must be inferior to fast shaper"
   }
 }

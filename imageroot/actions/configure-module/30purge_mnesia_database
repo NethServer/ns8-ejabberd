@@ -8,7 +8,8 @@
 set -e    # exit immediately if an error occurs
 exec 1>&2 # ensure any output is sent to stderr
 
-if [[ ${EJABBERD_PURGE_MNESIA} == "True" ]]; then
+# we trigger a service by a timer , if mod_mam is not enabled we have a service start error
+if [[ ${EJABBERD_PURGE_MNESIA_UNLIMITED} == "False" && ${EJABBERD_MOD_MAM_STATUS} == "True" ]]; then
     systemctl --user enable --now purge-mnesia-database.timer
 else
     systemctl --user disable --now purge-mnesia-database.timer

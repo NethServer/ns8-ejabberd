@@ -46,10 +46,12 @@ properties = {
     "adminsList": adminsList,
     "s2s": True if os.environ["EJABBERD_S2S"] == "True" else False,
     "http_upload": True if os.environ["EJABBERD_HTTP_UPLOAD"] == "True" else False,
-    "mod_http_upload_quota_status": True if os.environ["EJABBERD_MOD_HTTP_UPLOAD_QUOTA_STATUS"] == "True" else False,
+    "mod_http_upload_unlimited": True if os.environ["EJABBERD_MOD_HTTP_UPLOAD_UNLIMITED"] == "True" else False,
+    "webadmin": True if os.environ["EJABBERD_WEBADMIN"] == "True" else False,
     "mod_mam_status": True if os.environ["EJABBERD_MOD_MAM_STATUS"] == "True" else False,
     "shaper_normal": int(os.environ['EJABBERD_SHAPER_NORMAL']),
-    "shaper_fast": int(os.environ['EJABBERD_SHAPER_FAST'])
+    "shaper_fast": int(os.environ['EJABBERD_SHAPER_FAST']),
+    "purge_httpd_upload_interval": int(os.environ['EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL'])
 }
 
 template = jenv.get_template('ejabberd.yml')

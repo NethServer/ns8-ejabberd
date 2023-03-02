@@ -29,8 +29,8 @@ except:
         'port': 20000,
         'schema': 'rfc2307',
         'location': 'internal',
-        'base_dn': 'dc=dovecot,dc=invalid',
-        'bind_dn': 'cn=example,dc=dovecot,dc=invalid',
+        'base_dn': 'dc=ejabberd,dc=invalid',
+        'bind_dn': 'cn=example,dc=ejabberd,dc=invalid',
         'bind_password': 'invalid',
     }
 

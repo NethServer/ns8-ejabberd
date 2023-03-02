@@ -58,7 +58,9 @@ listen:
       "/websocket": ejabberd_http_ws
       "/api": mod_http_api
       "/bosh": mod_bosh
+{%if webadmin %}
       "/admin": ejabberd_web_admin
+{% endif %}
     captcha: false
     protocol_options: 'TLSOPTS'
     ciphers: 'CIPHERS'
@@ -263,10 +265,10 @@ modules:
   mod_http_upload:
     docroot: "/home/ejabberd/upload/"
     put_url: "https://@HOST@:5443/upload"
-{% endif %}
-{%if mod_http_upload_quota_status %}
+{%if not mod_http_upload_unlimited %}
   mod_http_upload_quota: 
-    max_days: 31
+    max_days: {{purge_httpd_upload_interval}}
+{% endif %}
 {% endif %}
 
 {% if ldap_schema == 'rfc2307' %}

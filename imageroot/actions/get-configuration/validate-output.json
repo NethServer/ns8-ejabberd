@@ -12,11 +12,13 @@
             "s2s": true,
             "shaper_normal": 500000,
             "shaper_fast": 1000000,
-            "mod_http_upload_quota_status": true,
+            "mod_http_upload_unlimited": true,
             "mod_mam_status": true,
-            "purge_mnesia_database": false,
+            "purge_mnesia_unlimited": false,
             "purge_mnesia_interval": 30,
-            "lets_encrypt": true
+            "lets_encrypt": true,
+            "purge_httpd_upload_interval": 31,
+            "webadmin": false
         }
     ],
     "type": "object",
@@ -28,11 +30,13 @@
         "s2s",
         "shaper_normal",
         "shaper_fast",
-        "mod_http_upload_quota_status",
+        "mod_http_upload_unlimited",
         "mod_mam_status",
-        "purge_mnesia_database",
+        "purge_mnesia_unlimited",
         "purge_mnesia_interval",
-        "lets_encrypt"
+        "lets_encrypt",
+        "purge_httpd_upload_interval",
+        "webadmin"
     ],
     "properties": {
         "hostname": {
@@ -60,15 +64,20 @@
             "title": "mod_mam_status",
             "description": "Allow mod_mam database"
         },
-        "purge_mnesia_database": {
+        "purge_mnesia_unlimited": {
             "type": "boolean",
-            "title": "purge_mnesia_database",
-            "description": "Enable to purge the mnesia database"
+            "title": "purge_mnesia_unlimited",
+            "description": "Keep old messages unlimited"
         },
-        "mod_http_upload_quota_status": {
+        "mod_http_upload_unlimited": {
             "type": "boolean",
-            "title": "mod_http_upload_quota_status",
-            "description": "Enable to purge the uploaded files"
+            "title": "mod_http_upload_unlimited",
+            "description": "Keep uploaded files unlimited"
+        },
+        "webadmin": {
+            "type": "boolean",
+            "title": "webadmin",
+            "description": "Enable the webadmin page"
         },
         "ldap_domain": {
             "type": "string",
@@ -97,6 +106,12 @@
             "title": "shaper_fast",
             "minimum": 1,
             "description": "Maximum allowed size for shaper_fast (bytes)"
+        },
+        "purge_httpd_upload_interval": {
+            "type": "integer",
+            "title": "purge_httpd_upload_interval",
+            "minimum": 1,
+            "description": "Interval to purge the uploaded files(days)"
         }
     }
 }

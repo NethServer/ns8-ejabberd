@@ -37,7 +37,19 @@ ExecStart=/usr/bin/podman run \
     --volume=./config/ejabberd.yml:/home/ejabberd/conf/ejabberd.yml:Z \
     --volume=upload:/home/ejabberd/upload:Z \
     --init \
+    --image-volume=ignore \
     ${ECS_IMAGE}
+ExecReload=-runagent discover-ldap
+ExecReload=mkdir -vp config
+ExecReload=-runagent expand-configuration
+ExecReload=bash -c "while [ ! -f certificates/ejabberd.pem ]; do sleep 1; done"
+ExecReload=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
+ExecReload=/usr/bin/podman  cp certificates/ejabberd.pem ejabberd:conf/ejabberd.pem
+ExecReload=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
+ExecReload=runagent /usr/bin/podman exec \
+    --env-file=environment \
+    --env-file=discovery.env \
+    %N bin/ejabberdctl reload_config
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/ejabberd.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/ejabberd.ctr-id
 PIDFile=%t/ejabberd.pid
