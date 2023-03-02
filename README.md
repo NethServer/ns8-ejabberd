@@ -40,7 +40,8 @@ Launch `configure-module`, by setting the following parameters:
 - `ldap_domain`: a Ldap domain where to authenticate the users, it could be different than hostname. The ldap_domain is used to find an existing LDAP through LDAP proxy
 - `adminsList`: Set the list (comma separated user1,user2,...) of admin users able to use the web admin page of ejabberd (https://domain.com:5280/admin/)
 - `http_upload`: Allow users to upload files. (true/false)
-- `mod_http_upload_unlimited`: Allow ejabberd to remove uploaded file (true/false default retention is 31 days)
+- `mod_http_upload_unlimited`: Keep uploaded files unlimited (true/false)
+- `purge_httpd_upload_interval` : Remove older files then x days (default 30 days)
 - `s2s`: Enable the server-to-server (S2S) for XMPP federation (Port number: 5269). (true/false)
 - `mod_mam_status`: The XEP-0313: Message Archive Management (mod_mam). (true/false)
 - `shaper_normal`: Download speed limit in bytes/second for users, default is 500000
@@ -61,6 +62,7 @@ Example:
     "shaper_normal": 500000,
     "shaper_fast": 1000000,
     "mod_http_upload_unlimited": true,
+    "purge_httpd_upload_interval": 30,
     "mod_mam_status":true,
     "purge_mnesia_unlimited": false,
     "purge_mnesia_interval": 30,

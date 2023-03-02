@@ -72,7 +72,7 @@
         "mod_http_upload_unlimited": {
             "type": "boolean",
             "title": "mod_http_upload_unlimited",
-            "description": "Enable to purge the uploaded files"
+            "description": "Keep uploaded files unlimited"
         },
         "webadmin": {
             "type": "boolean",
