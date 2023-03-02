@@ -67,7 +67,7 @@
         "purge_mnesia_unlimited": {
             "type": "boolean",
             "title": "purge_mnesia_unlimited",
-            "description": "Enable to purge the mnesia database"
+            "description": "Keep old messages unlimited"
         },
         "mod_http_upload_unlimited": {
             "type": "boolean",
