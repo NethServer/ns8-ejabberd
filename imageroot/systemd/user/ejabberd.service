@@ -32,7 +32,6 @@ ExecStart=/usr/bin/podman run \
     --cgroups=no-conmon \
     --replace --name=%N \
     --network=host \
-    --env=ejabberd_* \
     --volume=database:/home/ejabberd/database:Z \
     --volume=./config/ejabberd.yml:/home/ejabberd/conf/ejabberd.yml:Z \
     --volume=upload:/home/ejabberd/upload:Z \
