@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+set -e -o pipefail
+exec 1>&2 # Redirect any output to the journal (stderr)
+
+# cp the backup and load it
+podman cp ejabberd.backup ejabberd:database/ejabberd.backup
+podman exec ejabberd  bin/ejabberdctl install_fallback /home/ejabberd/database/ejabberd.backup
+
+# clean the backups files locally and in the volume
+podman exec ejabberd rm -vf /home/ejabberd/database/ejabberd.backup
+rm -vf ejabberd.backup
+
+# restart the serice to load the DB
+systemctl --user restart ejabberd.service
