@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+set -e
+
+if ! systemctl --user -q is-active ejabberd.service; then
+    echo '[WARNING] Ejabberd is not running, restore is not possible'
+    exit 0
+fi
+
+# trigger the backup in the container
+podman exec ejabberd  bin/ejabberdctl backup /home/ejabberd/database/ejabberd.backup
+# cp it to the agent state folder
+podman  cp ejabberd:database/ejabberd.backup ejabberd.backup
