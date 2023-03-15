@@ -8,7 +8,7 @@
 set -e
 
 if ! systemctl --user -q is-active ejabberd.service; then
-    echo '[WARNING] Ejabberd is not running, restore is not possible'
+    echo '[WARNING] Ejabberd is not running, dump is not possible' 1>&2 
     exit 0
 fi
 
