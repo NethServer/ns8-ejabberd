@@ -8,6 +8,12 @@
 set -e -o pipefail
 exec 1>&2 # Redirect any output to the journal (stderr)
 
+# exit if the database not exists
+if [[ ! -f ejabberd.backup ]]; then 
+    echo "Ejabberd: No database to restore"
+    exit 0
+fi
+
 # cp the backup and load it
 podman cp ejabberd.backup ejabberd:database/ejabberd.backup
 podman exec ejabberd  bin/ejabberdctl install_fallback /home/ejabberd/database/ejabberd.backup
@@ -16,5 +22,5 @@ podman exec ejabberd  bin/ejabberdctl install_fallback /home/ejabberd/database/e
 podman exec ejabberd rm -vf /home/ejabberd/database/ejabberd.backup
 rm -vf ejabberd.backup
 
-# restart the serice to load the DB
+# restart the service to load the DB
 systemctl --user restart ejabberd.service
