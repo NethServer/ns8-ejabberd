@@ -14,6 +14,19 @@ if [[ ! -f ejabberd.backup ]]; then
     exit 0
 fi
 
+# we wait after the mnesia creation 
+# else we have an error during the migration
+i=0
+while ! podman exec -ti ejabberd bin/ejabberdctl status; do
+    let "i+=1"
+    if [[ $i -eq 5 ]]; then
+        echo "Ejabberd: Mnesia is not responding"
+        exit 1
+    fi
+    echo 'Ejabberd: Waiting mnesia database is up'
+    sleep 5
+done
+
 # cp the backup and load it
 podman cp ejabberd.backup ejabberd:database/ejabberd.backup
 podman exec ejabberd  bin/ejabberdctl install_fallback /home/ejabberd/database/ejabberd.backup
