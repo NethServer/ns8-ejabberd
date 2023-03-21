@@ -18,11 +18,11 @@ fi
 # else we have an error during the migration
 i=0
 while ! podman exec -ti ejabberd bin/ejabberdctl status; do
-    let "i+=1"
-    if [[ $i -eq 5 ]]; then
+    if [[ $i -eq 10 ]]; then
         echo "Ejabberd: Mnesia is not responding"
         exit 1
     fi
+    let "i+=1"
     echo 'Ejabberd: Waiting mnesia database is up'
     sleep 5
 done
