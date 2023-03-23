@@ -81,6 +81,29 @@ You can retrieve the configuration with
 api-cli run get-configuration --agent module/ejabberd1 --data null | jq
 ```
 
+## Change the hostname of Ejabberd and conserver the chat history
+
+Users must use domain in order to login to ejabberd, the form is `user@domain.com`. The `domain.com` matches the `hostname` property set in the UI.
+The `user` part must be a real user in the LDAP and the `domain.com` must be a domain where the `A` DNS record points to the IP of Ejabberd.
+However if you change the hostname of ejabberd, you must adapt the `A` record of this new domain to the IP of Ejabberd and also you will loose the chat history.
+The chat history is saved inside the Mnesia database with the form `user@domain.com`, therefore if you modify the domain, `user@domain.org` will be a new user in the database, you can login but you will not have a chat history for this user.
+
+you need to modify the database manually if you want to conserve the chat history
+
+```
+# adapt to the MODULE_ID of your module
+ssh ejabberd1@localhost
+# dump a txt backup
+podman exec -ti ejabberd bin/ejabberdctl dump /home/ejabberd/database/database.txt
+# copy the txt backup in your path to get a backup
+podman cp ejabberd:/home/ejabberd/database/database.txt .
+# sed change `domain.com` to `domain.com`
+podman exec -ti ejabberd sed -i 's/domain.com/domain.org/g'  /home/ejabberd/database/database.txt
+# Load the database and restart ejabberd
+podman exec -ti ejabberd bin/ejabberdctl load  /home/ejabberd/database/database.txt
+systemctl restart --user ejabberd
+```
+
 ## Uninstall
 
 To uninstall the instance:
