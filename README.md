@@ -88,7 +88,7 @@ The `user` part must be a real user in the LDAP and the `domain.com` must be a d
 However if you change the hostname of ejabberd, you must adapt the `A` record of this new domain to the IP of Ejabberd and also you will loose the chat history.
 The chat history is saved inside the Mnesia database with the form `user@domain.com`, therefore if you modify the domain, `user@domain.org` will be a new user in the database, you can login but you will not have a chat history for this user.
 
-you need to modify the database manually if you want to conserve the chat history
+You need to modify the database manually if you want to conserve the chat history
 
 ```
 # adapt to the MODULE_ID of your module
