@@ -95,9 +95,9 @@ You need to modify the database manually if you want to conserve the chat histor
 ssh ejabberd1@localhost
 # dump a txt backup
 podman exec -ti ejabberd bin/ejabberdctl dump /home/ejabberd/database/database.txt
-# copy the txt backup in your path to get a backup
+# copy the txt file in your path to get a backup
 podman cp ejabberd:/home/ejabberd/database/database.txt .
-# sed change `domain.com` to `domain.com`
+# sed change `domain.com` to `domain.org`
 podman exec -ti ejabberd sed -i 's/domain.com/domain.org/g'  /home/ejabberd/database/database.txt
 # Load the database and restart ejabberd
 podman exec -ti ejabberd bin/ejabberdctl load  /home/ejabberd/database/database.txt
