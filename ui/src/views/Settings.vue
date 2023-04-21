@@ -376,8 +376,9 @@ export default {
     this.getConfiguration();
   },
   methods: {
-    goToEjabberdWebAdmin() {
+    goToEjabberdWebAdmin(e) {
       window.open(`https://${this.hostname}` + ":5280/admin/", "_blank");
+      e.preventDefault();
     },
     async getConfiguration() {
       this.loading.getConfiguration = true;
