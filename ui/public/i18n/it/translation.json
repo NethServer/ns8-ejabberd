@@ -49,7 +49,9 @@
         "title": "Impostazioni",
         "configure_instance": "Configura {instance}",
         "test_field": "Campo di test",
-        "save": "Salva"
+        "save": "Salva",
+        "disabled": "Disabilitato",
+        "enabled": "Abilitato"
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire task {action}"
