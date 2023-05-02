@@ -51,7 +51,9 @@
         "test_field": "Campo di test",
         "save": "Salva",
         "disabled": "Disabilitato",
-        "enabled": "Abilitato"
+        "enabled": "Abilitato",
+        "advanced": "Advanced",
+        "request_https_certificate": "Request a Let's Encrypt certificate"
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire task {action}"
