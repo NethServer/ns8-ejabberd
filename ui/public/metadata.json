@@ -1,12 +1,13 @@
 {
   "name": "ejabberd",
   "description": {
-    "en": "NethServer integration of ejabberd XMPP server"
+    "en": "ejabberd XMPP server",
+    "it": "Server XMPP ejabberd"
   },
   "categories": ["collaboration"],
   "authors": [
     {
-      "name": "stephane de Labrusse",
+      "name": "Stephane de Labrusse",
       "email": "stephdl@de-labrusse.fr"
     }
   ],
