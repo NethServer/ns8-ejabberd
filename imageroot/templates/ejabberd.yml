@@ -28,7 +28,7 @@ certfiles:
 listen:
   - 
     port: 5222
-    ip: "0.0.0.0"
+    ip: "::"
     module: ejabberd_c2s
     protocol_options: 'TLSOPTS'
     starttls: true
@@ -40,7 +40,7 @@ listen:
     dhfile: "/home/ejabberd/conf/dh.pem"
   - 
     port: 5223
-    ip: "0.0.0.0"
+    ip: "::"
     module: ejabberd_c2s
     access: c2s
     shaper: c2s_shaper
@@ -51,7 +51,7 @@ listen:
     dhfile: "/home/ejabberd/conf/dh.pem"
   - 
     port: 5280
-    ip: "0.0.0.0"
+    ip: "::"
     module: ejabberd_http
     tls: true
     request_handlers:
@@ -68,7 +68,7 @@ listen:
 {%if s2s %}
   - 
     port: 5269
-    ip: "0.0.0.0"
+    ip: "::"
     module: ejabberd_s2s_in
     max_stanza_size: 131072
     shaper: s2s_shaper
@@ -79,7 +79,7 @@ listen:
 {%if http_upload %}
   - 
     port: 5443
-    ip: "0.0.0.0"
+    ip: "::"
     module: ejabberd_http
     tls: true
     protocol_options: 'TLSOPTS'
@@ -150,13 +150,13 @@ api_permissions:
     who:
       - access:
           - allow:
-            - ip: "0.0.0.0"
+            - ip: "::"
             - acl: admin
       - oauth:
         - scope: "ejabberd:admin"
         - access:
           - allow:
-              - ip: "0.0.0.0"
+              - ip: "::"
               - acl: admin
     what:
       - "*"
@@ -164,7 +164,7 @@ api_permissions:
       - "!start"
   "public commands":
     who:
-      - ip: "0.0.0.0"
+      - ip: "::"
     what:
       - "status"
       - "connected_users_number"
@@ -181,7 +181,7 @@ acl:
     user_regexp: ""
   loopback:
     ip:
-      - "0.0.0.0"
+      - "::"
 
 shaper:
   normal: {{shaper_normal}} 
