@@ -39,7 +39,7 @@ buildah config --entrypoint=/ \
     --label="org.nethserver.authorizations=traefik@node:certadm node:fwadm" \
     --label="org.nethserver.tcp-ports-demand=0" \
     --label="org.nethserver.rootfull=0" \
-    --label="org.nethserver.images=docker.io/ejabberd/ecs:23.01" \
+    --label="org.nethserver.images=docker.io/ejabberd/ecs:23.10" \
     "${container}"
 # Commit the image
 buildah commit "${container}" "${repobase}/${reponame}"
