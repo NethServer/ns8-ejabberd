@@ -6,6 +6,6 @@
 #
 
 if systemctl --user -q is-active ejabberd; then
-    install-certificate
+    # install-certificate is triggered before start/reload
     systemctl --user -T try-reload-or-restart ejabberd
 fi
