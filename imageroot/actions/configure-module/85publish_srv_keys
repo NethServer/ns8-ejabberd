@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+import json
+import agent
+import os
+
+node_id = int(os.environ['NODE_ID'])
+agent_id = os.environ['AGENT_ID']
+module_uuid = os.environ['MODULE_UUID']
+hostname = os.environ['EJABBERD_HOSTNAME']
+
+with agent.redis_connect() as rdb:
+    node_address = rdb.hget(f'node/{node_id}/vpn', 'ip_address')
+
+# Create srv records in Redis for ejaberd service discovery
+with agent.redis_connect(privileged=True) as prdb:
+    trx = prdb.pipeline()
+
+    kxmpp = agent_id + "/srv/tcp/xmpp"
+    trx.delete(kxmpp).hset(kxmpp, mapping={
+        "port": "5222",
+        "host": node_address,
+        "node": str(node_id),
+        "module_uuid": module_uuid,
+        "ejabberd_hostname": hostname
+    })
+
+    # Publish change event
+    trx.publish(agent_id + "/event/ejabberd-settings-changed", json.dumps({
+        "reason": os.getenv("AGENT_TASK_ACTION", "unknown"),
+        "module_id": os.environ['MODULE_ID'],
+        "node_id": node_id,
+        "module_uuid": module_uuid,
+    }))
+
+    trx.execute()
