@@ -1,1 +1,60 @@
-{}
+{
+    "settings": {
+        "Enable_purge_mnesia_database": "Mensaje de purga de la base de datos de Mnesia",
+        "bad_email_address": "Por favor escribe usuario@dominio. Administrador no válido:",
+        "adminList": "Administradores de la administración web",
+        "open_ejabberd_webapp": "Abrir administrador web",
+        "Enable_file_upload_mod_http_upload": "Habilitar carga de archivos (mod_http_upload)",
+        "configure_instance": "Configurar {instance}",
+        "specify_duration": "Especificar duración",
+        "admin_login_tips": "Si está habilitada, la página de administración web está disponible en el puerto 5280. Recuerda abrir este puerto en tu cortafuegos",
+        "never": "No limpiar nunca",
+        "ldap_domain": "Dominio de usuario LDAP",
+        "choose_the_ldap_domain_to_use": "Elige el dominio LDAP utilizado para la autenticación de usuarios",
+        "hostname_placeholder": "Escribe el host virtual Ejabberd",
+        "Write_administrator_list": "Escribe un administrador por línea",
+        "shaper_normal_kbytes/s": "Ancho de banda de transferencia de archivos normal (KB/s)",
+        "shaper_fast_kbytes/s": "Ancho de banda de transferencia de archivos rápida (KB/s)",
+        "Enable_mod_http_upload_quota": "Habilitar carga de archivos (mod_http_upload)",
+        "Enable_federation_s2s": "Habilitar federación (S2S)",
+        "hostname": "Host virtual (FQDN) Ejabberd",
+        "save": "Guardar",
+        "purge_mnesia_database_interval": "Limpiar mensajes anteriores a",
+        "purge_httpd_upload_interval": "Limpiar archivos anteriores a",
+        "webadmin_status": "Administrador web",
+        "title": "Ajustes",
+        "choose_ldap_domain": "Elige el dominio LDAP",
+        "Enable_message_archive_management_mod_mam": "Habilitar la Gestión de Archivos de Mensajes (Message Archive Management) (mod_mam)",
+        "hostname_must_be_relevant_for_user_authentication": "Este es el host virtual utilizado para la autenticación de usuarios, es decir, usuario@hostvirtual"
+    },
+    "common": {
+        "required": "Requerido",
+        "work_in_progress": "Trabajo en curso",
+        "processing": "Procesando..."
+    },
+    "status": {
+        "created": "Creado",
+        "size": "Tamaño",
+        "name": "Nombre",
+        "no_images": "No hay imágenes",
+        "app_volumes": "Volúmen de aplicación | Volúmenes de aplicaciones",
+        "services": "Servicio | Servicios",
+        "app_images": "Imagen de App | Imágenes de App",
+        "no_services": "No hay servicios",
+        "app_instance": "Instancia de aplicación",
+        "mount": "Montar",
+        "title": "Estado",
+        "installation_node": "Nodo de instalación",
+        "node": "Nodo",
+        "no_volumes": "No hay volúmenes"
+    },
+    "about": {
+        "title": "Acerca de"
+    },
+    "error": {
+        "shaper_normal_must_be_inferior_to_shaper_fast": "El perfil normal debe ser inferior al perfil rápido."
+    },
+    "action": {
+        "get-configuration": "Obtener la configuración"
+    }
+}
