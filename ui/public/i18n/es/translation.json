@@ -30,12 +30,12 @@
         "days": "Días",
         "disabled": "Deshabilitado",
         "request_https_certificate": "Solicitar certificado Let's Encrypt",
-        "required": "Requerido",
+        "required": "Obligatorio",
         "enabled": "Habilitado",
         "processing": "Procesando..."
     },
     "common": {
-        "required": "Requerido",
+        "required": "Obligatorio",
         "work_in_progress": "Trabajo en curso",
         "processing": "Procesando..."
     },
@@ -48,18 +48,18 @@
         "services": "Servicio | Servicios",
         "app_images": "Imagen de App | Imágenes de App",
         "no_services": "No hay servicios",
-        "app_instance": "Instancia de aplicación",
+        "app_instance": "Instancia de la aplicación",
         "mount": "Montar",
         "title": "Estado",
         "installation_node": "Nodo de instalación",
         "node": "Nodo",
-        "no_volumes": "No hay volúmenes"
+        "no_volumes": "Sin volúmenes"
     },
     "about": {
         "title": "Acerca de"
     },
     "error": {
-        "shaper_normal_must_be_inferior_to_shaper_fast": "El perfil normal debe ser inferior al perfil rápido.",
+        "shaper_normal_must_be_inferior_to_shaper_fast": "El perfil normal debe ser inferior al perfil rápido",
         "403": "Operación no autorizada",
         "cannot_retrieve_installed_modules": "No es posible recibir los módulos instalados",
         "401": "Autenticación no válida",
@@ -73,10 +73,10 @@
     },
     "action": {
         "get-configuration": "Obtener la configuración",
-        "list-backup-repositories": "Listar repositorios de respaldo",
+        "list-backup-repositories": "Mostrar repositorios de respaldo",
         "get-module-info": "Obtener información del módulo",
-        "list-installed-modules": "Listar módulos instalados",
-        "list-backups": "Listar copias de seguridad",
+        "list-installed-modules": "Mostrar módulos instalados",
+        "list-backups": "Mostrar copias de seguridad",
         "get-status": "Obtener el estado",
         "configure-module": "Configurar el módulo",
         "get-name": "Obtener el nombre"
