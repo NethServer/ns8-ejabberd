@@ -26,7 +26,7 @@
         "choose_ldap_domain": "Elige el dominio LDAP",
         "Enable_message_archive_management_mod_mam": "Habilitar la Gestión de Archivos de Mensajes (Message Archive Management) (mod_mam)",
         "hostname_must_be_relevant_for_user_authentication": "Este es el host virtual utilizado para la autenticación de usuarios, es decir, usuario@hostvirtual",
-        "advanced": "Avanzado",
+        "advanced": "Advanced",
         "days": "Días",
         "disabled": "Deshabilitado",
         "request_https_certificate": "Solicitar certificado Let's Encrypt",
@@ -35,14 +35,14 @@
         "processing": "Procesando..."
     },
     "common": {
-        "required": "Obligatorio",
+        "required": "Required",
         "work_in_progress": "Trabajo en curso",
         "processing": "Procesando..."
     },
     "status": {
-        "created": "Creado",
-        "size": "Tamaño",
-        "name": "Nombre",
+        "created": "Created",
+        "size": "Size",
+        "name": "Name",
         "no_images": "No hay imágenes",
         "app_volumes": "Volúmen de aplicación | Volúmenes de aplicaciones",
         "services": "Servicio | Servicios",
@@ -60,7 +60,7 @@
     },
     "error": {
         "shaper_normal_must_be_inferior_to_shaper_fast": "El perfil normal debe ser inferior al perfil rápido",
-        "403": "Operación no autorizada",
+        "403": "Operation not authorized",
         "cannot_retrieve_installed_modules": "No es posible recibir los módulos instalados",
         "401": "Autenticación no válida",
         "cannot_retrieve_module_info": "No es posible recibir la información del módulo",
