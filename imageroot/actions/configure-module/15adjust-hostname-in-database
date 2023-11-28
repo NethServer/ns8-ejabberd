@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+set -e
+
+# get the hostname from the json file
+/usr/bin/read -r hostname < <(jq -r '.hostname')
+
+if [[ $hostname == $EJABBERD_HOSTNAME ]];then
+/usr/bin/echo "No need to modify Ejabberd FQDN" >&2
+/usr/bin/exit 0
+fi
+/usr/bin/echo "We copy messages of old FQDN with new Ejabberd FQDN in MNESIA database" >&2
+
+# dump databse and cp to host
+/usr/bin/podman exec ejabberd  bin/ejabberdctl dump /home/ejabberd/tmp_domain
+/usr/bin/podman cp ejabberd:/home/ejabberd/tmp_domain ./tmp_domain
+/usr/bin/systemctl stop --user ejabberd
+# ejabberd is stopped we can sed the dump to the new FQDN
+/usr/bin/sed -i "s/${EJABBERD_HOSTNAME//./\\.}/${hostname//./\\.}/g" ./tmp_domain
+# start ejabberd and load the dump
+/usr/bin/systemctl start --user ejabberd
+while ! /usr/bin/podman exec ejabberd bin/ejabberdctl status;
+do
+    /usr/bin/echo "Waiting after Ejabberd service" >&2
+    /usr/bin/sleep 1
+done
+/usr/bin/podman cp tmp_domain ejabberd:/home/ejabberd/tmp_domain
+# the dump is loaded, all the old entries are preserved we just copy the previous messages to the new FQDN
+# this allow to go back to the old FQDN if something goes wrong
+# during the load the old database is not erased, just new entries are added.
+/usr/bin/podman exec ejabberd  bin/ejabberdctl load /home/ejabberd/tmp_domain
+
+/usr/bin/echo "Ejabberd FQDN changed to $hostname" >&2
+
+/usr/bin/rm -f ./tmp_domain
