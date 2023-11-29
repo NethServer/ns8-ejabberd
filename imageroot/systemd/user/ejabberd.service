@@ -23,6 +23,7 @@ ExecStartPre=-runagent expand-configuration
 ExecStartPre=-runagent install-certificate
 ExecStartPre=bash -c "while [ ! -f certificates/ejabberd.pem ]; do sleep 1; done"
 ExecStartPre=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
+ExecStartPost=bash -c "while ! /usr/bin/podman exec ejabberd bin/ejabberdctl status; do sleep 1 ; done"
 ExecStartPost=/usr/bin/podman  cp certificates/ejabberd.pem ejabberd:conf/ejabberd.pem
 ExecStartPost=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
 ExecStart=/usr/bin/podman run \

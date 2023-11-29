@@ -1,0 +1,52 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+set -e
+
+# get the hostname from the json file
+/usr/bin/read -r hostname < <(jq -r '.hostname')
+
+if [[ -z $EJABBERD_HOSTNAME ]];then
+    /usr/bin/echo "First configuration of Ejabberd FQDN" >&2
+    /usr/bin/exit 0
+fi
+
+if [[ $hostname == $EJABBERD_HOSTNAME ]];then
+    /usr/bin/echo "No need to modify Ejabberd FQDN" >&2
+    /usr/bin/exit 0
+fi
+
+/usr/bin/echo "We copy messages of old FQDN with new Ejabberd FQDN in MNESIA database" >&2
+
+
+podman exec -e "OLD_HOSTNAME=${EJABBERD_HOSTNAME}" -e "NEW_HOSTNAME=${hostname}" -i ejabberd sh <<'EOF'
+set -e
+
+# All the old entries are preserved we just copy the previous messages to the new FQDN
+# this allow to go back to the old FQDN if something goes wrong
+# during the load, the old database is not erased, just new entries are added.
+# we dump the database
+
+bin/ejabberdctl dump /home/ejabberd/database/tmp_domain
+
+# 1.we need to adapt upload '<<"https://sub.domain.net:5443/upload/xxxxxxxx/xxxxxx">>'
+# 2.we want to match '<<"foo@sub.domain.net">>' and '<<"foo@sub.domain.net/gajim.XPBQ62DO">>'
+# 3.we want to match '<<"sub.domain.net">>'
+/bin/sed -i \
+  -e "s|<<\"https://${OLD_HOSTNAME//./\\.}:5443\(.*>>\)|<<\"https://${NEW_HOSTNAME//./\\.}:5443\1|g" \
+  -e "s/<<\(.*\)@${OLD_HOSTNAME//./\\.}\(.*\">>\)/<<\1@${NEW_HOSTNAME//./\\.}\2/g" \
+  -e "s/<<\"${OLD_HOSTNAME//./\\.}\">>/<<\"${NEW_HOSTNAME//./\\.}\">>/g" \
+  /home/ejabberd/database/tmp_domain
+
+# we load the database
+bin/ejabberdctl load /home/ejabberd/database/tmp_domain
+
+# we remove the dump
+/bin/rm -f /home/ejabberd/database/tmp_domain
+EOF
+
+/usr/bin/echo "Ejabberd FQDN changed to $hostname" >&2
