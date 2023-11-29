@@ -23,9 +23,9 @@
   "settings": {
     "title": "Settings",
     "configure_instance": "Configure {instance}",
-    "hostname": "Ejabberd virtual host (FQDN)",
-    "hostname_placeholder": "Enter Ejabberd virtual host",
-    "hostname_must_be_relevant_for_user_authentication": "This is the virtual host used for user authentication, i.e. user@virtualhost",
+    "hostname": "Ejabberd domain (FQDN)",
+    "hostname_placeholder": "Enter Ejabberd domain: domain.com",
+    "hostname_must_be_relevant_for_user_authentication": "This is the domain used for user authentication, i.e. user@domain.com",
     "ldap_domain" : "LDAP user domain",
     "choose_the_ldap_domain_to_use": "Choose the LDAP domain used for user authentication",
     "choose_ldap_domain": "Choose LDAP domain",
