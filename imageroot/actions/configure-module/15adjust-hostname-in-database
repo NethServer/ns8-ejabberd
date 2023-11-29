@@ -11,25 +11,42 @@ set -e
 /usr/bin/read -r hostname < <(jq -r '.hostname')
 
 if [[ -z $EJABBERD_HOSTNAME ]];then
-/usr/bin/echo "First configuration of Ejabberd FQDN" >&2
-/usr/bin/exit 0
+    /usr/bin/echo "First configuration of Ejabberd FQDN" >&2
+    /usr/bin/exit 0
 fi
 
 if [[ $hostname == $EJABBERD_HOSTNAME ]];then
-/usr/bin/echo "No need to modify Ejabberd FQDN" >&2
-/usr/bin/exit 0
+    /usr/bin/echo "No need to modify Ejabberd FQDN" >&2
+    /usr/bin/exit 0
 fi
 
 /usr/bin/echo "We copy messages of old FQDN with new Ejabberd FQDN in MNESIA database" >&2
 
-/usr/bin/podman exec ejabberd  bin/ejabberdctl dump /home/ejabberd/database/tmp_domain
-#we sed the dump to the new FQDN
-/usr/bin/podman exec ejabberd sed -i "s/${EJABBERD_HOSTNAME//./\\.}/${hostname//./\\.}/g" /home/ejabberd/database/tmp_domain
+
+podman exec -e "OLD_HOSTNAME=${EJABBERD_HOSTNAME}" -e "NEW_HOSTNAME=${hostname}" -i ejabberd sh <<'EOF'
+set -e
+
 # All the old entries are preserved we just copy the previous messages to the new FQDN
 # this allow to go back to the old FQDN if something goes wrong
 # during the load, the old database is not erased, just new entries are added.
-/usr/bin/podman exec ejabberd  bin/ejabberdctl load /home/ejabberd/database/tmp_domain
+# we dump the database
+
+bin/ejabberdctl dump /home/ejabberd/database/tmp_domain
+
+# we want to match '<<"sub.domain.net">>'
+/bin/sed -i "s/<<\"${OLD_HOSTNAME//./\\.}\">>/<<\"${NEW_HOSTNAME//./\\.}\">>/g" /home/ejabberd/database/tmp_domain
+
+# we want to match '<<"foo@sub.domain.net">>' and '<<"foo@sub.domain.net/gajim.XPBQ62DO">>'
+/bin/sed -i "s/<<\(.*\)@${OLD_HOSTNAME//./\\.}\(.*\">>\)/<<\1@${NEW_HOSTNAME//./\\.}\2/g" /home/ejabberd/database/tmp_domain
+
+# we need to adapt upload '<<"https://sub.domain.net:5443/upload/xxxxxxxx/xxxxxx">>'
+/bin/sed -i "s|<<\"https://${OLD_HOSTNAME//./\\.}:5443\(.*>>\)|<<\"https://${NEW_HOSTNAME//./\\.}:5443\1|g" /home/ejabberd/database/tmp_domain
+
+# we load the database
+bin/ejabberdctl load /home/ejabberd/database/tmp_domain
+
+# we remove the dump
+/bin/rm -f /home/ejabberd/database/tmp_domain
+EOF
 
 /usr/bin/echo "Ejabberd FQDN changed to $hostname" >&2
-
-/usr/bin/podman exec ejabberd /usr/bin/rm -f /home/ejabberd/database/tmp_domain
