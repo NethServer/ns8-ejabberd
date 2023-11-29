@@ -33,14 +33,14 @@ set -e
 
 bin/ejabberdctl dump /home/ejabberd/database/tmp_domain
 
-# we want to match '<<"sub.domain.net">>'
-/bin/sed -i "s/<<\"${OLD_HOSTNAME//./\\.}\">>/<<\"${NEW_HOSTNAME//./\\.}\">>/g" /home/ejabberd/database/tmp_domain
-
-# we want to match '<<"foo@sub.domain.net">>' and '<<"foo@sub.domain.net/gajim.XPBQ62DO">>'
-/bin/sed -i "s/<<\(.*\)@${OLD_HOSTNAME//./\\.}\(.*\">>\)/<<\1@${NEW_HOSTNAME//./\\.}\2/g" /home/ejabberd/database/tmp_domain
-
-# we need to adapt upload '<<"https://sub.domain.net:5443/upload/xxxxxxxx/xxxxxx">>'
-/bin/sed -i "s|<<\"https://${OLD_HOSTNAME//./\\.}:5443\(.*>>\)|<<\"https://${NEW_HOSTNAME//./\\.}:5443\1|g" /home/ejabberd/database/tmp_domain
+# 1.we need to adapt upload '<<"https://sub.domain.net:5443/upload/xxxxxxxx/xxxxxx">>'
+# 2.we want to match '<<"foo@sub.domain.net">>' and '<<"foo@sub.domain.net/gajim.XPBQ62DO">>'
+# 3.we want to match '<<"sub.domain.net">>'
+/bin/sed -i \
+  -e "s|<<\"https://${OLD_HOSTNAME//./\\.}:5443\(.*>>\)|<<\"https://${NEW_HOSTNAME//./\\.}:5443\1|g" \
+  -e "s/<<\(.*\)@${OLD_HOSTNAME//./\\.}\(.*\">>\)/<<\1@${NEW_HOSTNAME//./\\.}\2/g" \
+  -e "s/<<\"${OLD_HOSTNAME//./\\.}\">>/<<\"${NEW_HOSTNAME//./\\.}\">>/g" \
+  /home/ejabberd/database/tmp_domain
 
 # we load the database
 bin/ejabberdctl load /home/ejabberd/database/tmp_domain
