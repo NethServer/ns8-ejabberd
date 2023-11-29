@@ -11,10 +11,6 @@ if [[ -z "${EJABBERD_HOSTNAME}" ]]; then
     exit 3 # Module is not fully configured, abort execution.
 fi
 
-if [[ "${TRAEFIK_LETS_ENCRYPT}" != 'True' ]]; then
-    exit 2 # We use a self signed certificate
-fi
-
 mkdir -vp ${AGENT_STATE_DIR}/certificates/
 
 tmpdir=$(mktemp -d)
