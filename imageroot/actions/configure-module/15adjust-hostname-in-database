@@ -10,12 +10,12 @@ set -e
 # get the hostname from the json file
 /usr/bin/read -r hostname < <(jq -r '.hostname')
 
-if [[ -z $EJABBERD_HOSTNAME ]];then
+if [[ -z "$EJABBERD_HOSTNAME" ]];then
     /usr/bin/echo "First configuration of Ejabberd FQDN" >&2
     exit 0
 fi
 
-if [[ $hostname == $EJABBERD_HOSTNAME ]];then
+if [[ "$hostname" == "$EJABBERD_HOSTNAME" ]];then
     /usr/bin/echo "No need to modify Ejabberd FQDN" >&2
     exit 0
 fi
