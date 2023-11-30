@@ -8,7 +8,7 @@
 set -e
 
 # get the hostname from the json file
-/usr/bin/read -r hostname < <(jq -r '.hostname')
+hostname=$(cat /dev/stdin | jq -r '.hostname // empty')
 
 if [[ -z "$EJABBERD_HOSTNAME" ]];then
     /usr/bin/echo "First configuration of Ejabberd FQDN" >&2
