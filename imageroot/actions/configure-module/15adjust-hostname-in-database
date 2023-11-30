@@ -12,12 +12,12 @@ set -e
 
 if [[ -z $EJABBERD_HOSTNAME ]];then
     /usr/bin/echo "First configuration of Ejabberd FQDN" >&2
-    /usr/bin/exit 0
+    exit 0
 fi
 
 if [[ $hostname == $EJABBERD_HOSTNAME ]];then
     /usr/bin/echo "No need to modify Ejabberd FQDN" >&2
-    /usr/bin/exit 0
+    exit 0
 fi
 
 /usr/bin/echo "We copy messages of old FQDN with new Ejabberd FQDN in MNESIA database" >&2
