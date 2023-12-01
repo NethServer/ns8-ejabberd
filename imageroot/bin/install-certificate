@@ -17,7 +17,7 @@ tmpdir=$(mktemp -d)
 trap 'rm -rf ${tmpdir}' EXIT
 
 cd "${tmpdir}"
-umask 133 # 644
+umask 022 # 644
 
 # Override redis-exec "privileged=True"
 export REDIS_USER=default
