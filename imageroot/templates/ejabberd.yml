@@ -53,7 +53,7 @@ listen:
     port: 5280
     ip: "::"
     module: ejabberd_http
-    tls: true
+    tls: false
     request_handlers:
       "/websocket": ejabberd_http_ws
       "/api": mod_http_api
@@ -62,9 +62,6 @@ listen:
       "/admin": ejabberd_web_admin
 {% endif %}
     captcha: false
-    protocol_options: 'TLSOPTS'
-    ciphers: 'CIPHERS'
-    dhfile: "/home/ejabberd/conf/dh.pem"
 {%if s2s %}
   - 
     port: 5269
