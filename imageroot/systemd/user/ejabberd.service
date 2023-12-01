@@ -23,8 +23,6 @@ ExecStartPre=-runagent expand-configuration
 ExecStartPre=-runagent install-certificate
 ExecStartPre=bash -c "while [ ! -f certificates/ejabberd.pem ]; do sleep 1; done"
 ExecStartPre=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
-ExecStartPost=/usr/bin/podman  cp certificates/ejabberd.pem ejabberd:conf/ejabberd.pem
-ExecStartPost=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
 ExecStartPost=bash -c "while ! /usr/bin/podman exec ejabberd bin/ejabberdctl status; do sleep 1 ; done"
 ExecStart=/usr/bin/podman run \
     --detach \
@@ -37,6 +35,7 @@ ExecStart=/usr/bin/podman run \
     --volume=database:/home/ejabberd/database:Z \
     --volume=./config/ejabberd.yml:/home/ejabberd/conf/ejabberd.yml:Z \
     --volume=upload:/home/ejabberd/upload:Z \
+    --volume=./certificates:/home/ejabberd/certificates:Z \
     --init \
     --image-volume=ignore \
     ${ECS_IMAGE}
@@ -46,8 +45,7 @@ ExecReload=-runagent expand-configuration
 ExecReload=-runagent install-certificate
 ExecReload=bash -c "while [ ! -f certificates/ejabberd.pem ]; do sleep 1; done"
 ExecReload=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
-ExecReload=/usr/bin/podman  cp certificates/ejabberd.pem ejabberd:conf/ejabberd.pem
-ExecReload=/usr/bin/podman  cp certificates/dh.pem ejabberd:conf/dh.pem
+ExecReload=bash -c "while ! /usr/bin/podman exec ejabberd bin/ejabberdctl status; do sleep 1 ; done"
 ExecReload=runagent /usr/bin/podman exec \
     --env-file=environment \
     --env-file=discovery.env \
