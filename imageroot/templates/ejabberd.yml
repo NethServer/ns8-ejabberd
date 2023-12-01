@@ -10,7 +10,7 @@ hosts:
 #
 
 define_macro:
-  'CERTFILE': "/home/ejabberd/conf/ejabberd.pem"
+  'CERTFILE': "/home/ejabberd/certificates/ejabberd.pem"
   'TLSOPTS':
     - "no_sslv3"
     - "no_tlsv1"
@@ -37,7 +37,7 @@ listen:
     shaper: c2s_shaper
     access: c2s
     ciphers: 'CIPHERS'
-    dhfile: "/home/ejabberd/conf/dh.pem"
+    dhfile: "/home/ejabberd/certificates/dh.pem"
   - 
     port: 5223
     ip: "::"
@@ -48,7 +48,7 @@ listen:
     protocol_options: 'TLSOPTS'
     max_stanza_size: 65536
     ciphers: 'CIPHERS'
-    dhfile: "/home/ejabberd/conf/dh.pem"
+    dhfile: "/home/ejabberd/certificates/dh.pem"
   - 
     port: 5280
     ip: "::"
@@ -71,7 +71,7 @@ listen:
     shaper: s2s_shaper
     protocol_options: 'TLSOPTS'
     ciphers: 'CIPHERS'
-    dhfile: "/home/ejabberd/conf/dh.pem"
+    dhfile: "/home/ejabberd/certificates/dh.pem"
 {% endif %}
 {%if http_upload %}
   - 
@@ -81,7 +81,7 @@ listen:
     tls: true
     protocol_options: 'TLSOPTS'
     ciphers: 'CIPHERS'
-    dhfile: "/home/ejabberd/conf/dh.pem"
+    dhfile: "/home/ejabberd/certificates/dh.pem"
     request_handlers:
         "/upload": mod_http_upload
 {% endif %}
