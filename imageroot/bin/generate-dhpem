@@ -19,4 +19,3 @@ openssl dhparam -out "${dhtmp}" 2048
 # we want preserve umask
 cat "${dhtmp}" > certificates/dh.pem
 
-# Important! preserve exit code
