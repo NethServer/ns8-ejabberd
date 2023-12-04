@@ -6,8 +6,16 @@
 #
 
 set -e
+# build directory structure
 mkdir -vp certificates
+
+# create a temporary file
 dhtmp=$(mktemp dh.pem.XXXXXX)
 trap 'rm -f ${dhtmp}' EXIT
+
+umask 022 # 644
 openssl dhparam -out "${dhtmp}" 2048
-mv -v "${dhtmp}" certificates/dh.pem
+
+# we want preserve umask
+cat "${dhtmp}" > certificates/dh.pem
+
