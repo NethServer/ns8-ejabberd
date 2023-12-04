@@ -20,6 +20,11 @@ Services are available from the following port numbers:
 - `5280` For admin interface.
 - `5443` With encryption, used for admin interface, API, CAPTCHA, OAuth, Websockets and XMPP BOSH.
 
+## Admin page
+
+The ejabberd Web Admin allows to administer some parts of ejabberd using a web browser: accounts, Shared Roster Groups, manage the Mnesia database, create and restore backups, view server statistics, …
+The administration is available at https://sub.domain.com:5280/admin/
+
 ## Install
 
 Instantiate the module with:
