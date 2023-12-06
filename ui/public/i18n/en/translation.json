@@ -40,7 +40,7 @@
     "bad_email_address": "Please enter user@domain. Invalid administrator:",
     "processing": "Processing...",
     "required": "Required",
-    "admin_login_tips": "If enabled, Web Admin page is available on port 5280. Remember to open this port on your firewall",
+    "admin_login_tips": "If enabled, Web Admin page is available on port 5280 with TLS encryption.",
     "Enable_federation_s2s": "Enable federation (S2S)",
     "Enable_message_archive_management_mod_mam": "Enable Message Archive Management (mod_mam)",
     "Enable_file_upload_mod_http_upload": "Enable file upload (mod_http_upload)",
