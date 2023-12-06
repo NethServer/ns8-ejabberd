@@ -110,7 +110,6 @@
                     }}</template>
                   </NsToggle>
                   <template v-if="webadmin">
-                    <template v-if="hostname"> </template>
                     <NsButton
                       kind="ghost"
                       class="mg-left"
