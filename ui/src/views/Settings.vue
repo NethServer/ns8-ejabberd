@@ -110,6 +110,15 @@
                     }}</template>
                   </NsToggle>
                   <template v-if="webadmin">
+                    <NsButton
+                      kind="ghost"
+                      class="mg-left"
+                      :icon="Launch20"
+                      :disabled="loading.getConfiguration || loading.configureModule"
+                      @click="goToEjabberdWebAdmin"
+                    >
+                      {{ $t("settings.open_ejabberd_webapp") }}
+                    </NsButton>
                     <cv-text-area
                       :label="$t('settings.adminList')"
                       v-model.trim="adminsList"
@@ -326,6 +335,7 @@ export default {
       purge_mnesia_interval: "30",
       purge_httpd_upload_interval: "31",
       webadmin: false,
+      fqdn: "",
       loading: {
         getConfiguration: false,
         configureModule: false,
@@ -366,6 +376,10 @@ export default {
     this.getConfiguration();
   },
   methods: {
+    goToEjabberdWebAdmin(e) {
+      window.open(`https://${this.fqdn}` + ":5280/admin/", "_blank");
+      e.preventDefault();
+    },
     async getConfiguration() {
       this.loading.getConfiguration = true;
       this.error.getConfiguration = "";
@@ -426,6 +440,7 @@ export default {
         config.purge_httpd_upload_interval
       );
       this.webadmin = config.webadmin;
+      this.fqdn = config.fqdn;
       // force to reload value after dom update
       this.$nextTick(() => {
         this.ldap_domain = config.ldap_domain;

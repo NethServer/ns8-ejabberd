@@ -3,6 +3,7 @@
         "Enable_purge_mnesia_database": "Mensaje de purga de la base de datos de Mnesia",
         "bad_email_address": "Por favor escribe usuario@dominio. Administrador no válido:",
         "adminList": "Administradores de la administración web",
+        "open_ejabberd_webapp": "Abrir administrador web",
         "Enable_file_upload_mod_http_upload": "Habilitar carga de archivos (mod_http_upload)",
         "configure_instance": "Configurar {instance}",
         "specify_duration": "Especificar duración",
