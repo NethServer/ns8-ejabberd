@@ -336,6 +336,7 @@ export default {
       purge_mnesia_interval: "30",
       purge_httpd_upload_interval: "31",
       webadmin: false,
+      fqdn: "",
       loading: {
         getConfiguration: false,
         configureModule: false,
@@ -377,7 +378,7 @@ export default {
   },
   methods: {
     goToEjabberdWebAdmin(e) {
-      window.open(`https://${this.hostname}` + ":5280/admin/", "_blank");
+      window.open(`https://${this.fqdn}` + ":5280/admin/", "_blank");
       e.preventDefault();
     },
     async getConfiguration() {
@@ -440,6 +441,7 @@ export default {
         config.purge_httpd_upload_interval
       );
       this.webadmin = config.webadmin;
+      this.fqdn = config.fqdn;
       // force to reload value after dom update
       this.$nextTick(() => {
         this.ldap_domain = config.ldap_domain;
