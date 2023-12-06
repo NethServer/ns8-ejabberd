@@ -110,6 +110,16 @@
                     }}</template>
                   </NsToggle>
                   <template v-if="webadmin">
+                    <template v-if="hostname"> </template>
+                    <NsButton
+                      kind="ghost"
+                      class="mg-left"
+                      :icon="Launch20"
+                      :disabled="loading.getConfiguration"
+                      @click="goToEjabberdWebAdmin"
+                    >
+                      {{ $t("settings.open_ejabberd_webapp") }}
+                    </NsButton>
                     <cv-text-area
                       :label="$t('settings.adminList')"
                       v-model.trim="adminsList"
@@ -366,6 +376,10 @@ export default {
     this.getConfiguration();
   },
   methods: {
+    goToEjabberdWebAdmin(e) {
+      window.open(`https://${this.hostname}` + ":5280/admin/", "_blank");
+      e.preventDefault();
+    },
     async getConfiguration() {
       this.loading.getConfiguration = true;
       this.error.getConfiguration = "";
