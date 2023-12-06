@@ -115,7 +115,7 @@
                       kind="ghost"
                       class="mg-left"
                       :icon="Launch20"
-                      :disabled="loading.getConfiguration"
+                      :disabled="loading.getConfiguration || loading.configureModule"
                       @click="goToEjabberdWebAdmin"
                     >
                       {{ $t("settings.open_ejabberd_webapp") }}
