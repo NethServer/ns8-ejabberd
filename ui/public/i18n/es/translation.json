@@ -17,7 +17,7 @@
         "shaper_fast_kbytes/s": "Ancho de banda de transferencia de archivos rápida (KB/s)",
         "Enable_mod_http_upload_quota": "Habilitar carga de archivos (mod_http_upload)",
         "Enable_federation_s2s": "Habilitar federación (S2S)",
-        "hostname": "Host virtual (FQDN) Ejabberd",
+        "hostname": "Dominio Ejabberd (FQDN)",
         "save": "Guardar",
         "purge_mnesia_database_interval": "Limpiar mensajes anteriores a",
         "purge_httpd_upload_interval": "Limpiar archivos anteriores a",
