@@ -21,6 +21,7 @@ ExecStartPre=-runagent discover-ldap
 ExecStartPre=mkdir -vp config
 ExecStartPre=-runagent expand-configuration
 ExecStartPre=-runagent install-LE-certificate
+ExecStartPre=-runagent install-dh-certificate-key
 ExecStartPre=bash -c "while [ ! -f certificates/ejabberd.pem ]; do sleep 1; done"
 ExecStartPre=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
 ExecStartPost=bash -c "while ! /usr/bin/podman exec ejabberd bin/ejabberdctl status; do sleep 1 ; done"
@@ -35,7 +36,7 @@ ExecStart=/usr/bin/podman run \
     --volume=database:/home/ejabberd/database:Z \
     --volume=./config/ejabberd.yml:/home/ejabberd/conf/ejabberd.yml:Z \
     --volume=upload:/home/ejabberd/upload:Z \
-    --volume=./certificates:/home/ejabberd/certificates:Z \
+    --volume=certificates:/home/ejabberd/certificates:Z \
     --init \
     --image-volume=ignore \
     ${ECS_IMAGE}
@@ -43,6 +44,7 @@ ExecReload=-runagent discover-ldap
 ExecReload=mkdir -vp config
 ExecReload=-runagent expand-configuration
 ExecReload=-runagent install-LE-certificate
+ExecReload=-runagent install-dh-certificate-key
 ExecReload=bash -c "while [ ! -f certificates/ejabberd.pem ]; do sleep 1; done"
 ExecReload=bash -c "while [ ! -f certificates/dh.pem ]; do sleep 1; done"
 ExecReload=bash -c "while ! /usr/bin/podman exec ejabberd bin/ejabberdctl status; do sleep 1 ; done"
