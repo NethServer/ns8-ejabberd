@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+set -e
+
+if [[ -z "${EJABBERD_HOSTNAME}" ]]; then
+    exit 3 # Module is not fully configured, abort execution.
+fi
+
+if [[ ! -f "certificates/ejabberd.pem" ]]; then
+    exit 3 # Module is not fully configured, abort execution.
+fi
+
+# start a dummy container to create the volumes and stop it after
+/usr/bin/podman run --detach --hostname=localhost \
+    --replace --rm \
+    --name=ejabberd_certs \
+    --volume=certificates:/home/ejabberd/certificates:Z \
+    --image-volume=ignore \
+    ${ECS_IMAGE}
+# cp to preserve perms
+/usr/bin/podman cp ./certificates ejabberd_certs:/home/ejabberd/
+/usr/bin/podman kill ejabberd_certs
