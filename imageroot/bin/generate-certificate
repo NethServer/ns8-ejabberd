@@ -15,7 +15,7 @@ csrtmp=$(mktemp csr.pem.XXXXXX)
 
 trap 'rm -f ${certtmp} ${keytmp} ${csrtmp}' EXIT
 
-umask 022 # 644
+umask 277 # 400
 
 # we request csr
 openssl req -nodes -newkey rsa:2048 \

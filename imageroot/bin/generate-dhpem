@@ -13,7 +13,7 @@ mkdir -vp certificates
 dhtmp=$(mktemp dh.pem.XXXXXX)
 trap 'rm -f ${dhtmp}' EXIT
 
-umask 022 # 644
+umask 277 # 400
 openssl dhparam -out "${dhtmp}" 2048
 
 # we want preserve umask
