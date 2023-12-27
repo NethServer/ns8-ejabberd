@@ -5,7 +5,7 @@
         "adminList": "Administradores de la administración web",
         "open_ejabberd_webapp": "Abrir administrador web",
         "Enable_file_upload_mod_http_upload": "Habilitar carga de archivos (mod_http_upload)",
-        "configure_instance": "Configurar {instance}",
+        "configure_instance": "Configure {instance}",
         "specify_duration": "Especificar duración",
         "admin_login_tips": "Si está habilitada, la página de administración web está disponible en el puerto 5280 con encriptado TLS.",
         "never": "No limpiar nunca",
@@ -18,11 +18,11 @@
         "Enable_mod_http_upload_quota": "Habilitar carga de archivos (mod_http_upload)",
         "Enable_federation_s2s": "Habilitar federación (S2S)",
         "hostname": "Dominio Ejabberd (FQDN)",
-        "save": "Guardar",
+        "save": "Save",
         "purge_mnesia_database_interval": "Limpiar mensajes anteriores a",
         "purge_httpd_upload_interval": "Limpiar archivos anteriores a",
         "webadmin_status": "Administrador web",
-        "title": "Ajustes",
+        "title": "Settings",
         "choose_ldap_domain": "Elige el dominio LDAP",
         "Enable_message_archive_management_mod_mam": "Habilitar la Gestión de Archivos de Mensajes (Message Archive Management) (mod_mam)",
         "hostname_must_be_relevant_for_user_authentication": "Este es el dominio utilizado para la autenticación de usuarios, es decir, usuario@dominio.es",
@@ -35,53 +35,53 @@
         "processing": "Procesando..."
     },
     "common": {
-        "required": "Obligatorio",
-        "work_in_progress": "En progreso",
-        "processing": "Procesando..."
+        "required": "Required",
+        "work_in_progress": "Work in progress",
+        "processing": "Processing..."
     },
     "status": {
-        "created": "Creado",
-        "size": "Tamaño",
-        "name": "Nombre",
-        "no_images": "No hay imágenes",
-        "app_volumes": "Volúmen de la aplicación | Volúmenes de la aplicación",
-        "services": "Servicio | Servicios",
-        "app_images": "Imagen de la aplicación | Imágenes de la aplicación",
-        "no_services": "No hay servicios",
-        "app_instance": "Instancia de la aplicación",
-        "mount": "Montar",
-        "title": "Estado",
-        "installation_node": "Nodo de instalación",
-        "node": "Nodo",
-        "no_volumes": "No hay volúmenes"
+        "created": "Created",
+        "size": "Size",
+        "name": "Name",
+        "no_images": "No images",
+        "app_volumes": "App volume | App volumes",
+        "services": "Service | Services",
+        "app_images": "App image | App images",
+        "no_services": "No services",
+        "app_instance": "App instance",
+        "mount": "Mount",
+        "title": "Status",
+        "installation_node": "Installation node",
+        "node": "Node",
+        "no_volumes": "No volumes"
     },
     "about": {
-        "title": "Acerca de"
+        "title": "About"
     },
     "error": {
         "shaper_normal_must_be_inferior_to_shaper_fast": "El perfil normal debe ser inferior al perfil rápido",
-        "403": "Operación no autorizada",
-        "cannot_retrieve_installed_modules": "No se pueden recuperar los módulos instalados",
-        "401": "Autentificación no válida",
-        "cannot_retrieve_module_info": "No se puede recuperar la información del módulo",
-        "generic_error": "Algo ha salido mal",
+        "403": "Operation not authorized",
+        "cannot_retrieve_installed_modules": "Cannot retrieve installed modules",
+        "401": "Invalid authentication",
+        "cannot_retrieve_module_info": "Cannot retrieve module info",
+        "generic_error": "Something went wrong",
         "error": "Error",
-        "network_timeout": "Tiempo de espera de red agotado",
-        "404": "Recurso no encontrado",
-        "network_error": "Fallo de red",
-        "validation_error": "Fallo en la validación"
+        "network_timeout": "Network timeout",
+        "404": "Resource not found",
+        "network_error": "Network error",
+        "validation_error": "Validation error"
     },
     "action": {
-        "get-configuration": "Obtener la configuración",
-        "list-backup-repositories": "Mostrar repositorios de la copia de seguridad",
-        "get-module-info": "Obtener información del módulo",
-        "list-installed-modules": "Lista de módulos instalados",
-        "list-backups": "Mostrar las copias de seguridad",
-        "get-status": "Obtener el estado",
-        "configure-module": "Configurar módulo",
-        "get-name": "Obtener el nombre"
+        "get-configuration": "Get configuration",
+        "list-backup-repositories": "List backup repositories",
+        "get-module-info": "Get module info",
+        "list-installed-modules": "List installed modules",
+        "list-backups": "List backups",
+        "get-status": "Get status",
+        "configure-module": "Configure module",
+        "get-name": "Get name"
     },
     "task": {
-        "cannot_create_task": "No se puede crear la tarea {action}"
+        "cannot_create_task": "Cannot create task {action}"
     }
 }
