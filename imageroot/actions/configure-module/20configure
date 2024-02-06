@@ -46,3 +46,6 @@ agent.set_env("EJABBERD_PURGE_MNESIA_INTERVAL", mnesia_purge_interval)
 agent.set_env("TRAEFIK_LETS_ENCRYPT", le)
 agent.set_env("EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL",purge_httpd_upload_interval)
 agent.set_env("EJABBERD_WEBADMIN",webadmin)
+
+# Bind the new domain, overriding previous values (unbind)
+agent.bind_user_domains([ldap_domain])
