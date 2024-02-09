@@ -16,17 +16,17 @@ renv = request['environment']
 configure_retval = agent.tasks.run(agent_id=os.environ['AGENT_ID'], action='configure-module', data={
     "ldap_domain": renv["EJABBERD_LDAP_DOMAIN"],
     "adminsList": renv["EJABBERD_ADMIN_LIST"],
-    "s2s": renv["EJABBERD_S2S"],
-    "http_upload": renv["EJABBERD_HTTP_UPLOAD"],
+    "s2s": renv["EJABBERD_S2S"] == "True",
+    "http_upload": renv["EJABBERD_HTTP_UPLOAD"] == "True",
     "hostname": renv["EJABBERD_HOSTNAME"],
-    "mod_mam_status": renv["EJABBERD_MOD_MAM_STATUS"],
-    "shaper_normal": renv["EJABBERD_SHAPER_NORMAL"],
-    "shaper_fast": renv["EJABBERD_SHAPER_FAST"],
-    "mod_http_upload_unlimited": renv["EJABBERD_MOD_HTTP_UPLOAD_UNLIMITED"],
-    "purge_httpd_upload_interval": renv["EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL"],
-    "purge_mnesia_unlimited": renv["EJABBERD_PURGE_MNESIA_UNLIMITED"],
-    "purge_mnesia_interval": renv["EJABBERD_PURGE_MNESIA_INTERVAL"],
-    "lets_encrypt": renv["TRAEFIK_LETS_ENCRYPT"],
-    "webadmin": renv["EJABBERD_WEBADMIN"]
+    "mod_mam_status": renv["EJABBERD_MOD_MAM_STATUS"] == "True",
+    "shaper_normal": int(renv["EJABBERD_SHAPER_NORMAL"]),
+    "shaper_fast": int(renv["EJABBERD_SHAPER_FAST"]),
+    "mod_http_upload_unlimited": renv["EJABBERD_MOD_HTTP_UPLOAD_UNLIMITED"] == "True",
+    "purge_httpd_upload_interval": int(renv["EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL"]),
+    "purge_mnesia_unlimited": renv["EJABBERD_PURGE_MNESIA_UNLIMITED"] == "True",
+    "purge_mnesia_interval": int(renv["EJABBERD_PURGE_MNESIA_INTERVAL"]),
+    "lets_encrypt": renv["TRAEFIK_LETS_ENCRYPT"] == "True",
+    "webadmin": renv["EJABBERD_WEBADMIN"] == "True",
 })
 agent.assert_exp(configure_retval['exit_code'] == 0, "The configure-module subtask failed!")
