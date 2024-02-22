@@ -53,7 +53,9 @@
     "save": "Save",
     "specify_duration": "Specify duration",
     "days": "Days",
-    "never": "Never clean"
+    "never": "Never clean",
+    "hostname_pattern": "Must be a valid fully qualified domain name",
+    "hostname_format": "Must be a valid fully qualified domain name"
   },
   "about": {
     "title": "About"
