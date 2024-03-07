@@ -1,0 +1,89 @@
+{
+    "status": {
+        "created": "Created",
+        "size": "Size",
+        "name": "Name",
+        "app_volumes": "App volume | App volumes",
+        "app_images": "App image | App images",
+        "mount": "Mount",
+        "installation_node": "Installation node",
+        "node": "Node",
+        "services": "Service | Services",
+        "app_instance": "App instance",
+        "title": "Status",
+        "no_images": "No images",
+        "no_services": "No services",
+        "no_volumes": "No volumes"
+    },
+    "common": {
+        "required": "Required",
+        "work_in_progress": "Work in progress",
+        "processing": "Processing..."
+    },
+    "settings": {
+        "configure_instance": "Configure {instance}",
+        "advanced": "Advanced",
+        "admin_login_tips": "If enabled, Web Admin page is available on port 5280 with TLS encryption.",
+        "ldap_domain": "LDAP user domain",
+        "choose_the_ldap_domain_to_use": "Choose the LDAP domain used for user authentication",
+        "hostname_placeholder": "example.com",
+        "Write_administrator_list": "Enter one administrator per line",
+        "enabled": "Enabled",
+        "purge_mnesia_database_interval": "Clean messages older than",
+        "purge_httpd_upload_interval": "Clean files older than",
+        "webadmin_status": "Web Admin",
+        "title": "Settings",
+        "choose_ldap_domain": "Choose LDAP domain",
+        "processing": "Processing...",
+        "Enable_message_archive_management_mod_mam": "Enable Message Archive Management (mod_mam)",
+        "hostname_must_be_relevant_for_user_authentication": "This is the domain used for user authentication, i.e. user@domain.com",
+        "save": "Save",
+        "never": "Never clean",
+        "hostname_format": "Must be a valid fully qualified domain name",
+        "Enable_mod_http_upload_quota": "Enable file upload (mod_http_upload)",
+        "Enable_purge_mnesia_database": "Purge message of Mnesia database",
+        "bad_email_address": "Please enter user@domain. Invalid administrator:",
+        "adminList": "Web Admin administrators",
+        "open_ejabberd_webapp": "Open web admin",
+        "days": "Days",
+        "Enable_file_upload_mod_http_upload": "Enable file upload (mod_http_upload)",
+        "specify_duration": "Specify duration",
+        "disabled": "Disabled",
+        "request_https_certificate": "Request a Let's Encrypt certificate",
+        "shaper_normal_kbytes/s": "Normal file transfer bandwidth (KB/s)",
+        "shaper_fast_kbytes/s": "Fast file transfer bandwidth (KB/s)",
+        "required": "Required",
+        "Enable_federation_s2s": "Enable federation (S2S)",
+        "hostname_pattern": "Must be a valid fully qualified domain name",
+        "hostname": "Ejabberd domain (FQDN)"
+    },
+    "error": {
+        "cannot_retrieve_module_info": "Cannot retrieve module info",
+        "cannot_retrieve_installed_modules": "Cannot retrieve installed modules",
+        "network_timeout": "Network timeout",
+        "404": "Resource not found",
+        "network_error": "Network error",
+        "validation_error": "Validation error",
+        "403": "Operation not authorized",
+        "401": "Invalid authentication",
+        "generic_error": "Something went wrong",
+        "shaper_normal_must_be_inferior_to_shaper_fast": "The normal shaper must be inferior to fast shaper",
+        "error": "Error"
+    },
+    "action": {
+        "get-module-info": "Get module info",
+        "list-installed-modules": "List installed modules",
+        "get-status": "Get status",
+        "configure-module": "Configure module",
+        "get-configuration": "Get configuration",
+        "get-name": "Get name",
+        "list-backup-repositories": "List backup repositories",
+        "list-backups": "List backups"
+    },
+    "about": {
+        "title": "About"
+    },
+    "task": {
+        "cannot_create_task": "Cannot create task {action}"
+    }
+}
