@@ -1,0 +1,89 @@
+{
+    "settings": {
+        "title": "Einstellungen",
+        "save": "Speichern",
+        "enabled": "Aktiviert",
+        "disabled": "Deaktiviert",
+        "configure_instance": "{instance} konfigurieren",
+        "hostname": "Ejabberd Domäne (FQDN)",
+        "hostname_placeholder": "example.com",
+        "hostname_must_be_relevant_for_user_authentication": "Diese Domäne wird für die Nutzerauthentifizierung genutzt, z.B. user@example.com",
+        "ldap_domain": "LDAP Benutzer-Domäne",
+        "choose_ldap_domain": "LDAP-Domäne wählen",
+        "request_https_certificate": "Zertifikat von Let's Encrypt anfordern",
+        "advanced": "Erweitert",
+        "webadmin_status": "Web-Administration",
+        "open_ejabberd_webapp": "Web-Administration öffnen",
+        "adminList": "Web-Administration Admin-Benutzer",
+        "Write_administrator_list": "Ein administrativer Benutzer pro Zeile",
+        "bad_email_address": "Format user@example.com nutzen. Fehlerhafter Administrator:",
+        "processing": "Verarbeite...",
+        "required": "Erforderlich",
+        "admin_login_tips": "Wenn aktiviert ist die Web-Administration an Port 5280 TLS-verschlüsselt verfügbar.",
+        "Enable_federation_s2s": "Federation aktivieren (S2S)",
+        "Enable_message_archive_management_mod_mam": "Nachrichten Archiv-Verwaltung aktivieren (mod_mam)",
+        "Enable_file_upload_mod_http_upload": "Dateiupload aktivieren (mod_http_upload)",
+        "Enable_purge_mnesia_database": "Nachrichten der Mnesia Datenbank entfernen",
+        "purge_httpd_upload_interval": "Löschen Dateien älter als",
+        "purge_mnesia_database_interval": "Lösche Nachrichten älter als",
+        "shaper_normal_kbytes/s": "Standard Dateitransfer Bandbreite (KB/s)",
+        "shaper_fast_kbytes/s": "Schnelle Dateitransfer Bandbreite (KB/s)",
+        "specify_duration": "Dauer festlegen",
+        "days": "Tage",
+        "never": "Niemals bereinigen",
+        "hostname_pattern": "Voll-qualifizierter Domänen-Name (FQDN) erforderlich",
+        "choose_the_ldap_domain_to_use": "LDAP-Domäne zur Benutzerauthentifizierung auswählen",
+        "Enable_mod_http_upload_quota": "Dateiupload-Quota aktivieren (mod_http_upload)",
+        "hostname_format": "Voll-qualifizierter Domänen-Name (FQDN) erforderlich"
+    },
+    "common": {
+        "work_in_progress": "in Arbeit",
+        "required": "Erforderlich",
+        "processing": "Verarbeite..."
+    },
+    "status": {
+        "app_volumes": "App Volumen | App Volumen",
+        "installation_node": "Installations-Knoten",
+        "node": "Knoten",
+        "name": "Name",
+        "size": "Größe",
+        "created": "Erstellt",
+        "mount": "Einhängepunkt",
+        "no_services": "Keine Dienste",
+        "no_images": "Keine Abbilder",
+        "no_volumes": "Keine Volumen",
+        "title": "Status",
+        "app_instance": "App-Instanz",
+        "services": "Dienst | Dienste",
+        "app_images": "App Abbild | App Abbilder"
+    },
+    "about": {
+        "title": "Über"
+    },
+    "task": {
+        "cannot_create_task": "Aufgabe {action} kann nicht erstellt werden"
+    },
+    "error": {
+        "error": "Fehler",
+        "network_timeout": "Netzwerk-Zeitüberschreitung",
+        "network_error": "Netzwerk-Fehler",
+        "generic_error": "Etwas ist schief gegangen",
+        "401": "Ungültige Authentifizierung",
+        "403": "Operation nicht genehmigt",
+        "404": "Ressource nicht gefunden",
+        "cannot_retrieve_module_info": "Modul-Info kann nicht abgerufen werden",
+        "cannot_retrieve_installed_modules": "Installierte Module können nicht abgerufen werden",
+        "validation_error": "Überprüfungsfehler",
+        "shaper_normal_must_be_inferior_to_shaper_fast": "Bandbreite Standard muss geringer als Bandbreite schnell sein"
+    },
+    "action": {
+        "list-backup-repositories": "Datensicherungs-Ziele auflisten",
+        "list-backups": "Datensicherungen auflisten",
+        "get-status": "Status abrufen",
+        "get-configuration": "Konfiguration abrufen",
+        "configure-module": "Modul konfigurieren",
+        "get-module-info": "Modul-Info abrufen",
+        "get-name": "Namen abrufen",
+        "list-installed-modules": "installierte Modules auflisten"
+    }
+}

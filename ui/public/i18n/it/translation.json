@@ -80,7 +80,9 @@
         "purge_httpd_upload_interval": "Pulire i file più vecchi di",
         "shaper_fast_kbytes/s": "Larghezza di banda per il trasferimento veloce dei file (KB/s)",
         "specify_duration": "Specificare la durata",
-        "never": "Non pulire mai"
+        "never": "Non pulire mai",
+        "hostname_pattern": "Deve essere un nome di dominio pienamente qualificato valido",
+        "hostname_format": "Deve essere un nome di dominio pienamente qualificato valido"
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire task {action}"
