@@ -23,7 +23,7 @@
         "purge_httpd_upload_interval": "Limpiar archivos anteriores a",
         "webadmin_status": "Administrador web",
         "title": "Ajustes",
-        "choose_ldap_domain": "Elige el dominio LDAP",
+        "choose_ldap_domain": "Elegir un dominio LDAP",
         "Enable_message_archive_management_mod_mam": "Habilitar la Gestión de Archivos de Mensajes (Message Archive Management) (mod_mam)",
         "hostname_must_be_relevant_for_user_authentication": "Este es el dominio utilizado para la autenticación de usuarios, es decir, usuario@dominio.es",
         "advanced": "Avanzado",

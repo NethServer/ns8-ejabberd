@@ -9,7 +9,7 @@
         "hostname_placeholder": "example.com",
         "hostname_must_be_relevant_for_user_authentication": "Diese Domäne wird für die Nutzerauthentifizierung genutzt, z.B. user@example.com",
         "ldap_domain": "LDAP Benutzer-Domäne",
-        "choose_ldap_domain": "LDAP-Domäne wählen",
+        "choose_ldap_domain": "LDAP Domäne wählen",
         "request_https_certificate": "Zertifikat von Let's Encrypt anfordern",
         "advanced": "Erweitert",
         "webadmin_status": "Web-Administration",
