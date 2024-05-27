@@ -22,7 +22,7 @@
                 "build-images.sh"
             ],
             "matchStrings": [
-                "docker\\.io\/ejabberd\/ecs:(?<currentValue>[^\\s]+)"
+                "docker\\.io\/ejabberd\/ecs:(?<currentValue>[^\\s]+)\""
             ],
             "depNameTemplate": "ejabberd/ecs",
             "datasourceTemplate": "docker"
