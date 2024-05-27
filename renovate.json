@@ -25,7 +25,8 @@
                 "docker\\.io\/ejabberd\/ecs:(?<currentValue>[^\\s]+)"
             ],
             "depNameTemplate": "ejabberd/ecs",
-            "datasourceTemplate": "docker"
+            "datasourceTemplate": "docker",
+             "versioning": "regex:^(?<major>\\d+)(\\.(?<minor>\\d+))"
         }
     ],
     "packageRules": [
