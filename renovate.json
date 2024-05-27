@@ -26,7 +26,6 @@
             ],
             "depNameTemplate": "ejabberd/ecs",
             "datasourceTemplate": "docker",
-             "versioning": "regex:^(?<major>\\d+)(\\.(?<minor>\\d+))"
         }
     ],
     "packageRules": [
@@ -35,6 +34,12 @@
                 "node"
             ],
             "allowedVersions": "<= 18"
+        },
+        {
+            "matchPackageNames": [
+                "ejabberd/ecs"
+            ],
+            "versioning": "regex:^(?<major>\\d+)(\\.(?<minor>\\d+))"
         }
     ]
 }
