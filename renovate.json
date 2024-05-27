@@ -24,7 +24,7 @@
             "matchStrings": [
                 "docker\\.io\/ejabberd\/ecs:(?<currentValue>[^\\s]+)"
             ],
-            "depNameTemplate": "ejabberd",
+            "depNameTemplate": "ejabberd/ecs",
             "datasourceTemplate": "docker"
         }
     ],
