@@ -6,6 +6,10 @@ on:
       - '**/validate-input.json'
       - '**/validate-output.json'
       - '**/validator-definitions.json'
+    branches-ignore:
+      - 'renovate/**'
+    tags:
+      - "**"
 
 jobs:
   build-apidoc:
