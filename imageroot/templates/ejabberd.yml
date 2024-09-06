@@ -168,7 +168,15 @@ api_permissions:
     what:
       - "status"
       - "connected_users_number"
-
+  "webadmin commands":
+    from:
+      - ejabberd_web_admin
+    who:
+      access:
+        allow:
+          - acl: admin
+    what:
+      - "*"
 
 
 acl:
