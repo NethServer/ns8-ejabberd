@@ -1,7 +1,7 @@
 {
     "common": {
         "work_in_progress": "In lavorazione",
-        "processing": "Elaborazione in corso...",
+        "processing": "In elaborazione…",
         "required": "Obbligatorio"
     },
     "error": {
@@ -49,13 +49,12 @@
     "settings": {
         "title": "Impostazioni",
         "configure_instance": "Configura {instance}",
-        "test_field": "Campo di test",
         "save": "Salva",
         "disabled": "Disabilitato",
         "enabled": "Abilitato",
         "advanced": "Avanzate",
         "request_https_certificate": "Richiedi certificato Let's Encrypt",
-        "processing": "Elaborazione...",
+        "processing": "Processing...",
         "shaper_normal_kbytes/s": "Larghezza di banda normale per il trasferimento di file (KB/s)",
         "days": "Giorni",
         "Enable_file_upload_mod_http_upload": "Abilitare il caricamento dei file (mod_http_upload)",
@@ -64,13 +63,13 @@
         "hostname_must_be_relevant_for_user_authentication": "Si tratta dell'host virtuale utilizzato per l'autenticazione dell'utente, cioè user@virtualhost",
         "ldap_domain": "Dominio utente LDAP",
         "choose_the_ldap_domain_to_use": "Scegliere il dominio LDAP utilizzato per l'autenticazione degli utenti.",
-        "choose_ldap_domain": "Scegliere il dominio LDAP",
+        "choose_ldap_domain": "Choose LDAP domain",
         "webadmin_status": "Amministratore Web",
         "open_ejabberd_webapp": "Apri l'amministrazione web",
         "adminList": "Amministratori Web",
         "Write_administrator_list": "Inserire un amministratore per riga",
         "bad_email_address": "Inserire user@domain. Amministratore non valido:",
-        "required": "Obbligatorio",
+        "required": "Required",
         "admin_login_tips": "Se abilitata, la pagina Web Admin è disponibile sulla porta 5280. Ricordarsi di aprire questa porta sul firewall",
         "Enable_federation_s2s": "Abilitare la federazione (S2S)",
         "Enable_message_archive_management_mod_mam": "Abilitare la gestione dell'archivio dei messaggi (mod_mam)",
@@ -85,6 +84,6 @@
         "hostname_format": "Deve essere un nome di dominio pienamente qualificato valido"
     },
     "task": {
-        "cannot_create_task": "Impossibile eseguire task {action}"
+        "cannot_create_task": "Impossibile eseguire il task {action}"
     }
 }
