@@ -42,13 +42,7 @@
               tooltipDirection="right"
             >
               <template slot="tooltip">
-                <div
-                  v-html="
-                    $t(
-                      'settings.hostname_must_be_relevant_for_user_authentication'
-                    )
-                  "
-                ></div>
+                <div>{{ $t('settings.hostname_must_be_relevant_for_user_authentication') }}</div>
               </template>
             </NsTextInput>
             <NsComboBox
@@ -100,7 +94,7 @@
                     ref="webadmin"
                   >
                     <template slot="tooltip">
-                      <span v-html="$t('settings.admin_login_tips')"></span>
+                      <span>{{ $t('settings.admin_login_tips') }}</span>
                     </template>
                     <template slot="text-left">{{
                       $t("settings.disabled")
