@@ -42,13 +42,13 @@
               tooltipDirection="right"
             >
               <template slot="tooltip">
-                <div
-                  v-html="
+                <div>
+                  {{
                     $t(
-                      'settings.hostname_must_be_relevant_for_user_authentication'
+                      "settings.hostname_must_be_relevant_for_user_authentication"
                     )
-                  "
-                ></div>
+                  }}
+                </div>
               </template>
             </NsTextInput>
             <NsComboBox
@@ -100,7 +100,7 @@
                     ref="webadmin"
                   >
                     <template slot="tooltip">
-                      <span v-html="$t('settings.admin_login_tips')"></span>
+                      <span>{{ $t("settings.admin_login_tips") }}</span>
                     </template>
                     <template slot="text-left">{{
                       $t("settings.disabled")
@@ -114,7 +114,9 @@
                       kind="ghost"
                       class="mg-left"
                       :icon="Launch20"
-                      :disabled="loading.getConfiguration || loading.configureModule"
+                      :disabled="
+                        loading.getConfiguration || loading.configureModule
+                      "
                       @click="goToEjabberdWebAdmin"
                     >
                       {{ $t("settings.open_ejabberd_webapp") }}
@@ -489,7 +491,8 @@ export default {
       }
       //validate normal speed < fast speed
       if (parseInt(this.shaper_normal) > parseInt(this.shaper_fast)) {
-        this.error.shaper_normal = "error.shaper_normal_must_be_inferior_to_shaper_fast";
+        this.error.shaper_normal =
+          "error.shaper_normal_must_be_inferior_to_shaper_fast";
         this.shaper_normal = this.shaper_fast;
         if (isValidationOk) {
           this.focusElement("shaper_normal");
