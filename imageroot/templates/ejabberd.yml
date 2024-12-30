@@ -268,7 +268,8 @@ modules:
   mod_version: {}
   mod_stream_mgmt: {}
   mod_s2s_dialback: {}
-  mod_http_api: {}
+  mod_http_api:
+    default_version: 2
 {%if http_upload %}
   mod_http_upload:
     docroot: "/home/ejabberd/upload/"
