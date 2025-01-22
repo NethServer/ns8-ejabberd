@@ -1,0 +1,89 @@
+{
+    "settings": {
+        "disabled": "முடக்கப்பட்டது",
+        "ldap_domain": "LDAP பயனர் டொமைன்",
+        "bad_email_address": "பயனர்@டொமைனை உள்ளிடவும். தவறான நிர்வாகி:",
+        "adminList": "வலை நிர்வாகிகள் நிர்வாகிகள்",
+        "open_ejabberd_webapp": "வலை நிர்வாகி திறந்த",
+        "Write_administrator_list": "ஒரு வரிக்கு ஒரு நிர்வாகியை உள்ளிடவும்",
+        "required": "தேவை",
+        "Enable_purge_mnesia_database": "Mnesia தரவுத்தளத்தின் செய்தியை தூய்மைப்படுத்துங்கள்",
+        "advanced": "மேம்பட்ட",
+        "days": "நாட்கள்",
+        "Enable_file_upload_mod_http_upload": "கோப்பு பதிவேற்றத்தை இயக்கவும் (mod_http_upload)",
+        "configure_instance": "{உதாரணத்தை உள்ளமைக்கவும்",
+        "specify_duration": "காலத்தைக் குறிப்பிடவும்",
+        "admin_login_tips": "இயக்கப்பட்டால், வலை நிர்வாகம் பக்கம் TLS குறியாக்கத்துடன் துறைமுகம் 5280 இல் கிடைக்கிறது.",
+        "never": "ஒருபோதும் தூய்மை செய்ய வேண்டாம்",
+        "choose_the_ldap_domain_to_use": "பயனர் அங்கீகாரத்திற்கு பயன்படுத்தப்படும் LDAP களத்தைத் தேர்வுசெய்க",
+        "hostname_placeholder": "example.com",
+        "request_https_certificate": "ஒரு குறியாக்க சான்றிதழைக் கோருங்கள்",
+        "shaper_normal_kbytes/s": "இயல்பான கோப்பு பரிமாற்ற அலைவரிசை (kb/s)",
+        "shaper_fast_kbytes/s": "வேகமான கோப்பு பரிமாற்ற அலைவரிசை (kb/s)",
+        "Enable_mod_http_upload_quota": "கோப்பு பதிவேற்றத்தை இயக்கவும் (mod_http_upload)",
+        "Enable_federation_s2s": "கூட்டமைப்பை இயக்கு (எச் 2 எச்)",
+        "hostname_pattern": "செல்லுபடியாகும் முழு தகுதி வாய்ந்த டொமைன் பெயராக இருக்க வேண்டும்",
+        "hostname": "EJABBERD டொமைன் (FQDN)",
+        "save": "சேமி",
+        "enabled": "இயக்கப்பட்டது",
+        "purge_mnesia_database_interval": "தூய்மை செய்ததை விட பழையது",
+        "purge_httpd_upload_interval": "விட பழைய கோப்புகளை தூய்மை செய்யுங்கள்",
+        "webadmin_status": "வலை நிர்வாகி",
+        "title": "அமைப்புகள்",
+        "choose_ldap_domain": "LDAP டொமைனைத் தேர்வுசெய்க",
+        "processing": "செயலாக்கம் ...",
+        "hostname_format": "செல்லுபடியாகும் முழு தகுதி வாய்ந்த டொமைன் பெயராக இருக்க வேண்டும்",
+        "Enable_message_archive_management_mod_mam": "செய்தி காப்பக நிர்வாகத்தை இயக்கவும் (MOD_MAM)",
+        "hostname_must_be_relevant_for_user_authentication": "இது பயனர் அங்கீகாரத்திற்குப் பயன்படுத்தப்படும் டொமைன், அதாவது User@domain.com"
+    },
+    "action": {
+        "list-backup-repositories": "காப்புப்பிரதி களஞ்சியங்களை பட்டியலிடுங்கள்",
+        "list-installed-modules": "நிறுவப்பட்ட தொகுதிகள் பட்டியல்",
+        "list-backups": "காப்புப்பிரதிகளை பட்டியலிடுங்கள்",
+        "get-module-info": "தொகுதி தகவலைப் பெறுங்கள்",
+        "get-status": "அந்தச்தைப் பெறுங்கள்",
+        "configure-module": "தொகுதியை உள்ளமைக்கவும்",
+        "get-configuration": "உள்ளமைவைப் பெறுங்கள்",
+        "get-name": "பெயரைப் பெறுங்கள்"
+    },
+    "error": {
+        "generic_error": "ஏதோ தவறு நடந்தது",
+        "error": "பிழை",
+        "403": "செயல்பாடு அங்கீகரிக்கப்படவில்லை",
+        "cannot_retrieve_installed_modules": "நிறுவப்பட்ட தொகுதிகளை மீட்டெடுக்க முடியாது",
+        "401": "தவறான ஏற்பு",
+        "cannot_retrieve_module_info": "தொகுதி தகவலை மீட்டெடுக்க முடியாது",
+        "shaper_normal_must_be_inferior_to_shaper_fast": "சாதாரண சேப்பர் வேகமான சேப்பரை விட தாழ்ந்ததாக இருக்க வேண்டும்",
+        "network_timeout": "பிணையம் நேரம் முடிந்தது",
+        "404": "சான்று கிடைக்கவில்லை",
+        "network_error": "பிணைய பிழை",
+        "validation_error": "சரிபார்ப்பு பிழை"
+    },
+    "common": {
+        "required": "தேவை",
+        "work_in_progress": "வேலை முன்னேற்றத்தில் உள்ளது",
+        "processing": "செயலாக்கம் ..."
+    },
+    "status": {
+        "created": "உருவாக்கப்பட்டது",
+        "size": "அளவு",
+        "name": "பெயர்",
+        "no_images": "படங்கள் இல்லை",
+        "app_volumes": "பயன்பாட்டு தொகுதி | பயன்பாட்டு தொகுதிகள்",
+        "services": "பணி | சேவைகள்",
+        "app_images": "பயன்பாட்டு படம் | பயன்பாட்டு படங்கள்",
+        "no_services": "சேவைகள் இல்லை",
+        "app_instance": "பயன்பாட்டு நிகழ்வு",
+        "mount": "மவுண்ட்",
+        "title": "நிலை",
+        "installation_node": "நிறுவல் முனை",
+        "node": "கணு",
+        "no_volumes": "தொகுதிகள் இல்லை"
+    },
+    "about": {
+        "title": "பற்றி"
+    },
+    "task": {
+        "cannot_create_task": "பணியை உருவாக்க முடியாது {action}"
+    }
+}
