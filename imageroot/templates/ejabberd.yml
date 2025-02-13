@@ -285,6 +285,7 @@ modules:
     ldap_groupattr: "cn"
     ldap_groupdesc: "o"
     ldap_useruid: "uid"
+    ldap_userdesc: "displayName"
     ldap_ufilter: "(uid=%u)"
     ldap_rfilter: "(objectClass=inetOrgPerson)"
     ldap_memberattr: "uid"
