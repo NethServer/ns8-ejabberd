@@ -8,4 +8,17 @@
 set -e    # exit immediately if an error occurs
 exec 1>&2 # ensure any output is sent to stderr
 
+# Use a builtin DH group for first boot
+mkdir -vp certificates
+cat <<'EOF' > certificates/dh.pem
+-----BEGIN DH PARAMETERS-----
+MIIBDAKCAQEAy6692FnPYpbycnnii97RS+c67WDfE7vmNy1hoEiJb0TJx0xEVHtz
+U5Y/cnpsU/vLXw+sMpkgAASDfC/piJ5w17YDXl2UzIcEE6RTYEb+3WG/0YswM7iL
+Q3UIjW1oPDoUX8P7/GLw6bI7/kzkKQMebzK47IrZ2NTEucIGqNgjT6cDyQKnSr9b
+SipPMLW8qenFB4W/RHWZu/F5WvnERDFpTQ5xUySHU0QliWcMIOsxgnByPjOc9sLm
+tah5tJrnX0Hvb3OpfLrcUIjsOkwQKhOyiM473AAWOrUDcoXXXzsqafexke5qMF0I
+2p7ZWcxx0G451RMZ52ndJ7pVFb3onMzWxwIBAgICAOE=
+-----END DH PARAMETERS-----
+EOF
+
 systemctl --user enable --now dhgen.timer
