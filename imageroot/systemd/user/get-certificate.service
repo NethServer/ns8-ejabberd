@@ -1,0 +1,11 @@
+[Unit]
+Description=Get TLS certificate from Traefik
+
+[Service]
+Type=oneshot
+EnvironmentFile=%S/state/environment
+WorkingDirectory=%S/state
+SyslogIdentifier=%N
+ExecStart=-mkdir -vp certificates
+ExecStart=-runagent get-certificate --cert-file=certificates/server.pem --key-file=certificates/server.key $EJABBERD_HOSTNAME
+ExecStart=-bash -c 'cd certificates ; cat server.key server.pem > ejabberd.pem ; touch -r server.pem ejabberd.pem'

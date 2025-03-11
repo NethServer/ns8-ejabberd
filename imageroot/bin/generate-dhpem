@@ -1,21 +1,13 @@
 #!/bin/bash
 
 #
-# Copyright (C) 2022 Nethesis S.r.l.
+# Copyright (C) 2025 Nethesis S.r.l.
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
 set -e
-# build directory structure
+
 mkdir -vp certificates
-
-# create a temporary file
-dhtmp=$(mktemp dh.pem.XXXXXX)
-trap 'rm -f ${dhtmp}' EXIT
-
-umask 022 # 644
-openssl dhparam -out "${dhtmp}" 2048
-
-# we want preserve umask
-cat "${dhtmp}" > certificates/dh.pem
-
+cd certificates
+openssl dhparam -out dh.pem.tmp 2048
+mv -v dh.pem.tmp dh.pem
