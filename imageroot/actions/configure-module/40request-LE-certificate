@@ -21,7 +21,6 @@ if le:
         action='set-certificate',
         data={
             "fqdn":hostname,
-            "sync": True,
         },
         parent='', # Run as a root task
         extra={
