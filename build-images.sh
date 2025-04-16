@@ -41,7 +41,7 @@ buildah config --entrypoint=/ \
     --label="org.nethserver.max-per-node=1" \
     --label="org.nethserver.tcp-ports-demand=0" \
     --label="org.nethserver.rootfull=0" \
-    --label="org.nethserver.images=docker.io/ejabberd/ecs:24.12" \
+    --label="org.nethserver.images=docker.io/ejabberd/ecs:25.03" \
     "${container}"
 # Commit the image
 buildah commit "${container}" "${repobase}/${reponame}"
