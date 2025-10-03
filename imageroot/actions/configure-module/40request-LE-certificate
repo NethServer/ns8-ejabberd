@@ -9,22 +9,34 @@ import sys
 import agent
 import agent.tasks
 import os
-
+import json
 
 agent_id = agent.resolve_agent_id('traefik@node')
 hostname = os.environ['EJABBERD_HOSTNAME']
 le = True if os.environ['TRAEFIK_LETS_ENCRYPT'] == "True" else False
 
 if le:
-    agent.tasks.run_nowait(
+    response = agent.tasks.run(
         agent_id=agent_id, # e.g. module/traefik1
-        action='set-certificate',
+        action='set-default-certificate',
         data={
-            "fqdn":hostname,
+            "names": [
+                hostname
+            ],
+            "sync_timeout": 60
         },
         parent='', # Run as a root task
         extra={
-            'title': 'set-certificate',
+            'title': 'set-default-certificate',
             'isNotificationHidden': False,
         },
     )
+    # Check for ACME certificate error and set validation stop
+    for item in response['output']:
+        if item.get('error') == 'newcert_acme_error':
+            agent.set_status('validation-failed')
+            json.dump([{'field':'host','parameter':'names','value': hostname,'error':'newcert_acme_error', 'details': item.get('details')}], fp=sys.stdout)
+            sys.exit(4)
+    # Check if traefik configuration has been successfull
+    agent.assert_exp(response['exit_code'] == 0)
+
