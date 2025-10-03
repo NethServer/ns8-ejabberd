@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+import sys
+import agent
+import agent.tasks
+import os
+import json
+
+# Try to parse the stdin as JSON.
+data = json.load(sys.stdin)
+hostname = data.get("hostname", "")
+le = data.get("lets_encrypt", False)
+
+agent_id = agent.resolve_agent_id('traefik@node')
+
+if le:
+    response = agent.tasks.run(
+        agent_id=agent_id, # e.g. module/traefik1
+        action='set-default-certificate',
+        data={
+            "names": [
+                hostname
+            ],
+            "sync_timeout": 60
+        },
+        parent='', # Run as a root task
+        extra={
+            'title': 'set-default-certificate',
+            'isNotificationHidden': False,
+        },
+    )
+    # Check for ACME certificate error and set validation stop
+    for item in response['output']:
+        if item.get('error') == 'newcert_acme_error':
+            agent.set_status('validation-failed')
+            json.dump([{'field':'host','parameter':'names','value': hostname,'error':'newcert_acme_error', 'details': item.get('details')}], fp=sys.stdout)
+            sys.exit(4)
+    # Check if traefik configuration has been successfull
+    agent.assert_exp(response['exit_code'] == 0)
+
