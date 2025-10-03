@@ -56,11 +56,11 @@
         "never": "Never clean",
         "hostname_pattern": "Must be a valid fully qualified domain name",
         "hostname_format": "Must be a valid fully qualified domain name",
-        "lets_encrypt_tips": "This option enables automatic request of a Let's Encrypt TLS certificate for this app. Manage certificate from TLS Certificates pages",
+        "lets_encrypt_tips": "This option enables automatic request of a Let's Encrypt TLS certificate for this app. Manage the certificate from the TLS Certificates page",
         "cannot_obtain_certificate": "Cannot obtain a Let's Encrypt certificate for {hostname}",
         "go_to_tls_certificates": "Go to TLS Certificates",
         "lets_encrypt_disabled_warning_description": "The certificate might be removed. The app may temporarily become unreachable until a valid certificate is restored",
-        "lets_encrypt_disabled_warning": "Disabling certificate will affect app availability"
+        "lets_encrypt_disabled_warning": "Disabling the certificate will affect app availability"
     },
     "about": {
         "title": "About"

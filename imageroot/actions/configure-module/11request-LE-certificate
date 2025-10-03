@@ -8,7 +8,6 @@
 import sys
 import agent
 import agent.tasks
-import os
 import json
 
 # Try to parse the stdin as JSON.
