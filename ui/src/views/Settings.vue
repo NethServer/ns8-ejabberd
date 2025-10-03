@@ -51,6 +51,46 @@
                 </div>
               </template>
             </NsTextInput>
+            <NsToggle
+              value="letsEncrypt"
+              :label="$t('settings.request_https_certificate')"
+              v-model="isLetsEncryptEnabled"
+              :disabled="
+                loading.getConfiguration ||
+                loading.configureModule ||
+                loading.getDefaults
+              "
+              class="mg-bottom"
+            >
+              <template #tooltip>
+                <div class="mg-bottom-sm">
+                  {{ $t("settings.lets_encrypt_tips") }}
+                </div>
+                <div class="mg-bottom-sm">
+                  <cv-link @click="goToCertificates">
+                    {{ $t("settings.go_to_tls_certificates") }}
+                  </cv-link>
+                </div>
+              </template>
+              <template slot="text-left">{{
+                $t("settings.disabled")
+              }}</template>
+              <template slot="text-right">{{
+                $t("settings.enabled")
+              }}</template>
+            </NsToggle>
+            <cv-row v-if="letsEncryptIsEnabled && !isLetsEncryptEnabled">
+              <cv-column>
+                <NsInlineNotification
+                  kind="warning"
+                  :title="$t('settings.lets_encrypt_disabled_warning')"
+                  :description="
+                    $t('settings.lets_encrypt_disabled_warning_description')
+                  "
+                  :showCloseButton="false"
+                />
+              </cv-column>
+            </cv-row>
             <NsComboBox
               v-model.trim="ldap_domain"
               :autoFilter="true"
@@ -70,20 +110,6 @@
                 {{ $t("settings.choose_the_ldap_domain_to_use") }}
               </template>
             </NsComboBox>
-            <cv-toggle
-              value="letsEncrypt"
-              :label="$t('settings.request_https_certificate')"
-              v-model="isLetsEncryptEnabled"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              class="mg-bottom"
-            >
-              <template slot="text-left">{{
-                $t("settings.disabled")
-              }}</template>
-              <template slot="text-right">{{
-                $t("settings.enabled")
-              }}</template>
-            </cv-toggle>
             <!-- advanced options -->
             <cv-accordion ref="accordion" class="maxwidth mg-bottom">
               <cv-accordion-item :open="toggleAccordion[0]">
@@ -279,6 +305,31 @@
                 />
               </cv-column>
             </cv-row>
+            <cv-row>
+              <cv-column>
+                <NsInlineNotification
+                  v-if="validationErrorDetails.length"
+                  kind="error"
+                  :title="
+                    $t('settings.cannot_obtain_certificate', {
+                      hostname: hostname,
+                    })
+                  "
+                  :showCloseButton="false"
+                >
+                  <template #description>
+                    <div class="flex flex-col gap-2">
+                      <p
+                        v-for="(detail, index) in validationErrorDetails"
+                        :key="index"
+                      >
+                        {{ detail }}
+                      </p>
+                    </div>
+                  </template>
+                </NsInlineNotification>
+              </cv-column>
+            </cv-row>
             <NsButton
               kind="primary"
               :icon="Save20"
@@ -321,9 +372,11 @@ export default {
       q: {
         page: "settings",
       },
+      validationErrorDetails: [],
       urlCheckInterval: null,
       hostname: "",
       isLetsEncryptEnabled: false,
+      letsEncryptIsEnabled: false,
       adminsList: "",
       isS2sEnabled: false,
       isHttpUploadEnabled: false,
@@ -378,6 +431,9 @@ export default {
     this.getConfiguration();
   },
   methods: {
+    goToCertificates() {
+      this.core.$router.push("/settings/tls-certificates");
+    },
     goToEjabberdWebAdmin(e) {
       window.open(`https://${this.fqdn}` + ":5280/admin/", "_blank");
       e.preventDefault();
@@ -428,6 +484,7 @@ export default {
       const config = taskResult.output;
       this.hostname = config.hostname;
       this.isLetsEncryptEnabled = config.lets_encrypt;
+      this.letsEncryptIsEnabled = config.lets_encrypt;
       this.adminsList = config.adminsList.split(",").join("\n");
       this.isS2sEnabled = config.s2s;
       this.isHttpUploadEnabled = config.http_upload;
@@ -452,6 +509,7 @@ export default {
     },
     validateConfigureModule() {
       this.clearErrors(this);
+      this.validationErrorDetails = [];
       let isValidationOk = true;
 
       if (!this.hostname) {
@@ -503,12 +561,25 @@ export default {
     },
     configureModuleValidationFailed(validationErrors) {
       this.loading.configureModule = false;
-
+      let focusAlreadySet = false;
       for (const validationError of validationErrors) {
         const param = validationError.parameter;
-
-        // set i18n error message
-        this.error[param] = this.$t("settings." + validationError.error);
+        if (
+          validationError.details &&
+          validationError.error === "newcert_acme_error"
+        ) {
+          // show inline error notification with details for acme error
+          this.validationErrorDetails = validationError.details
+            .split("\n")
+            .filter((detail) => detail.trim() !== "");
+        } else {
+          // set i18n error message
+          this.error[param] = this.$t("settings." + validationError.error);
+          if (!focusAlreadySet) {
+            this.focusElement(param);
+            focusAlreadySet = true;
+          }
+        }
       }
     },
     async configureModule() {
