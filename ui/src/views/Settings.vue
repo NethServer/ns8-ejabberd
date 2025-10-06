@@ -23,7 +23,7 @@
       <cv-column>
         <cv-tile light>
           <cv-skeleton-text
-            v-if="loading.getConfiguration || loading.getDefaults"
+            v-if="stillLoading"
             heading
             paragraph
             :line-count="15"
@@ -36,7 +36,7 @@
               v-model="hostname"
               class="mg-bottom"
               :invalid-message="error.hostname"
-              :disabled="loading.getConfiguration || loading.configureModule"
+              :disabled="stillLoading"
               ref="hostname"
               tooltipAlignment="center"
               tooltipDirection="right"
@@ -55,11 +55,7 @@
               value="letsEncrypt"
               :label="$t('settings.request_https_certificate')"
               v-model="isLetsEncryptEnabled"
-              :disabled="
-                loading.getConfiguration ||
-                loading.configureModule ||
-                loading.getDefaults
-              "
+              :disabled="stillLoading"
               class="mg-bottom"
             >
               <template #tooltip>
@@ -85,7 +81,9 @@
                   kind="warning"
                   :title="$t('settings.lets_encrypt_disabled_warning')"
                   :description="
-                    $t('settings.lets_encrypt_disabled_warning_description')
+                    $t('settings.lets_encrypt_disabled_warning_description', {
+                      node: this.status.node,
+                    })
                   "
                   :showCloseButton="false"
                 />
@@ -101,7 +99,7 @@
               :acceptUserInput="false"
               :showItemType="true"
               :invalid-message="$t(error.ldap_domain)"
-              :disabled="loading.getConfiguration || loading.configureModule"
+              :disabled="stillLoading"
               tooltipAlignment="start"
               tooltipDirection="top"
               ref="ldap_domain"
@@ -120,9 +118,7 @@
                     value="webadmin"
                     :form-item="true"
                     v-model="webadmin"
-                    :disabled="
-                      loading.getConfiguration || loading.configureModule
-                    "
+                    :disabled="stillLoading"
                     ref="webadmin"
                   >
                     <template slot="tooltip">
@@ -140,9 +136,7 @@
                       kind="ghost"
                       class="mg-left"
                       :icon="Launch20"
-                      :disabled="
-                        loading.getConfiguration || loading.configureModule
-                      "
+                      :disabled="stillLoading"
                       @click="goToEjabberdWebAdmin"
                     >
                       {{ $t("settings.open_ejabberd_webapp") }}
@@ -156,9 +150,7 @@
                       class="maxwidth textarea mg-left"
                       ref="adminsList"
                       :placeholder="$t('settings.Write_administrator_list')"
-                      :disabled="
-                        loading.getConfiguration || loading.configureModule
-                      "
+                      :disabled="stillLoading"
                     >
                     </cv-text-area>
                   </template>
@@ -166,9 +158,7 @@
                     value="s2s"
                     :label="$t('settings.Enable_federation_s2s')"
                     v-model="isS2sEnabled"
-                    :disabled="
-                      loading.getConfiguration || loading.configureModule
-                    "
+                    :disabled="stillLoading"
                     class="mg-bottom"
                   >
                     <template slot="text-left">{{
@@ -184,9 +174,7 @@
                       $t('settings.Enable_message_archive_management_mod_mam')
                     "
                     v-model="isModMamStatus"
-                    :disabled="
-                      loading.getConfiguration || loading.configureModule
-                    "
+                    :disabled="stillLoading"
                     class="mg-bottom"
                   >
                     <template slot="text-left">{{
@@ -198,9 +186,7 @@
                   </cv-toggle>
                   <template v-if="isModMamStatus">
                     <NsSlider
-                      :disabled="
-                        loading.getConfiguration || loading.configureModule
-                      "
+                      :disabled="stillLoading"
                       :label="$t('settings.purge_mnesia_database_interval')"
                       class="mg-left"
                       v-model="purge_mnesia_interval"
@@ -223,9 +209,7 @@
                     value="http_upload"
                     :label="$t('settings.Enable_file_upload_mod_http_upload')"
                     v-model="isHttpUploadEnabled"
-                    :disabled="
-                      loading.getConfiguration || loading.configureModule
-                    "
+                    :disabled="stillLoading"
                     class="mg-bottom"
                   >
                     <template slot="text-left">{{
@@ -237,9 +221,7 @@
                   </cv-toggle>
                   <template v-if="isHttpUploadEnabled">
                     <NsSlider
-                      :disabled="
-                        loading.getConfiguration || loading.configureModule
-                      "
+                      :disabled="stillLoading"
                       :label="$t('settings.purge_httpd_upload_interval')"
                       class="mg-left"
                       v-model="purge_httpd_upload_interval"
@@ -271,9 +253,7 @@
                     :byteUnit="$t('settings.bytes_per_seconds')"
                     tagKind="high-contrast"
                     :invalidMessage="$t(error.shaper_normal)"
-                    :disabled="
-                      loading.getConfiguration || loading.configureModule
-                    "
+                    :disabled="stillLoading"
                   />
                   <NsByteSlider
                     v-model="shaper_fast"
@@ -288,9 +268,7 @@
                     :byteUnit="$t('settings.bytes_per_seconds')"
                     tagKind="high-contrast"
                     :invalidMessage="$t(error.shaper_fast)"
-                    :disabled="
-                      loading.getConfiguration || loading.configureModule
-                    "
+                    :disabled="stillLoading"
                   />
                 </template>
               </cv-accordion-item>
@@ -334,7 +312,7 @@
               kind="primary"
               :icon="Save20"
               :loading="loading.configureModule"
-              :disabled="loading.getConfiguration || loading.configureModule"
+              :disabled="stillLoading"
               >{{ $t("settings.save") }}</NsButton
             >
           </cv-form>
@@ -372,6 +350,7 @@ export default {
       q: {
         page: "settings",
       },
+      status: {},
       validationErrorDetails: [],
       urlCheckInterval: null,
       hostname: "",
@@ -394,6 +373,7 @@ export default {
       loading: {
         getConfiguration: false,
         configureModule: false,
+        getStatus: false,
       },
       error: {
         getConfiguration: "",
@@ -411,11 +391,19 @@ export default {
         lets_encrypt: "",
         purge_mnesia_interval: "",
         purge_httpd_upload_interval: "",
+        getStatus:"",
       },
     };
   },
   computed: {
     ...mapState(["instanceName", "core", "appName"]),
+    stillLoading() {
+      return (
+        this.loading.getConfiguration ||
+        this.loading.configureModule ||
+        this.loading.getStatus
+      );
+    },
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
@@ -428,7 +416,7 @@ export default {
     next();
   },
   created() {
-    this.getConfiguration();
+    this.getStatus();
   },
   methods: {
     goToCertificates() {
@@ -437,6 +425,53 @@ export default {
     goToEjabberdWebAdmin(e) {
       window.open(`https://${this.fqdn}` + ":5280/admin/", "_blank");
       e.preventDefault();
+    },
+    async getStatus() {
+      this.loading.getStatus = true;
+      this.error.getStatus = "";
+      const taskAction = "get-status";
+      const eventId = this.getUuid();
+
+      // register to task error
+      this.core.$root.$once(
+        `${taskAction}-aborted-${eventId}`,
+        this.getStatusAborted
+      );
+
+      // register to task completion
+      this.core.$root.$once(
+        `${taskAction}-completed-${eventId}`,
+        this.getStatusCompleted
+      );
+
+      const res = await to(
+        this.createModuleTaskForApp(this.instanceName, {
+          action: taskAction,
+          extra: {
+            title: this.$t("action." + taskAction),
+            isNotificationHidden: true,
+            eventId,
+          },
+        })
+      );
+      const err = res[0];
+
+      if (err) {
+        console.error(`error creating task ${taskAction}`, err);
+        this.error.getStatus = this.getErrorMessage(err);
+        this.loading.getStatus = false;
+        return;
+      }
+    },
+    getStatusAborted(taskResult, taskContext) {
+      console.error(`${taskContext.action} aborted`, taskResult);
+      this.error.getStatus = this.$t("error.generic_error");
+      this.loading.getStatus = false;
+    },
+    getStatusCompleted(taskContext, taskResult) {
+      this.status = taskResult.output;
+      this.loading.getStatus = false;
+      this.getConfiguration();
     },
     async getConfiguration() {
       this.loading.getConfiguration = true;
