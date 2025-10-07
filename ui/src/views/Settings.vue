@@ -298,11 +298,7 @@
                 <NsInlineNotification
                   v-if="validationErrorDetails.length"
                   kind="error"
-                  :title="
-                    $t('settings.cannot_obtain_certificate', {
-                      hostname: hostname,
-                    })
-                  "
+                  :title="$t('settings.details_of_error')"
                   :showCloseButton="false"
                 >
                   <template #description>
@@ -401,7 +397,7 @@ export default {
         lets_encrypt: "",
         purge_mnesia_interval: "",
         purge_httpd_upload_interval: "",
-        getStatus:"",
+        getStatus: "",
       },
     };
   },
@@ -427,6 +423,7 @@ export default {
   },
   created() {
     this.getStatus();
+    this.getConfiguration();
   },
   methods: {
     goToCertificates() {
@@ -481,7 +478,6 @@ export default {
     getStatusCompleted(taskContext, taskResult) {
       this.status = taskResult.output;
       this.loading.getStatus = false;
-      this.getConfiguration();
     },
     async getConfiguration() {
       this.loading.getConfiguration = true;
@@ -607,23 +603,15 @@ export default {
     configureModuleValidationFailed(validationErrors) {
       this.loading.configureModule = false;
       let focusAlreadySet = false;
+
       for (const validationError of validationErrors) {
         const param = validationError.parameter;
-        if (
-          validationError.details &&
-          validationError.error === "newcert_acme_error"
-        ) {
-          // show inline error notification with details for acme error
-          this.validationErrorDetails = validationError.details
-            .split("\n")
-            .filter((detail) => detail.trim() !== "");
-        } else {
-          // set i18n error message
-          this.error[param] = this.$t("settings." + validationError.error);
-          if (!focusAlreadySet) {
-            this.focusElement(param);
-            focusAlreadySet = true;
-          }
+        // set i18n error message
+        this.error[param] = this.$t("settings." + validationError.error);
+
+        if (!focusAlreadySet) {
+          this.focusElement(param);
+          focusAlreadySet = true;
         }
       }
     },
@@ -696,7 +684,33 @@ export default {
     },
     configureModuleAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.configureModule = this.$t("error.generic_error");
+      let results = taskResult.output;
+      // if results is a string, try to parse it as JSON
+      if (typeof results === "string") {
+        try {
+          results = JSON.parse(results.replace(/'/g, '"'));
+        } catch (err) {
+          console.error("ACME payload parse error", err);
+          this.loading.configureModule = false;
+          return;
+        }
+      }
+      // if results is not an array, return
+      if (!Array.isArray(results)) {
+        this.loading.configureModule = false;
+        this.error.configureModule = this.$t("error.generic_error");
+        return;
+      }
+      // parse results for acme error details, else show generic error
+      for (const result of results) {
+        if (result.details) {
+          this.validationErrorDetails = result.details
+            .split("\n")
+            .filter((detail) => detail.trim() !== "");
+        } else {
+          this.error.configureModule = this.$t("error.generic_error");
+        }
+      }
       this.loading.configureModule = false;
     },
     configureModuleCompleted() {
