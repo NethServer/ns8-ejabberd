@@ -27,7 +27,6 @@ shaper_fast = data.get("shaper_fast",1000000)
 mod_http_upload_unlimited = data.get("mod_http_upload_unlimited", False)
 mnesia_purge_interval = data.get("purge_mnesia_interval",30)
 mnesia_purge = data.get("purge_mnesia_unlimited",False)
-le = data.get("lets_encrypt", False)
 purge_httpd_upload_interval = data.get("purge_httpd_upload_interval",31)
 webadmin = data.get("webadmin",False)
 # Talk with agent using file descriptor.
