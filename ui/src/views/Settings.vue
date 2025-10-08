@@ -298,7 +298,7 @@
                 <NsInlineNotification
                   v-if="validationErrorDetails.length"
                   kind="error"
-                  :title="$t('settings.details_of_error')"
+                  :title="$t('settings.cannot_obtain_certificate')"
                   :showCloseButton="false"
                 >
                   <template #description>
