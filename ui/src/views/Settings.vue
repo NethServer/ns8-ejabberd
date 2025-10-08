@@ -603,15 +603,20 @@ export default {
     configureModuleValidationFailed(validationErrors) {
       this.loading.configureModule = false;
       let focusAlreadySet = false;
-
       for (const validationError of validationErrors) {
         const param = validationError.parameter;
-        // set i18n error message
-        this.error[param] = this.$t("settings." + validationError.error);
-
-        if (!focusAlreadySet) {
-          this.focusElement(param);
-          focusAlreadySet = true;
+        if (validationError.details && validationError.error) {
+          // show inline error notification with details
+          this.validationErrorDetails = validationError.details
+            .split("\n")
+            .filter((detail) => detail.trim() !== "");
+        } else {
+          // set i18n error message
+          this.error[param] = this.$t("settings." + validationError.error);
+          if (!focusAlreadySet) {
+            this.focusElement(param);
+            focusAlreadySet = true;
+          }
         }
       }
     },
