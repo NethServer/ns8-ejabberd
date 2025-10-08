@@ -82,7 +82,9 @@
                   :title="$t('settings.lets_encrypt_disabled_warning')"
                   :description="
                     $t('settings.lets_encrypt_disabled_warning_description', {
-                      node: this.status.node,
+                      node: this.status.node_ui_name
+                        ? this.status.node_ui_name
+                        : this.status.node,
                     })
                   "
                   :showCloseButton="false"
