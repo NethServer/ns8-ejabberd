@@ -603,15 +603,20 @@ export default {
     configureModuleValidationFailed(validationErrors) {
       this.loading.configureModule = false;
       let focusAlreadySet = false;
-
       for (const validationError of validationErrors) {
         const param = validationError.parameter;
-        // set i18n error message
-        this.error[param] = this.$t("settings." + validationError.error);
-
-        if (!focusAlreadySet) {
-          this.focusElement(param);
-          focusAlreadySet = true;
+        if (validationError.details && validationError.error) {
+          // show inline error notification with details
+          this.validationErrorDetails = validationError.details
+            .split("\n")
+            .filter((detail) => detail.trim() !== "");
+        } else {
+          // set i18n error message
+          this.error[param] = this.$t("settings." + validationError.error);
+          if (!focusAlreadySet) {
+            this.focusElement(param);
+            focusAlreadySet = true;
+          }
         }
       }
     },
@@ -684,33 +689,7 @@ export default {
     },
     configureModuleAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      let results = taskResult.output;
-      // if results is a string, try to parse it as JSON
-      if (typeof results === "string") {
-        try {
-          results = JSON.parse(results.replace(/'/g, '"'));
-        } catch (err) {
-          console.error("ACME payload parse error", err);
-          this.loading.configureModule = false;
-          return;
-        }
-      }
-      // if results is not an array, return
-      if (!Array.isArray(results)) {
-        this.loading.configureModule = false;
-        this.error.configureModule = this.$t("error.generic_error");
-        return;
-      }
-      // parse results for acme error details, else show generic error
-      for (const result of results) {
-        if (result.details) {
-          this.validationErrorDetails = result.details
-            .split("\n")
-            .filter((detail) => detail.trim() !== "");
-        } else {
-          this.error.configureModule = this.$t("error.generic_error");
-        }
-      }
+      this.error.configureModule = this.$t("error.generic_error");
       this.loading.configureModule = false;
     },
     configureModuleCompleted() {
