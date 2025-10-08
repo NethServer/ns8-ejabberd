@@ -43,7 +43,6 @@ agent.set_env("EJABBERD_SHAPER_FAST", shaper_fast)
 agent.set_env("EJABBERD_MOD_HTTP_UPLOAD_UNLIMITED", mod_http_upload_unlimited)
 agent.set_env("EJABBERD_PURGE_MNESIA_UNLIMITED", mnesia_purge)
 agent.set_env("EJABBERD_PURGE_MNESIA_INTERVAL", mnesia_purge_interval)
-agent.set_env("TRAEFIK_LETS_ENCRYPT", le)
 agent.set_env("EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL",purge_httpd_upload_interval)
 agent.set_env("EJABBERD_WEBADMIN",webadmin)
 
