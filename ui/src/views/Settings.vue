@@ -614,7 +614,7 @@ export default {
       let focusAlreadySet = false;
       for (const validationError of validationErrors) {
         const param = validationError.parameter;
-        if (validationError.details && validationError.error) {
+        if (validationError.details) {
           // show inline error notification with details
           this.validationErrorDetails = validationError.details
             .split("\n")
