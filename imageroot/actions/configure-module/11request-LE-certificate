@@ -12,8 +12,8 @@ import json
 # Try to parse the stdin as JSON.
 data = json.load(sys.stdin)
 if data.get("lets_encrypt", False):
-    # on error, this function aborts the action:
-    agent.set_default_certificate({
-        "names": [data["hostname"]],
-        "merge": True, # add hostname to existing certificate
-    })
+    cert_payload = {
+        "fqdn": data["hostname"],
+        "lets_encrypt": data["lets_encrypt"],
+    }
+    agent.set_certificate(cert_payload)
