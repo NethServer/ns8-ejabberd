@@ -34,7 +34,6 @@
         "mod_mam_status",
         "purge_mnesia_unlimited",
         "purge_mnesia_interval",
-        "lets_encrypt",
         "purge_httpd_upload_interval",
         "webadmin"
     ],

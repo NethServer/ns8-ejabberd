@@ -11,7 +11,7 @@ Check if ejabberd is installed correctly
     Set Suite Variable    ${module_id}    ${output.module_id}
 
 Check if ejabberd can be configured
-    ${rc} =    Execute Command    api-cli run module/${module_id}/configure-module --data '{"hostname":"ejabberd.org","ldap_domain":"nethserver.org","adminsList":"user1@ejabberd.org,user2@ejabberd.org","http_upload":true,"s2s":true,"shaper_normal":500000,"shaper_fast":1000000,"mod_http_upload_unlimited":true,"mod_mam_status":true,"purge_mnesia_unlimited":false,"purge_mnesia_interval":30,"lets_encrypt":true,"purge_httpd_upload_interval":31,"webadmin":false}'
+    ${rc} =    Execute Command    api-cli run module/${module_id}/configure-module --data '{"hostname":"ejabberd.org","ldap_domain":"nethserver.org","adminsList":"user1@ejabberd.org,user2@ejabberd.org","http_upload":true,"s2s":true,"shaper_normal":500000,"shaper_fast":1000000,"mod_http_upload_unlimited":true,"mod_mam_status":true,"purge_mnesia_unlimited":false,"purge_mnesia_interval":30,"lets_encrypt":false,"purge_httpd_upload_interval":31,"webadmin":false}'
     ...    return_rc=True  return_stdout=False
     Should Be Equal As Integers    ${rc}  0
 

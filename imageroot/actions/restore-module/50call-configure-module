@@ -26,7 +26,6 @@ configure_retval = agent.tasks.run(agent_id=os.environ['AGENT_ID'], action='conf
     "purge_httpd_upload_interval": int(renv["EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL"]),
     "purge_mnesia_unlimited": renv["EJABBERD_PURGE_MNESIA_UNLIMITED"] == "True",
     "purge_mnesia_interval": int(renv["EJABBERD_PURGE_MNESIA_INTERVAL"]),
-    "lets_encrypt": renv["TRAEFIK_LETS_ENCRYPT"] == "True",
     "webadmin": renv["EJABBERD_WEBADMIN"] == "True",
 })
 agent.assert_exp(configure_retval['exit_code'] == 0, "The configure-module subtask failed!")
