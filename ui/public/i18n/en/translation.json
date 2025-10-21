@@ -56,7 +56,7 @@
         "never": "Never clean",
         "hostname_pattern": "Must be a valid fully qualified domain name",
         "hostname_format": "Must be a valid fully qualified domain name",
-        "bytes_per_seconds": "bytes per seconds"
+        "bytes_per_seconds": "bytes per second"
     },
     "about": {
         "title": "About"
