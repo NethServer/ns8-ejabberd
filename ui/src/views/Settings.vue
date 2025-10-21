@@ -75,7 +75,7 @@
                 $t("settings.enabled")
               }}</template>
             </NsToggle>
-            <cv-row v-if="letsEncryptIsEnabled && !isLetsEncryptEnabled">
+            <cv-row v-if="isLetsEncryptCurrentlyEnabled && !isLetsEncryptEnabled">
               <cv-column>
                 <NsInlineNotification
                   kind="warning"
@@ -370,7 +370,7 @@ export default {
       urlCheckInterval: null,
       hostname: "",
       isLetsEncryptEnabled: false,
-      letsEncryptIsEnabled: false,
+      isLetsEncryptCurrentlyEnabled: false,
       adminsList: "",
       isS2sEnabled: false,
       isHttpUploadEnabled: false,
@@ -534,7 +534,7 @@ export default {
       const config = taskResult.output;
       this.hostname = config.hostname;
       this.isLetsEncryptEnabled = config.lets_encrypt;
-      this.letsEncryptIsEnabled = config.lets_encrypt;
+      this.isLetsEncryptCurrentlyEnabled = config.lets_encrypt;
       this.adminsList = config.adminsList.split(",").join("\n");
       this.isS2sEnabled = config.s2s;
       this.isHttpUploadEnabled = config.http_upload;
