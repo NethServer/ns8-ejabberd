@@ -40,7 +40,7 @@ config["shaper_normal"] = int(os.getenv("EJABBERD_SHAPER_NORMAL",500000))
 config["shaper_fast"] = int(os.getenv("EJABBERD_SHAPER_FAST",1000000))
 config['domains_list'] = domains
 config["purge_mnesia_unlimited"] = os.getenv("EJABBERD_PURGE_MNESIA_UNLIMITED",'') == "True"
-config["lets_encrypt"] = os.getenv("TRAEFIK_LETS_ENCRYPT",'') == "True"
+config["lets_encrypt"] = agent.get_certificate(os.getenv('EJABBERD_HOSTNAME')).get('lets_encrypt', False)
 config["purge_mnesia_interval"] = int(os.getenv("EJABBERD_PURGE_MNESIA_INTERVAL",30))
 config["purge_httpd_upload_interval"] = int(os.getenv("EJABBERD_PURGE_HTTPD_UPLOAD_INTERVAL",30))
 config["webadmin"] = os.getenv("EJABBERD_WEBADMIN",'') == "True"
