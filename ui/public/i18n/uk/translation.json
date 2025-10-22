@@ -34,7 +34,8 @@
         "processing": "Processing...",
         "hostname_format": "Має бути дійсне повне доменне ім’я",
         "Enable_message_archive_management_mod_mam": "Увімкнути керування архівами повідомлень (mod_mam)",
-        "hostname_must_be_relevant_for_user_authentication": "Це домен, який використовується для автентифікації користувача, тобто user@domain.com"
+        "hostname_must_be_relevant_for_user_authentication": "Це домен, який використовується для автентифікації користувача, тобто user@domain.com",
+        "bytes_per_seconds": "bytes per second"
     },
     "action": {
         "list-backup-repositories": "List backup repositories",

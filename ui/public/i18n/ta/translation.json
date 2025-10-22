@@ -34,7 +34,8 @@
         "processing": "செயலாக்கம் ...",
         "hostname_format": "செல்லுபடியாகும் முழு தகுதி வாய்ந்த டொமைன் பெயராக இருக்க வேண்டும்",
         "Enable_message_archive_management_mod_mam": "செய்தி காப்பக நிர்வாகத்தை இயக்கவும் (MOD_MAM)",
-        "hostname_must_be_relevant_for_user_authentication": "இது பயனர் அங்கீகாரத்திற்குப் பயன்படுத்தப்படும் டொமைன், அதாவது User@domain.com"
+        "hostname_must_be_relevant_for_user_authentication": "இது பயனர் அங்கீகாரத்திற்குப் பயன்படுத்தப்படும் டொமைன், அதாவது User@domain.com",
+        "bytes_per_seconds": "bytes per second"
     },
     "action": {
         "list-backup-repositories": "காப்புப்பிரதி களஞ்சியங்களை பட்டியலிடுங்கள்",

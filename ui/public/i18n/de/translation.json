@@ -34,7 +34,8 @@
         "hostname_pattern": "Voll-qualifizierter Domänen-Name (FQDN) erforderlich",
         "choose_the_ldap_domain_to_use": "LDAP-Domäne zur Benutzerauthentifizierung auswählen",
         "Enable_mod_http_upload_quota": "Dateiupload-Quota aktivieren (mod_http_upload)",
-        "hostname_format": "Voll-qualifizierter Domänen-Name (FQDN) erforderlich"
+        "hostname_format": "Voll-qualifizierter Domänen-Name (FQDN) erforderlich",
+        "bytes_per_seconds": "bytes per second"
     },
     "common": {
         "work_in_progress": "In Bearbeitung",

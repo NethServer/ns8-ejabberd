@@ -34,7 +34,8 @@
         "enabled": "Activado",
         "processing": "Procesando…",
         "hostname_pattern": "Debe ser un nombre de dominio válido y completo",
-        "hostname_format": "Debe ser un nombre de dominio válido y completo"
+        "hostname_format": "Debe ser un nombre de dominio válido y completo",
+        "bytes_per_seconds": "bytes per second"
     },
     "common": {
         "required": "Obligatorio",
