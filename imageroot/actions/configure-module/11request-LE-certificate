@@ -11,7 +11,7 @@ import json
 
 # Try to parse the stdin as JSON.
 data = json.load(sys.stdin)
-if data.get("lets_encrypt", False):
+if "lets_encrypt" in data:
     cert_payload = {
         "fqdn": data["hostname"],
         "lets_encrypt": data["lets_encrypt"],
