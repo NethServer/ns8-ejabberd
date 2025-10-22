@@ -312,12 +312,12 @@
                 >
                   <template #description>
                     <div class="flex flex-col gap-2">
-                      <p
+                      <div
                         v-for="(detail, index) in validationErrorDetails"
                         :key="index"
                       >
                         {{ detail }}
-                      </p>
+                      </div>
                     </div>
                   </template>
                 </NsInlineNotification>
