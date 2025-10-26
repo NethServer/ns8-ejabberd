@@ -3,7 +3,7 @@
         "disabled": "முடக்கப்பட்டது",
         "ldap_domain": "LDAP பயனர் டொமைன்",
         "bad_email_address": "பயனர்@டொமைனை உள்ளிடவும். தவறான நிர்வாகி:",
-        "adminList": "வலை நிர்வாகிகள் நிர்வாகிகள்",
+        "adminList": "வலை நிர்வாகி நிர்வாகிகள்",
         "open_ejabberd_webapp": "வலை நிர்வாகி திறந்த",
         "Write_administrator_list": "ஒரு வரிக்கு ஒரு நிர்வாகியை உள்ளிடவும்",
         "required": "தேவை",
@@ -34,7 +34,8 @@
         "processing": "செயலாக்கம் ...",
         "hostname_format": "செல்லுபடியாகும் முழு தகுதி வாய்ந்த டொமைன் பெயராக இருக்க வேண்டும்",
         "Enable_message_archive_management_mod_mam": "செய்தி காப்பக நிர்வாகத்தை இயக்கவும் (MOD_MAM)",
-        "hostname_must_be_relevant_for_user_authentication": "இது பயனர் அங்கீகாரத்திற்குப் பயன்படுத்தப்படும் டொமைன், அதாவது User@domain.com"
+        "hostname_must_be_relevant_for_user_authentication": "இது பயனர் அங்கீகாரத்திற்குப் பயன்படுத்தப்படும் டொமைன், அதாவது User@domain.com",
+        "bytes_per_seconds": "வினாடிக்கு பைட்டுகள்"
     },
     "action": {
         "list-backup-repositories": "காப்புப்பிரதி களஞ்சியங்களை பட்டியலிடுங்கள்",
@@ -54,7 +55,7 @@
         "401": "தவறான ஏற்பு",
         "cannot_retrieve_module_info": "தொகுதி தகவலை மீட்டெடுக்க முடியாது",
         "shaper_normal_must_be_inferior_to_shaper_fast": "சாதாரண சேப்பர் வேகமான சேப்பரை விட தாழ்ந்ததாக இருக்க வேண்டும்",
-        "network_timeout": "பிணையம் நேரம் முடிந்தது",
+        "network_timeout": "பிணைய நேரம் முடிந்தது",
         "404": "சான்று கிடைக்கவில்லை",
         "network_error": "பிணைய பிழை",
         "validation_error": "சரிபார்ப்பு பிழை"

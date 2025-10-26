@@ -81,7 +81,8 @@
         "specify_duration": "Specificare la durata",
         "never": "Non pulire mai",
         "hostname_pattern": "Deve essere un nome di dominio pienamente qualificato valido",
-        "hostname_format": "Deve essere un nome di dominio pienamente qualificato valido"
+        "hostname_format": "Deve essere un nome di dominio pienamente qualificato valido",
+        "bytes_per_seconds": "byte al secondo"
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire il task {action}"
