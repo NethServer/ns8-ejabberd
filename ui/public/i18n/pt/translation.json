@@ -55,7 +55,8 @@
         "hostname_format": "Must be a valid fully qualified domain name",
         "Enable_message_archive_management_mod_mam": "Enable Message Archive Management (mod_mam)",
         "hostname_must_be_relevant_for_user_authentication": "This is the domain used for user authentication, i.e. user@domain.com",
-        "title": "Settings"
+        "title": "Settings",
+        "bytes_per_seconds": "bytes per second"
     },
     "about": {
         "title": "About"

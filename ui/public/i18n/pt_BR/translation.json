@@ -55,7 +55,8 @@
         "required": "Required",
         "Enable_federation_s2s": "Enable federation (S2S)",
         "hostname_pattern": "Must be a valid fully qualified domain name",
-        "hostname": "Ejabberd domain (FQDN)"
+        "hostname": "Ejabberd domain (FQDN)",
+        "bytes_per_seconds": "bytes per second"
     },
     "error": {
         "cannot_retrieve_module_info": "Cannot retrieve module info",
