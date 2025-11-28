@@ -22,7 +22,7 @@
         "purge_mnesia_database_interval": "Limpiar mensajes anteriores a",
         "purge_httpd_upload_interval": "Limpiar archivos anteriores a",
         "webadmin_status": "Administrador web",
-        "title": "Ajustes",
+        "title": "Configuración",
         "choose_ldap_domain": "Elegir un dominio LDAP",
         "Enable_message_archive_management_mod_mam": "Habilitar la Gestión de Archivos de Mensajes (Message Archive Management) (mod_mam)",
         "hostname_must_be_relevant_for_user_authentication": "Este es el dominio utilizado para la autenticación de usuarios, es decir, usuario@dominio.es",
@@ -33,21 +33,21 @@
         "required": "Obligatorio",
         "enabled": "Activado",
         "processing": "Procesando…",
-        "hostname_pattern": "Debe ser un nombre de dominio válido y completo",
-        "hostname_format": "Debe ser un nombre de dominio válido y completo",
+        "hostname_pattern": "Debe ser un nombre de dominio cualificado válido",
+        "hostname_format": "Debe ser un nombre de dominio cualificado válido",
         "bytes_per_seconds": "bytes per second"
     },
     "common": {
         "required": "Obligatorio",
         "work_in_progress": "Trabajando",
-        "processing": "Procesando..."
+        "processing": "Procesando…"
     },
     "status": {
         "created": "Creado",
         "size": "Tamaño",
         "name": "Nombre",
         "no_images": "Sin imágenes",
-        "app_volumes": "Volumen de la aplicación| Volumen de las aplicaciones",
+        "app_volumes": "Volumen de la aplicación | Volúmenes de las aplicaciones",
         "services": "Servicio | Servicios",
         "app_images": "Imagen de la aplicación| Imágenes de las aplicaciones",
         "no_services": "Sin servicios",
@@ -56,7 +56,7 @@
         "title": "Estado",
         "installation_node": "Nodo de la instalación",
         "node": "Nodo",
-        "no_volumes": "Sin volumenes"
+        "no_volumes": "Sin volúmenes"
     },
     "about": {
         "title": "Acerca de"
@@ -65,7 +65,7 @@
         "shaper_normal_must_be_inferior_to_shaper_fast": "El perfil normal debe ser inferior al perfil rápido",
         "403": "Operación no autorizada",
         "cannot_retrieve_installed_modules": "No se pueden recuperar los módulos instalados",
-        "401": "Autentificación inválida",
+        "401": "Autenticación no válida",
         "cannot_retrieve_module_info": "No se puede recuperar la información del módulo",
         "generic_error": "Algo ha salido mal",
         "error": "Error",
@@ -75,14 +75,14 @@
         "validation_error": "Error en la validación"
     },
     "action": {
-        "get-configuration": "Obtener los ajustes",
-        "list-backup-repositories": "Mostrar repositorios de respaldo",
+        "get-configuration": "Obtener configuración",
+        "list-backup-repositories": "Enumerar repositorios de respaldo",
         "get-module-info": "Obtener información del módulo",
-        "list-installed-modules": "Lista de módulos instalados",
-        "list-backups": "Mostrar copias de seguridad",
-        "get-status": "Obtener el estado",
-        "configure-module": "Configurar el módulo",
-        "get-name": "Obtener el nombre"
+        "list-installed-modules": "Enumerar módulos instalados",
+        "list-backups": "Enumerar respaldos",
+        "get-status": "Obtener estado",
+        "configure-module": "Configurar módulo",
+        "get-name": "Obtener nombre"
     },
     "task": {
         "cannot_create_task": "No se puede crear la tarea {action}"
