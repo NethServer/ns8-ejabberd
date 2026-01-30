@@ -11,7 +11,7 @@
         "advanced": "மேம்பட்ட",
         "days": "நாட்கள்",
         "Enable_file_upload_mod_http_upload": "கோப்பு பதிவேற்றத்தை இயக்கவும் (mod_http_upload)",
-        "configure_instance": "{உதாரணத்தை உள்ளமைக்கவும்",
+        "configure_instance": "{instance} ஐ உள்ளமை",
         "specify_duration": "காலத்தைக் குறிப்பிடவும்",
         "admin_login_tips": "இயக்கப்பட்டால், வலை நிர்வாகம் பக்கம் TLS குறியாக்கத்துடன் துறைமுகம் 5280 இல் கிடைக்கிறது.",
         "never": "ஒருபோதும் தூய்மை செய்ய வேண்டாம்",
@@ -38,31 +38,31 @@
         "bytes_per_seconds": "வினாடிக்கு பைட்டுகள்"
     },
     "action": {
-        "list-backup-repositories": "காப்புப்பிரதி களஞ்சியங்களை பட்டியலிடுங்கள்",
-        "list-installed-modules": "நிறுவப்பட்ட தொகுதிகள் பட்டியல்",
+        "list-backup-repositories": "காப்புப் பிரதி களஞ்சியங்களைப் பட்டியலிடுங்கள்",
+        "list-installed-modules": "நிறுவப்பட்ட தொகுதிகளை பட்டியலிடுங்கள்",
         "list-backups": "காப்புப்பிரதிகளை பட்டியலிடுங்கள்",
         "get-module-info": "தொகுதி தகவலைப் பெறுங்கள்",
         "get-status": "அந்தச்தைப் பெறுங்கள்",
         "configure-module": "தொகுதியை உள்ளமைக்கவும்",
         "get-configuration": "உள்ளமைவைப் பெறுங்கள்",
-        "get-name": "பெயரைப் பெறுங்கள்"
+        "get-name": "பெயர் பெறவும்"
     },
     "error": {
-        "generic_error": "ஏதோ தவறு நடந்தது",
+        "generic_error": "ஏதோ தவறாகிவிட்டது",
         "error": "பிழை",
         "403": "செயல்பாடு அங்கீகரிக்கப்படவில்லை",
         "cannot_retrieve_installed_modules": "நிறுவப்பட்ட தொகுதிகளை மீட்டெடுக்க முடியாது",
         "401": "தவறான ஏற்பு",
-        "cannot_retrieve_module_info": "தொகுதி தகவலை மீட்டெடுக்க முடியாது",
+        "cannot_retrieve_module_info": "தொகுதி தகவலை மீட்டெடுக்க முடியவில்லை",
         "shaper_normal_must_be_inferior_to_shaper_fast": "சாதாரண சேப்பர் வேகமான சேப்பரை விட தாழ்ந்ததாக இருக்க வேண்டும்",
-        "network_timeout": "பிணைய நேரம் முடிந்தது",
+        "network_timeout": "பிணையம் நேரம் முடிந்தது",
         "404": "சான்று கிடைக்கவில்லை",
-        "network_error": "பிணைய பிழை",
+        "network_error": "பிணையம் பிழை",
         "validation_error": "சரிபார்ப்பு பிழை"
     },
     "common": {
         "required": "தேவை",
-        "work_in_progress": "வேலை முன்னேற்றத்தில் உள்ளது",
+        "work_in_progress": "வேலை நடந்து கொண்டிருக்கிறது",
         "processing": "செயலாக்கம் ..."
     },
     "status": {
@@ -70,8 +70,8 @@
         "size": "அளவு",
         "name": "பெயர்",
         "no_images": "படங்கள் இல்லை",
-        "app_volumes": "பயன்பாட்டு தொகுதி | பயன்பாட்டு தொகுதிகள்",
-        "services": "பணி | சேவைகள்",
+        "app_volumes": "பயன்பாட்டின் அளவு | பயன்பாட்டின் தொகுதிகள்",
+        "services": "சேவை | சேவைகள்",
         "app_images": "பயன்பாட்டு படம் | பயன்பாட்டு படங்கள்",
         "no_services": "சேவைகள் இல்லை",
         "app_instance": "பயன்பாட்டு நிகழ்வு",
@@ -85,6 +85,6 @@
         "title": "பற்றி"
     },
     "task": {
-        "cannot_create_task": "பணியை உருவாக்க முடியாது {action}"
+        "cannot_create_task": "பணி {action} ஐ உருவாக்க முடியாது"
     }
 }
