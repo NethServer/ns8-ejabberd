@@ -40,7 +40,7 @@
     "common": {
         "work_in_progress": "In Bearbeitung",
         "required": "Erforderlich",
-        "processing": "Verarbeitung läuft..."
+        "processing": "verarbeite…"
     },
     "status": {
         "app_volumes": "App Volumen | App Volumen",
