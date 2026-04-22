@@ -38,7 +38,7 @@
         "get-name": "Visualizza nome",
         "configure-module": "Configura modulo",
         "list-installed-modules": "Elenca moduli installati",
-        "list-backup-repositories": "Elenca repository di backup",
+        "list-backup-repositories": "Elenca i repository di backup",
         "get-status": "Visualizza stato",
         "list-backups": "Elenca backup",
         "get-configuration": "Visualizza configurazione"
