@@ -14,7 +14,7 @@
         "401": "Autenticazione non valida",
         "generic_error": "Qualcosa è andato storto",
         "validation_error": "Errore di validazione",
-        "network_error": "Errore di rete",
+        "network_error": "Errore di rete. Controlla la connessione e ricarica la pagina.",
         "shaper_normal_must_be_inferior_to_shaper_fast": "Lo shaper normale deve essere inferiore allo shaper veloce"
     },
     "status": {
