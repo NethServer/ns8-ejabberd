@@ -14,9 +14,9 @@ After=get-certificate.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
-EnvironmentFile=%S/state/environment
-EnvironmentFile=-%S/state/discovery.env
-WorkingDirectory=%S/state
+EnvironmentFile=%E/state/environment
+EnvironmentFile=-%E/state/discovery.env
+WorkingDirectory=%E/state
 Restart=always
 ExecStartPre=/bin/rm -f %t/ejabberd.pid %t/ejabberd.ctr-id
 ExecStartPre=-runagent discover-ldap

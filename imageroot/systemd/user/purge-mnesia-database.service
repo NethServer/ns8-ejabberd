@@ -6,5 +6,5 @@ Requisite=ejabberd.service
 [Service]
 Type=oneshot
 ExecStart=runagent purge-mnesia
-WorkingDirectory=%S/state
+WorkingDirectory=%E/state
 SyslogIdentifier=%u/%N
