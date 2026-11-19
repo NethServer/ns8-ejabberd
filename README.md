@@ -42,7 +42,7 @@ Launch `configure-module`, by setting the following parameters:
 - `http_upload`: Allow users to upload files. (true/false)
 - `mod_http_upload_unlimited`: Keep uploaded files unlimited (true/false)
 - `purge_httpd_upload_interval` : Remove older files then x days (default 30 days)
-- `s2s`: Enable the server-to-server (S2S) for XMPP federation (Port number: 5269). (true/false)
+- `s2s`: Enable the server-to-server (S2S) for XMPP federation (Port number: 5269). Also required for mobile push notifications. (true/false)
 - `mod_mam_status`: The XEP-0313: Message Archive Management (mod_mam). (true/false)
 - `shaper_normal`: Download speed limit in bytes/second for users, default is 500000
 - `shaper_fast`:  Download speed limit in bytes/second for admin users, default is 1000000

@@ -163,20 +163,24 @@
                     >
                     </cv-text-area>
                   </template>
-                  <cv-toggle
+                  <NsToggle
                     value="s2s"
                     :label="$t('settings.Enable_federation_s2s')"
+                    :form-item="true"
                     v-model="isS2sEnabled"
                     :disabled="stillLoading"
                     class="mg-bottom"
                   >
+                    <template slot="tooltip">
+                      <span>{{ $t("settings.s2s_tips") }}</span>
+                    </template>
                     <template slot="text-left">{{
                       $t("settings.disabled")
                     }}</template>
                     <template slot="text-right">{{
                       $t("settings.enabled")
                     }}</template>
-                  </cv-toggle>
+                  </NsToggle>
                   <cv-toggle
                     value="mod_mam_status"
                     :label="

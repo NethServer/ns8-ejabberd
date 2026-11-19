@@ -269,7 +269,7 @@ modules:
   mod_stream_mgmt: {}
   mod_s2s_dialback: {}
 {%if s2s %}
-  # Push notifications reach the app push servers through s2s
+  # Push servers need inbound s2s on 5269 to verify this server
   mod_push: {}
   mod_push_keepalive: {}
 {% endif %}
