@@ -16,7 +16,7 @@ Services are available from the following port numbers:
 
 - `5222` Standard port for Jabber/XMPP client connections, plain or STARTTLS.
 - `5223` Standard port for Jabber client connections using the old SSL method.
-- `5269` For XMPP federation. Only needed if you want to communicate with users on other servers.
+- `5269` For XMPP federation and mobile push notifications. Needed to communicate with users on other servers or to receive push notifications on mobile clients.
 - `5280` For admin interface.
 - `5443` With encryption, used for admin interface, API, CAPTCHA, OAuth, Websockets and XMPP BOSH.
 
@@ -42,7 +42,7 @@ Launch `configure-module`, by setting the following parameters:
 - `http_upload`: Allow users to upload files. (true/false)
 - `mod_http_upload_unlimited`: Keep uploaded files unlimited (true/false)
 - `purge_httpd_upload_interval` : Remove older files then x days (default 30 days)
-- `s2s`: Enable the server-to-server (S2S) for XMPP federation (Port number: 5269). Also required for mobile push notifications. (true/false)
+- `s2s`: Enable federation and push notifications (S2S) (Port number: 5269). Push notifications need the server reachable from the internet on port 5269, a trusted certificate (for example from Let's Encrypt) and a public DNS record for the domain. (true/false)
 - `mod_mam_status`: The XEP-0313: Message Archive Management (mod_mam). (true/false)
 - `shaper_normal`: Download speed limit in bytes/second for users, default is 500000
 - `shaper_fast`:  Download speed limit in bytes/second for admin users, default is 1000000
