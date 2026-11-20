@@ -56,7 +56,8 @@
         "Enable_message_archive_management_mod_mam": "Enable Message Archive Management (mod_mam)",
         "hostname_must_be_relevant_for_user_authentication": "This is the domain used for user authentication, i.e. user@domain.com",
         "title": "Settings",
-        "bytes_per_seconds": "bytes per second"
+        "bytes_per_seconds": "bytes per second",
+        "s2s_tips": "Required for mobile push notifications. The server must be reachable from the internet on port 5269, with a trusted certificate and a public DNS record for the domain."
     },
     "about": {
         "title": "About"

@@ -82,7 +82,8 @@
         "never": "Non pulire mai",
         "hostname_pattern": "Deve essere un nome di dominio pienamente qualificato valido",
         "hostname_format": "Deve essere un nome di dominio pienamente qualificato valido",
-        "bytes_per_seconds": "byte al secondo"
+        "bytes_per_seconds": "byte al secondo",
+        "s2s_tips": "Required for mobile push notifications. The server must be reachable from the internet on port 5269, with a trusted certificate and a public DNS record for the domain."
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire il task {action}"

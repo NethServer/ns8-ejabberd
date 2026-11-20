@@ -56,7 +56,8 @@
         "Enable_federation_s2s": "Enable federation (S2S)",
         "hostname_pattern": "Must be a valid fully qualified domain name",
         "hostname": "Ejabberd domain (FQDN)",
-        "bytes_per_seconds": "bytes per second"
+        "bytes_per_seconds": "bytes per second",
+        "s2s_tips": "Required for mobile push notifications. The server must be reachable from the internet on port 5269, with a trusted certificate and a public DNS record for the domain."
     },
     "error": {
         "cannot_retrieve_module_info": "Cannot retrieve module info",

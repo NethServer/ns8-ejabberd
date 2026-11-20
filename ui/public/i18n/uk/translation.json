@@ -35,7 +35,8 @@
         "hostname_format": "Має бути дійсне повне доменне ім’я",
         "Enable_message_archive_management_mod_mam": "Увімкнути керування архівами повідомлень (mod_mam)",
         "hostname_must_be_relevant_for_user_authentication": "Це домен, який використовується для автентифікації користувача, тобто user@domain.com",
-        "bytes_per_seconds": "bytes per second"
+        "bytes_per_seconds": "bytes per second",
+        "s2s_tips": "Required for mobile push notifications. The server must be reachable from the internet on port 5269, with a trusted certificate and a public DNS record for the domain."
     },
     "action": {
         "list-backup-repositories": "List backup repositories",
