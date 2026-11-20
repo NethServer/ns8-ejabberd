@@ -1,7 +1,7 @@
 {
     "common": {
         "work_in_progress": "In lavorazione",
-        "processing": "Elaborazione in corso…",
+        "processing": "Elaborazione…",
         "required": "Obbligatorio"
     },
     "error": {
@@ -71,7 +71,7 @@
         "bad_email_address": "Inserire user@domain. Amministratore non valido:",
         "required": "Necessario",
         "admin_login_tips": "Se abilitata, la pagina di amministrazione Web è disponibile sulla porta 5280 con crittografia TLS.",
-        "Enable_federation_s2s": "Abilitare la federazione (S2S)",
+        "Enable_federation_s2s": "Abilitare la federazione e le notifiche push (S2S)",
         "Enable_message_archive_management_mod_mam": "Abilitare la gestione dell'archivio dei messaggi (mod_mam)",
         "purge_mnesia_database_interval": "Pulire i messaggi più vecchi di",
         "Enable_purge_mnesia_database": "Elimina i messaggi dal database Mnesia",
@@ -83,7 +83,7 @@
         "hostname_pattern": "Deve essere un nome di dominio pienamente qualificato valido",
         "hostname_format": "Deve essere un nome di dominio pienamente qualificato valido",
         "bytes_per_seconds": "byte al secondo",
-        "s2s_tips": "Required for mobile push notifications. The server must be reachable from the internet on port 5269, with a trusted certificate and a public DNS record for the domain."
+        "s2s_tips": "Richiesto per le notifiche push mobili. Il server deve essere raggiungibile da internet sulla porta 5269, con un certificato valido e un record DNS pubblico per il dominio."
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire il task {action}"
