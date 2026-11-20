@@ -42,7 +42,7 @@ Launch `configure-module`, by setting the following parameters:
 - `http_upload`: Allow users to upload files. (true/false)
 - `mod_http_upload_unlimited`: Keep uploaded files unlimited (true/false)
 - `purge_httpd_upload_interval` : Remove older files then x days (default 30 days)
-- `s2s`: Enable federation and push notifications (S2S) (Port number: 5269). Push notifications need the server reachable from the internet on port 5269, a trusted certificate (for example from Let's Encrypt) and a public DNS record for the domain. (true/false)
+- `s2s`: Enable federation and push notifications (S2S) (Port number: 5269). Push notifications need the server reachable from the internet on port 5269, a trusted certificate and a public DNS record for the domain. (true/false)
 - `mod_mam_status`: The XEP-0313: Message Archive Management (mod_mam). (true/false)
 - `shaper_normal`: Download speed limit in bytes/second for users, default is 500000
 - `shaper_fast`:  Download speed limit in bytes/second for admin users, default is 1000000
